@@ -1,0 +1,303 @@
+<mxfile host="app.diagrams.net" agent="Claude Code" version="26.0.0">
+  <diagram name="CI Gridsz Client" id="ci-gridsz-client">
+    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="2800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Title -->
+        <mxCell id="title" value="CI Gridsz Client Workflow" style="text;html=1;fontSize=22;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="400" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== TRIGGER ==================== -->
+        <mxCell id="trigger" value="&lt;b&gt;Trigger&lt;/b&gt;&lt;br&gt;push to &lt;code&gt;master&lt;/code&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;size=20;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="580" y="80" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="paths" value="&lt;b&gt;Path Filters&lt;/b&gt;&lt;br&gt;&lt;code&gt;package.json&lt;/code&gt;&lt;br&gt;&lt;code&gt;charts/gridsz-client/**&lt;/code&gt;&lt;br&gt;&lt;code&gt;apps/gridsz-client/**&lt;/code&gt;&lt;br&gt;&lt;code&gt;libs/**&lt;/code&gt;&lt;br&gt;&lt;code&gt;.github/workflows/ci-gridsz-client.yaml&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="60" width="320" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_trigger_paths" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#999999;" edge="1" source="trigger" target="paths" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== JOB: CHANGES ==================== -->
+        <mxCell id="job_changes_group" value="Job: changes" style="swimlane;startSize=30;fillColor=#e1d5e7;strokeColor=#9673a6;rounded=1;arcSize=8;fontSize=14;fontStyle=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="530" y="180" width="340" height="130" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ch_checkout" value="Checkout repo&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;actions/checkout@v6&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="job_changes_group">
+          <mxGeometry x="20" y="45" width="140" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ch_detect" value="Detect changes&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;dorny/paths-filter@v4&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="job_changes_group">
+          <mxGeometry x="180" y="45" width="140" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_ch1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#9673a6;" edge="1" source="ch_checkout" target="ch_detect" parent="job_changes_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Trigger -> Changes -->
+        <mxCell id="e_trigger_changes" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;" edge="1" source="trigger" target="job_changes_group" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== DECISION: code_changes? ==================== -->
+        <mxCell id="decision_changes" value="code_changes&lt;br&gt;== true ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="350" width="140" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_changes_decision" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;" edge="1" source="job_changes_group" target="decision_changes" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="skip" value="Skip" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="860" y="375" width="80" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_decision_skip" value="No" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#b85450;fontStyle=1;fontSize=11;" edge="1" source="decision_changes" target="skip" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== JOB: BUILD ==================== -->
+        <mxCell id="job_build_group" value="Job: build (needs: changes)" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;arcSize=6;fontSize=14;fontStyle=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="260" y="500" width="880" height="680" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 1: Checkout + Install pnpm -->
+        <mxCell id="b_checkout" value="Checkout repo&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;actions/checkout@v6&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="job_build_group">
+          <mxGeometry x="40" y="50" width="170" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b_pnpm" value="Install pnpm&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;pnpm/action-setup@v5 (v10)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="job_build_group">
+          <mxGeometry x="260" y="50" width="190" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 2: Bump version -->
+        <mxCell id="b_bump" value="&lt;b&gt;Bump version (dry-run)&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;mathieudutour/github-tag-action@v6.2&lt;/i&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;tag_prefix: client-v&lt;/i&gt;&lt;br&gt;&lt;span style=&quot;font-size:10px;color:#b85450&quot;&gt;outputs: new_version, new_tag, changelog&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="job_build_group">
+          <mxGeometry x="500" y="40" width="270" height="75" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 3: Setup Node -->
+        <mxCell id="b_node" value="Setup Node.js 22.18.0&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;actions/setup-node@v6&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="job_build_group">
+          <mxGeometry x="40" y="150" width="170" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 4: Install deps -->
+        <mxCell id="b_deps" value="Install dependencies&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;pnpm install --frozen-lockfile&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="job_build_group">
+          <mxGeometry x="260" y="150" width="190" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 5: NX Build -->
+        <mxCell id="b_nx" value="NX Build gridsz-client&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;mansagroup/nrwl-nx-action@v3&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="job_build_group">
+          <mxGeometry x="500" y="150" width="270" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 6: Compress -->
+        <mxCell id="b_compress" value="Compress project&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;npm run compress&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="job_build_group">
+          <mxGeometry x="40" y="260" width="170" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 7: GCP Auth -->
+        <mxCell id="b_auth" value="GCP Auth&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;google-github-actions/auth@v3&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="job_build_group">
+          <mxGeometry x="260" y="260" width="190" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 8: Docker Login -->
+        <mxCell id="b_docker_login" value="Docker Login&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;docker/login-action@v4&lt;/i&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;europe-docker.pkg.dev&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="job_build_group">
+          <mxGeometry x="500" y="255" width="270" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 9: Docker Build -->
+        <mxCell id="b_docker_build" value="&lt;b&gt;Build Docker image&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;docker build -f apps/gridsz-client/Dockerfile&lt;/i&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;tag: IMAGE_NAME:new_version&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;fontSize=12;" vertex="1" parent="job_build_group">
+          <mxGeometry x="40" y="380" width="270" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 10: Docker Push -->
+        <mxCell id="b_docker_push" value="&lt;b&gt;Push Docker image&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;docker push → europe-docker.pkg.dev&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;fontSize=12;" vertex="1" parent="job_build_group">
+          <mxGeometry x="370" y="380" width="230" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Row 11: Backup -->
+        <mxCell id="b_backup" value="&lt;b&gt;Compress &amp;amp; Push Backup&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;docker save → gzip → GCS&lt;/i&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;gs://gridsz-workflow-backup-artifacts&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;fontSize=12;" vertex="1" parent="job_build_group">
+          <mxGeometry x="285" y="500" width="310" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Build job edges -->
+        <mxCell id="eb1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;" edge="1" source="b_checkout" target="b_pnpm" parent="job_build_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="eb2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;" edge="1" source="b_pnpm" target="b_bump" parent="job_build_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="eb3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;" edge="1" source="b_checkout" target="b_node" parent="job_build_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="eb4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;" edge="1" source="b_node" target="b_deps" parent="job_build_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="eb5" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;" edge="1" source="b_deps" target="b_nx" parent="job_build_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="eb6" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#6c8ebf;" edge="1" source="b_nx" target="b_compress" parent="job_build_group">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="635" y="230"/>
+              <mxPoint x="125" y="230"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eb7" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;" edge="1" source="b_compress" target="b_auth" parent="job_build_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="eb8" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;" edge="1" source="b_auth" target="b_docker_login" parent="job_build_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="eb9" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#996185;" edge="1" source="b_docker_login" target="b_docker_build" parent="job_build_group">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="635" y="350"/>
+              <mxPoint x="175" y="350"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eb10" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#996185;" edge="1" source="b_docker_build" target="b_docker_push" parent="job_build_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="eb11" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#996185;" edge="1" source="b_docker_push" target="b_backup" parent="job_build_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- version data flow from bump to docker build -->
+        <mxCell id="eb_ver" value="new_version" style="edgeStyle=orthogonalEdgeStyle;dashed=1;strokeColor=#d6b656;fontStyle=2;fontSize=10;fontColor=#b85450;" edge="1" source="b_bump" target="b_docker_build" parent="job_build_group">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="820" y="78"/>
+              <mxPoint x="820" y="413"/>
+              <mxPoint x="310" y="413"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Decision -> Build -->
+        <mxCell id="e_decision_build" value="Yes" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;fontStyle=1;fontSize=11;" edge="1" source="decision_changes" target="job_build_group" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== DECISION: build success? ==================== -->
+        <mxCell id="decision_build" value="build.result&lt;br&gt;== success ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="1230" width="140" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_build_decision2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;" edge="1" source="job_build_group" target="decision_build" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="skip2" value="Skip" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="860" y="1260" width="80" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_decision2_skip" value="No" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#b85450;fontStyle=1;fontSize=11;" edge="1" source="decision_build" target="skip2" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== JOB: DEPLOY ==================== -->
+        <mxCell id="job_deploy_group" value="Job: deploy (needs: build)" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;rounded=1;arcSize=6;fontSize=14;fontStyle=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="1380" width="780" height="520" as="geometry"/>
+        </mxCell>
+
+        <!-- Deploy steps -->
+        <mxCell id="d_checkout" value="Checkout repo&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;actions/checkout@v6&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=12;" vertex="1" parent="job_deploy_group">
+          <mxGeometry x="40" y="50" width="170" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_auth" value="GCP Auth&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;google-github-actions/auth@v3&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=12;" vertex="1" parent="job_deploy_group">
+          <mxGeometry x="260" y="50" width="190" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_docker_login" value="Docker Login&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;docker/login-action@v4&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=12;" vertex="1" parent="job_deploy_group">
+          <mxGeometry x="500" y="50" width="230" height="55" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_promote" value="&lt;b&gt;Promote changelog&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;Update Chart.yaml (version, appVersion)&lt;/i&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;Update values.yaml (repository, tag)&lt;/i&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;git commit + git tag + git push&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="job_deploy_group">
+          <mxGeometry x="40" y="160" width="310" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_release" value="&lt;b&gt;Create GitHub Release&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;actions/create-release@v1&lt;/i&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;tag: new_tag, body: changelog&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="job_deploy_group">
+          <mxGeometry x="420" y="160" width="310" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d_helm" value="&lt;b&gt;Package &amp;amp; Push Helm Chart&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;helm package → helm push → OCI registry&lt;/i&gt;&lt;br&gt;&lt;i style=&quot;font-size:10px&quot;&gt;gcloud storage cp → GCS backup&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="job_deploy_group">
+          <mxGeometry x="190" y="300" width="400" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- Deploy edges -->
+        <mxCell id="ed1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;" edge="1" source="d_checkout" target="d_auth" parent="job_deploy_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ed2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#82b366;" edge="1" source="d_auth" target="d_docker_login" parent="job_deploy_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ed3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;" edge="1" source="d_docker_login" target="d_promote" parent="job_deploy_group">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="615" y="130"/>
+              <mxPoint x="195" y="130"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ed4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;" edge="1" source="d_promote" target="d_release" parent="job_deploy_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ed5" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;" edge="1" source="d_release" target="d_helm" parent="job_deploy_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- build outputs flowing into deploy -->
+        <mxCell id="deploy_inputs" value="&lt;b&gt;Inputs from build job&lt;/b&gt;&lt;br&gt;&lt;code&gt;new_version&lt;/code&gt;, &lt;code&gt;new_tag&lt;/code&gt;, &lt;code&gt;changelog&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=11;dashed=1;" vertex="1" parent="job_deploy_group">
+          <mxGeometry x="470" y="410" width="260" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ed_inputs1" style="dashed=1;strokeColor=#666666;" edge="1" source="deploy_inputs" target="d_promote" parent="job_deploy_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ed_inputs2" style="dashed=1;strokeColor=#666666;" edge="1" source="deploy_inputs" target="d_release" parent="job_deploy_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ed_inputs3" style="dashed=1;strokeColor=#666666;" edge="1" source="deploy_inputs" target="d_helm" parent="job_deploy_group">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Decision -> Deploy -->
+        <mxCell id="e_decision2_deploy" value="Yes" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#333333;strokeWidth=2;fontStyle=1;fontSize=11;" edge="1" source="decision_build" target="job_deploy_group" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ==================== LEGEND ==================== -->
+        <mxCell id="legend" value="&lt;b&gt;Legend&lt;/b&gt;" style="swimlane;startSize=25;fillColor=#f5f5f5;strokeColor=#666666;rounded=1;fontSize=12;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="200" height="210" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="leg1" value="Setup / Checkout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="legend">
+          <mxGeometry x="15" y="35" width="170" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg2" value="Auth / Credentials" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="legend">
+          <mxGeometry x="15" y="70" width="170" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg3" value="Version / Release" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="legend">
+          <mxGeometry x="15" y="105" width="170" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg4" value="Docker / Artifact" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;fontSize=10;" vertex="1" parent="legend">
+          <mxGeometry x="15" y="140" width="170" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="leg5" value="Decision gate" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="legend">
+          <mxGeometry x="40" y="172" width="120" height="30" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
