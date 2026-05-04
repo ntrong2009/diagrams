@@ -1,16 +1,12 @@
 <mxfile host="65bd71144e">
     <diagram id="trusted-host-vs-cors" name="Trusted Host vs CORS">
-        <mxGraphModel dx="894" dy="707" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="963" dy="827" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-
-                <!-- ==================== TITLE ==================== -->
                 <mxCell id="title" value="Trusted Host vs CORS" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=28;fontStyle=1;fontColor=#1a1a2e;" parent="1" vertex="1">
                     <mxGeometry x="500" y="15" width="600" height="50" as="geometry"/>
                 </mxCell>
-
-                <!-- ==================== LEFT SECTION: TRUSTED HOST ==================== -->
                 <mxCell id="th_container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f4ff;strokeColor=#4361ee;strokeWidth=2;arcSize=6;" parent="1" vertex="1">
                     <mxGeometry x="30" y="80" width="740" height="1000" as="geometry"/>
                 </mxCell>
@@ -20,240 +16,159 @@
                 <mxCell id="th_subtitle" value="Server-side middleware that validates the Host header&lt;br&gt;Prevents Host Header Injection attacks" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;fontColor=#555555;" parent="1" vertex="1">
                     <mxGeometry x="170" y="125" width="460" height="40" as="geometry"/>
                 </mxCell>
-
-                <!-- Trusted Host: Client -->
                 <mxCell id="th_browser" value="&lt;b&gt;Browser / Client&lt;/b&gt;" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=data:image/svg+xml,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM0MzYxZWUiIHN0cm9rZS13aWR0aD0iMiI+PHJlY3QgeD0iMiIgeT0iMyIgd2lkdGg9IjIwIiBoZWlnaHQ9IjE0IiByeD0iMiIvPjxsaW5lIHgxPSI4IiB5MT0iMjEiIHgyPSIxNiIgeTI9IjIxIi8+PGxpbmUgeDE9IjEyIiB5MT0iMTciIHgyPSIxMiIgeTI9IjIxIi8+PC9zdmc+;fontSize=12;fontColor=#333333;" parent="1" vertex="1">
-                    <mxGeometry x="90" y="195" width="60" height="60" as="geometry"/>
+                    <mxGeometry x="420" y="210" width="60" height="60" as="geometry"/>
                 </mxCell>
-
-                <!-- Request box -->
-                <mxCell id="th_request" value="&lt;div style='text-align:left;'&gt;&lt;b&gt;HTTP Request&lt;/b&gt;&lt;br&gt;&lt;code&gt;GET /api/data HTTP/1.1&lt;/code&gt;&lt;br&gt;&lt;code style='color:#e63946'&gt;Host: api.gridsz.com&lt;/code&gt;&lt;br&gt;&lt;code&gt;Cookie: session=abc123&lt;/code&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3cd;strokeColor=#ffc107;strokeWidth=2;fontSize=11;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="200" y="185" width="250" height="80" as="geometry"/>
+                <mxCell id="th_request" value="&lt;div style=&#39;text-align:left;&#39;&gt;&lt;b&gt;HTTP Request&lt;/b&gt;&lt;br&gt;&lt;code&gt;GET /api/data HTTP/1.1&lt;/code&gt;&lt;br&gt;&lt;code style=&#39;color:#e63946&#39;&gt;Host: api.gridsz.com&lt;/code&gt;&lt;br&gt;&lt;code&gt;Cookie: session=abc123&lt;/code&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3cd;strokeColor=#ffc107;strokeWidth=2;fontSize=11;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="75" y="200" width="250" height="80" as="geometry"/>
                 </mxCell>
-
-                <!-- Arrow from client to request -->
                 <mxCell id="th_arrow1" value="" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#4361ee;endFill=1;" parent="1" source="th_browser" target="th_request" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- Server with Trusted Host Middleware -->
                 <mxCell id="th_server_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;strokeWidth=2;arcSize=8;" parent="1" vertex="1">
-                    <mxGeometry x="80" y="310" width="630" height="250" as="geometry"/>
+                    <mxGeometry x="80" y="310" width="630" height="180" as="geometry"/>
                 </mxCell>
                 <mxCell id="th_server_label" value="&lt;b&gt;Web Server / Reverse Proxy (e.g. Nginx, Kestrel)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontColor=#2e7d32;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="180" y="315" width="430" height="30" as="geometry"/>
                 </mxCell>
-
-                <!-- Trusted Host Middleware -->
                 <mxCell id="th_middleware" value="&lt;b&gt;Trusted Host Middleware&lt;/b&gt;&lt;br&gt;&lt;br&gt;Allowed Hosts:&lt;br&gt;&lt;code&gt;api.gridsz.com&lt;/code&gt;&lt;br&gt;&lt;code&gt;admin.gridsz.com&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#e63946;strokeWidth=2;fontSize=12;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="100" y="355" width="200" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Decision diamond -->
                 <mxCell id="th_decision" value="Host header&lt;br&gt;in allowed&lt;br&gt;list?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#e63946;strokeWidth=2;fontSize=12;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="350" y="355" width="130" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Arrow middleware to decision -->
                 <mxCell id="th_arrow_mid_dec" value="check" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#e63946;endFill=1;fontSize=10;" parent="1" source="th_middleware" target="th_decision" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- Application -->
                 <mxCell id="th_app" value="&lt;b&gt;Application&lt;/b&gt;&lt;br&gt;(API Controller)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=2;fontSize=12;" parent="1" vertex="1">
                     <mxGeometry x="540" y="370" width="150" height="70" as="geometry"/>
                 </mxCell>
-
-                <!-- Arrow decision YES to app -->
-                <mxCell id="th_arrow_yes" value="&lt;b style='color:#2e7d32;font-size:13px'&gt;YES ✓&lt;/b&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#2e7d32;endFill=1;" parent="1" source="th_decision" target="th_app" edge="1">
+                <mxCell id="th_arrow_yes" value="&lt;b style=&#39;color:#2e7d32;font-size:13px&#39;&gt;YES ✓&lt;/b&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#2e7d32;endFill=1;" parent="1" source="th_decision" target="th_app" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- Rejected response -->
-                <mxCell id="th_reject" value="&lt;b style='color:#e63946'&gt;400 Bad Request&lt;/b&gt;&lt;br&gt;Connection closed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#e63946;strokeWidth=2;fontSize=12;" parent="1" vertex="1">
+                <mxCell id="th_reject" value="&lt;b style=&#39;color:#e63946&#39;&gt;400 Bad Request&lt;/b&gt;&lt;br&gt;Connection closed" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#e63946;strokeWidth=2;fontSize=12;" parent="1" vertex="1">
                     <mxGeometry x="345" y="510" width="140" height="50" as="geometry"/>
                 </mxCell>
-
-                <!-- Arrow decision NO to reject -->
-                <mxCell id="th_arrow_no" value="&lt;b style='color:#e63946;font-size:13px'&gt;NO ✗&lt;/b&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#e63946;endFill=1;" parent="1" source="th_decision" target="th_reject" edge="1">
+                <mxCell id="th_arrow_no" value="&lt;b style=&#39;color:#e63946;font-size:13px&#39;&gt;NO ✗&lt;/b&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#e63946;endFill=1;" parent="1" source="th_decision" target="th_reject" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- Arrow from request to middleware -->
                 <mxCell id="th_arrow_req_srv" value="" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#4361ee;endFill=1;" parent="1" source="th_request" target="th_middleware" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- Trusted Host: Attack Scenario -->
                 <mxCell id="th_attack_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#c62828;strokeWidth=2;dashed=1;arcSize=8;" parent="1" vertex="1">
                     <mxGeometry x="80" y="600" width="630" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="th_attack_title" value="⚠ Attack Scenario: Host Header Injection" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;fontColor=#c62828;" parent="1" vertex="1">
                     <mxGeometry x="200" y="605" width="390" height="30" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="th_attacker" value="&lt;b&gt;Attacker&lt;/b&gt;" style="shape=mxgraph.basic.smiley;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;fontSize=11;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="100" y="650" width="50" height="50" as="geometry"/>
                 </mxCell>
-
-                <mxCell id="th_evil_request" value="&lt;div style='text-align:left;'&gt;&lt;code&gt;GET /api/reset-password&lt;/code&gt;&lt;br&gt;&lt;code style='color:#c62828'&gt;Host: evil.com&lt;/code&gt;&lt;br&gt;&lt;i style='font-size:10px'&gt;Forged host to poison&lt;br&gt;password reset links&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#c62828;strokeWidth=1;fontSize=11;" parent="1" vertex="1">
+                <mxCell id="th_evil_request" value="&lt;div style=&#39;text-align:left;&#39;&gt;&lt;code&gt;GET /api/reset-password&lt;/code&gt;&lt;br&gt;&lt;code style=&#39;color:#c62828&#39;&gt;Host: evil.com&lt;/code&gt;&lt;br&gt;&lt;i style=&#39;font-size:10px&#39;&gt;Forged host to poison&lt;br&gt;password reset links&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#c62828;strokeWidth=1;fontSize=11;" parent="1" vertex="1">
                     <mxGeometry x="190" y="640" width="200" height="80" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="th_attack_arrow1" value="" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#c62828;endFill=1;" parent="1" source="th_attacker" target="th_evil_request" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <mxCell id="th_blocked" value="&lt;b style='color:#2e7d32;font-size:14px'&gt;BLOCKED&lt;/b&gt;&lt;br&gt;&lt;code&gt;evil.com&lt;/code&gt; not in&lt;br&gt;trusted hosts list" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=2;fontSize=11;" parent="1" vertex="1">
+                <mxCell id="th_blocked" value="&lt;b style=&#39;color:#2e7d32;font-size:14px&#39;&gt;BLOCKED&lt;/b&gt;&lt;br&gt;&lt;code&gt;evil.com&lt;/code&gt; not in&lt;br&gt;trusted hosts list" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=2;fontSize=11;" parent="1" vertex="1">
                     <mxGeometry x="480" y="640" width="200" height="80" as="geometry"/>
                 </mxCell>
-
                 <mxCell id="th_attack_arrow2" value="&lt;b&gt;400&lt;/b&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#c62828;endFill=1;dashed=1;" parent="1" source="th_evil_request" target="th_blocked" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- Trusted Host Key Points -->
-                <mxCell id="th_keypoints" value="&lt;div style='text-align:left;font-size:12px;'&gt;&lt;b&gt;Key Characteristics:&lt;/b&gt;&lt;br&gt;• Runs on the &lt;b&gt;server side&lt;/b&gt; only&lt;br&gt;• Validates &lt;code&gt;Host&lt;/code&gt; header against a whitelist&lt;br&gt;• Prevents host header poisoning &amp; cache attacks&lt;br&gt;• Request is &lt;b&gt;rejected before reaching&lt;/b&gt; the application&lt;br&gt;• Protects the &lt;b&gt;server&lt;/b&gt; from malicious requests&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#4361ee;strokeWidth=1;align=center;fontSize=12;" parent="1" vertex="1">
+                <mxCell id="th_keypoints" value="&lt;div style=&#39;text-align:left;font-size:12px;&#39;&gt;&lt;b&gt;Key Characteristics:&lt;/b&gt;&lt;br&gt;• Runs on the &lt;b&gt;server side&lt;/b&gt; only&lt;br&gt;• Validates &lt;code&gt;Host&lt;/code&gt; header against a whitelist&lt;br&gt;• Prevents host header poisoning &amp; cache attacks&lt;br&gt;• Request is &lt;b&gt;rejected before reaching&lt;/b&gt; the application&lt;br&gt;• Protects the &lt;b&gt;server&lt;/b&gt; from malicious requests&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#4361ee;strokeWidth=1;align=center;fontSize=12;" parent="1" vertex="1">
                     <mxGeometry x="120" y="920" width="540" height="130" as="geometry"/>
                 </mxCell>
-
-                <!-- ==================== RIGHT SECTION: CORS ==================== -->
                 <mxCell id="cors_container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fef9f0;strokeColor=#f77f00;strokeWidth=2;arcSize=6;" parent="1" vertex="1">
-                    <mxGeometry x="830" y="80" width="740" height="1000" as="geometry"/>
+                    <mxGeometry x="830" y="80" width="870" height="1000" as="geometry"/>
                 </mxCell>
                 <mxCell id="cors_title" value="CORS" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=22;fontStyle=1;fontColor=#f77f00;" parent="1" vertex="1">
-                    <mxGeometry x="1050" y="90" width="300" height="40" as="geometry"/>
+                    <mxGeometry x="1130" y="90" width="300" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="cors_subtitle" value="Browser-enforced policy that controls cross-origin requests&lt;br&gt;Relaxes the Same-Origin Policy selectively" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;fontColor=#555555;" parent="1" vertex="1">
-                    <mxGeometry x="960" y="125" width="480" height="40" as="geometry"/>
+                    <mxGeometry x="1040" y="125" width="480" height="40" as="geometry"/>
                 </mxCell>
-
-                <!-- CORS: Browser with Origin A -->
                 <mxCell id="cors_browser" value="&lt;b&gt;Browser&lt;/b&gt;&lt;br&gt;&lt;code&gt;https://app.gridsz.com&lt;/code&gt;&lt;br&gt;(Origin A)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f77f00;strokeWidth=2;fontSize=12;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="860" y="185" width="200" height="70" as="geometry"/>
+                    <mxGeometry x="1200" y="190" width="200" height="70" as="geometry"/>
                 </mxCell>
-
-                <!-- Preflight request -->
-                <mxCell id="cors_preflight" value="&lt;div style='text-align:left;'&gt;&lt;b&gt;Preflight Request&lt;/b&gt;&lt;br&gt;&lt;code&gt;OPTIONS /api/data HTTP/1.1&lt;/code&gt;&lt;br&gt;&lt;code style='color:#f77f00'&gt;Origin: https://app.gridsz.com&lt;/code&gt;&lt;br&gt;&lt;code&gt;Access-Control-Request-Method: POST&lt;/code&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3cd;strokeColor=#ffc107;strokeWidth=2;fontSize=11;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="1100" y="178" width="310" height="85" as="geometry"/>
+                <mxCell id="cors_preflight" value="&lt;div style=&#39;text-align:left;&#39;&gt;&lt;b&gt;Preflight Request&lt;/b&gt;&lt;br&gt;&lt;code&gt;OPTIONS /api/data HTTP/1.1&lt;/code&gt;&lt;br&gt;&lt;code style=&#39;color:#f77f00&#39;&gt;Origin: https://app.gridsz.com&lt;/code&gt;&lt;br&gt;&lt;code&gt;Access-Control-Request-Method: POST&lt;/code&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3cd;strokeColor=#ffc107;strokeWidth=2;fontSize=11;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="855" y="180" width="310" height="85" as="geometry"/>
                 </mxCell>
-
-                <!-- Arrow browser to preflight -->
-                <mxCell id="cors_arrow1" value="&lt;span style='font-size:10px'&gt;Step 1: sends request&lt;/span&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#f77f00;endFill=1;" parent="1" source="cors_browser" target="cors_preflight" edge="1">
+                <mxCell id="cors_arrow1" value="" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#f77f00;endFill=1;" parent="1" source="cors_browser" target="cors_preflight" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- CORS: Server -->
                 <mxCell id="cors_server_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;strokeWidth=2;arcSize=8;" parent="1" vertex="1">
-                    <mxGeometry x="880" y="310" width="630" height="210" as="geometry"/>
+                    <mxGeometry x="880" y="310" width="750" height="210" as="geometry"/>
                 </mxCell>
                 <mxCell id="cors_server_label" value="&lt;b&gt;API Server (Origin B: https://api.gridsz.com)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontColor=#2e7d32;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="1000" y="315" width="390" height="30" as="geometry"/>
                 </mxCell>
-
-                <!-- CORS Middleware -->
                 <mxCell id="cors_middleware" value="&lt;b&gt;CORS Middleware&lt;/b&gt;&lt;br&gt;&lt;br&gt;Allowed Origins:&lt;br&gt;&lt;code&gt;https://app.gridsz.com&lt;/code&gt;&lt;br&gt;&lt;code&gt;https://admin.gridsz.com&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#f77f00;strokeWidth=2;fontSize=12;shadow=1;" parent="1" vertex="1">
                     <mxGeometry x="900" y="355" width="220" height="120" as="geometry"/>
                 </mxCell>
-
-                <!-- CORS Decision -->
                 <mxCell id="cors_decision" value="Origin in&lt;br&gt;allowed&lt;br&gt;list?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#f77f00;strokeWidth=2;fontSize=12;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="1165" y="355" width="130" height="110" as="geometry"/>
+                    <mxGeometry x="1190" y="365" width="130" height="110" as="geometry"/>
                 </mxCell>
-
-                <!-- Arrow middleware to decision -->
                 <mxCell id="cors_arrow_mid_dec" value="check" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#f77f00;endFill=1;fontSize=10;" parent="1" source="cors_middleware" target="cors_decision" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- Server YES response: adds CORS headers -->
-                <mxCell id="cors_resp_yes" value="&lt;div style='text-align:left;font-size:10px'&gt;&lt;b&gt;Response + CORS headers&lt;/b&gt;&lt;br&gt;&lt;code style='color:#2e7d32'&gt;Access-Control-Allow-Origin:&lt;br&gt;  https://app.gridsz.com&lt;/code&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=2;fontSize=10;" parent="1" vertex="1">
-                    <mxGeometry x="1330" y="355" width="165" height="70" as="geometry"/>
+                <mxCell id="cors_resp_yes" value="&lt;div style=&#39;text-align:left;font-size:10px&#39;&gt;&lt;b&gt;Response + CORS headers&lt;/b&gt;&lt;br&gt;&lt;code style=&#39;color:#2e7d32&#39;&gt;Access-Control-Allow-Origin:&lt;br&gt;  https://app.gridsz.com&lt;/code&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=2;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1447.5" y="345" width="165" height="70" as="geometry"/>
                 </mxCell>
-
-                <!-- Server NO response: no CORS headers -->
-                <mxCell id="cors_resp_no" value="&lt;div style='text-align:left;font-size:10px'&gt;&lt;b&gt;Response WITHOUT&lt;br&gt;CORS headers&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#e63946;strokeWidth=2;fontSize=10;" parent="1" vertex="1">
-                    <mxGeometry x="1330" y="440" width="165" height="50" as="geometry"/>
+                <mxCell id="cors_resp_no" value="&lt;div style=&#39;text-align:left;font-size:10px&#39;&gt;&lt;b&gt;Response WITHOUT&lt;br&gt;CORS headers&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#e63946;strokeWidth=2;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1420" y="440" width="165" height="50" as="geometry"/>
                 </mxCell>
-
-                <!-- Arrow decision YES to resp_yes -->
-                <mxCell id="cors_arrow_yes" value="&lt;b style='color:#2e7d32;font-size:12px'&gt;YES ✓&lt;/b&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#2e7d32;endFill=1;" parent="1" source="cors_decision" target="cors_resp_yes" edge="1">
+                <mxCell id="cors_arrow_yes" value="&lt;b style=&#39;color:#2e7d32;font-size:12px&#39;&gt;YES ✓&lt;/b&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#2e7d32;endFill=1;" parent="1" source="cors_decision" target="cors_resp_yes" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- Arrow decision NO to resp_no -->
-                <mxCell id="cors_arrow_no" value="&lt;b style='color:#e63946;font-size:12px'&gt;NO ✗&lt;/b&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#e63946;endFill=1;" parent="1" source="cors_decision" target="cors_resp_no" edge="1">
+                <mxCell id="cors_arrow_no" value="&lt;b style=&#39;color:#e63946;font-size:12px&#39;&gt;NO ✗&lt;/b&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#e63946;endFill=1;" parent="1" source="cors_decision" target="cors_resp_no" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- Arrow from preflight to middleware -->
                 <mxCell id="cors_arrow_req_srv" value="" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#f77f00;endFill=1;" parent="1" source="cors_preflight" target="cors_middleware" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- ===== BROWSER OUTCOMES (below server) ===== -->
-
-                <!-- Browser receives CORS headers → ALLOWS data -->
-                <mxCell id="cors_browser_allows" value="&lt;b style='color:#2e7d32;font-size:14px'&gt;Browser ALLOWS&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;i style='font-size:11px'&gt;CORS headers match origin →&lt;br&gt;JS can read the response data&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=2;fontSize=12;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="870" y="555" width="230" height="90" as="geometry"/>
+                <mxCell id="cors_browser_allows" value="&lt;b style=&quot;color: rgb(46, 125, 50); font-size: 14px;&quot;&gt;Browser ALLOWS&lt;/b&gt;&lt;br&gt;&lt;i style=&quot;font-size:11px&quot;&gt;CORS headers match origin →&lt;br&gt;JS can read the response data&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;strokeWidth=2;fontSize=12;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1420" y="187.5" width="220" height="75" as="geometry"/>
                 </mxCell>
-
-                <!-- Arrow from resp_yes to browser allows -->
-                <mxCell id="cors_arrow_to_allows" value="&lt;span style='font-size:10px'&gt;Step 2: response&lt;br&gt;back to browser&lt;/span&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#2e7d32;endFill=1;curved=1;" parent="1" source="cors_resp_yes" target="cors_browser_allows" edge="1">
+                <mxCell id="cors_arrow_to_allows" value="&lt;span style=&#39;font-size:10px&#39;&gt;Step 2: response&lt;br&gt;back to browser&lt;/span&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#2e7d32;endFill=1;curved=1;" parent="1" source="cors_resp_yes" target="cors_browser_allows" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- Browser receives NO CORS headers → THROWS ERROR -->
-                <mxCell id="cors_browser_error" value="&lt;b style='color:#c62828;font-size:14px'&gt;Browser THROWS ERROR&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;code style='color:#c62828;font-size:9px'&gt;Access to fetch at&lt;br&gt;'https://api.gridsz.com/api/data'&lt;br&gt;from origin 'https://evil.com'&lt;br&gt;has been blocked by CORS policy:&lt;br&gt;No 'Access-Control-Allow-Origin'&lt;br&gt;header is present.&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=2;fontSize=11;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="1150" y="545" width="280" height="115" as="geometry"/>
+                <mxCell id="cors_browser_error" value="&lt;b style=&quot;color: rgb(198, 40, 40); font-size: 14px;&quot;&gt;Browser THROWS ERROR&lt;/b&gt;&lt;br&gt;&lt;code style=&quot;color: rgb(198, 40, 40); font-size: 9px;&quot;&gt;Access to fetch at &#39;https://api.gridsz.com/api/data&#39; from origin &#39;https://evil.com&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present.&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=2;fontSize=11;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1367.5" y="540" width="272.5" height="80" as="geometry"/>
                 </mxCell>
-
-                <!-- Arrow from resp_no to browser error -->
-                <mxCell id="cors_arrow_to_error" value="&lt;span style='font-size:10px'&gt;Step 2: response&lt;br&gt;back to browser&lt;/span&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#c62828;endFill=1;curved=1;" parent="1" source="cors_resp_no" target="cors_browser_error" edge="1">
+                <mxCell id="cors_arrow_to_error" value="&lt;span style=&#39;font-size:10px&#39;&gt;Step 2: response&lt;br&gt;back to browser&lt;/span&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#c62828;endFill=1;curved=1;" parent="1" source="cors_resp_no" target="cors_browser_error" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-
-                <!-- ===== ATTACK SCENARIO ===== -->
-                <mxCell id="cors_browser_enforce" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#c62828;strokeWidth=2;dashed=1;arcSize=8;" parent="1" vertex="1">
-                    <mxGeometry x="880" y="700" width="630" height="170" as="geometry"/>
+                <mxCell id="cors_keypoints" value="&lt;div style=&#39;text-align:left;font-size:12px;&#39;&gt;&lt;b&gt;Key Characteristics:&lt;/b&gt;&lt;br&gt;• Enforced by the &lt;b&gt;browser&lt;/b&gt; (not the server)&lt;br&gt;• Validates &lt;code&gt;Origin&lt;/code&gt; header against allowed origins&lt;br&gt;• Uses &lt;b&gt;preflight&lt;/b&gt; (OPTIONS) for non-simple requests&lt;br&gt;• Server &lt;b&gt;always responds&lt;/b&gt; — browser decides to allow or block&lt;br&gt;• Protects the &lt;b&gt;user&lt;/b&gt; from malicious cross-origin scripts&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f77f00;strokeWidth=1;align=center;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="1010" y="920" width="540" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="cors_enforce_title" value="🔒 Browser Enforcement (Same-Origin Policy)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;fontColor=#c62828;" parent="1" vertex="1">
-                    <mxGeometry x="1000" y="705" width="390" height="30" as="geometry"/>
-                </mxCell>
-
-                <!-- Malicious site -->
-                <mxCell id="cors_evil" value="&lt;b&gt;evil-site.com&lt;/b&gt;&lt;br&gt;&lt;i style='font-size:10px'&gt;JS tries to call&lt;br&gt;api.gridsz.com&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="900" y="750" width="140" height="70" as="geometry"/>
-                </mxCell>
-
-                <!-- Server responds without CORS -->
-                <mxCell id="cors_server_resp" value="&lt;div style='text-align:left;font-size:11px'&gt;Server responds with &lt;b&gt;data&lt;/b&gt;&lt;br&gt;but &lt;b style='color:#c62828'&gt;NO&lt;/b&gt; &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt;&lt;br&gt;header for evil-site.com&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#c62828;strokeWidth=1;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="1090" y="750" width="210" height="70" as="geometry"/>
-                </mxCell>
-
-                <mxCell id="cors_evil_arrow1" value="request" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#c62828;endFill=1;fontSize=10;" parent="1" source="cors_evil" target="cors_server_resp" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-
-                <!-- Browser throws error -->
-                <mxCell id="cors_browser_block" value="&lt;b style='color:#c62828;font-size:12px'&gt;BROWSER&lt;br&gt;THROWS ERROR&lt;/b&gt;&lt;br&gt;&lt;code style='font-size:9px;color:#c62828'&gt;TypeError:&lt;br&gt;Failed to fetch&lt;/code&gt;&lt;br&gt;&lt;i style='font-size:9px'&gt;JS cannot read&lt;br&gt;the response&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=2;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="1350" y="738" width="150" height="100" as="geometry"/>
-                </mxCell>
-
-                <mxCell id="cors_evil_arrow2" value="blocked" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#c62828;endFill=1;dashed=1;fontSize=10;" parent="1" source="cors_server_resp" target="cors_browser_block" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-
-                <!-- CORS Key Points -->
-                <mxCell id="cors_keypoints" value="&lt;div style='text-align:left;font-size:12px;'&gt;&lt;b&gt;Key Characteristics:&lt;/b&gt;&lt;br&gt;• Enforced by the &lt;b&gt;browser&lt;/b&gt; (not the server)&lt;br&gt;• Validates &lt;code&gt;Origin&lt;/code&gt; header against allowed origins&lt;br&gt;• Uses &lt;b&gt;preflight&lt;/b&gt; (OPTIONS) for non-simple requests&lt;br&gt;• Server &lt;b&gt;always responds&lt;/b&gt; — browser decides to allow or block&lt;br&gt;• Protects the &lt;b&gt;user&lt;/b&gt; from malicious cross-origin scripts&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f77f00;strokeWidth=1;align=center;fontSize=12;" parent="1" vertex="1">
-                    <mxGeometry x="920" y="920" width="540" height="130" as="geometry"/>
-                </mxCell>
-
-                <!-- ==================== VS DIVIDER ==================== -->
                 <mxCell id="vs_circle" value="VS" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1a1a2e;strokeColor=#1a1a2e;fontColor=#ffffff;fontSize=20;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="775" y="490" width="50" height="50" as="geometry"/>
                 </mxCell>
-
+                <mxCell id="4" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="950" y="700" width="630" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="cors_browser_enforce" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5f5;strokeColor=#c62828;strokeWidth=2;dashed=1;arcSize=8;" parent="4" vertex="1">
+                    <mxGeometry width="630" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="cors_enforce_title" value="🔒 Browser Enforcement (Same-Origin Policy)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;fontColor=#c62828;" parent="4" vertex="1">
+                    <mxGeometry x="120" y="5" width="390" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="cors_evil" value="&lt;b&gt;evil-site.com&lt;/b&gt;&lt;br&gt;&lt;i style=&#39;font-size:10px&#39;&gt;JS tries to call&lt;br&gt;api.gridsz.com&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=1;fontSize=11;" parent="4" vertex="1">
+                    <mxGeometry x="20" y="50" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="cors_server_resp" value="&lt;div style=&#39;text-align:left;font-size:11px&#39;&gt;Server responds with &lt;b&gt;data&lt;/b&gt;&lt;br&gt;but &lt;b style=&#39;color:#c62828&#39;&gt;NO&lt;/b&gt; &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt;&lt;br&gt;header for evil-site.com&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#c62828;strokeWidth=1;fontSize=11;" parent="4" vertex="1">
+                    <mxGeometry x="210" y="50" width="210" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="cors_evil_arrow1" value="request" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#c62828;endFill=1;fontSize=10;" parent="4" source="cors_evil" target="cors_server_resp" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="cors_browser_block" value="&lt;b style=&#39;color:#c62828;font-size:12px&#39;&gt;BROWSER&lt;br&gt;THROWS ERROR&lt;/b&gt;&lt;br&gt;&lt;code style=&#39;font-size:9px;color:#c62828&#39;&gt;TypeError:&lt;br&gt;Failed to fetch&lt;/code&gt;&lt;br&gt;&lt;i style=&#39;font-size:9px&#39;&gt;JS cannot read&lt;br&gt;the response&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=2;fontSize=11;" parent="4" vertex="1">
+                    <mxGeometry x="470" y="38" width="150" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="cors_evil_arrow2" value="blocked" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#c62828;endFill=1;dashed=1;fontSize=10;" parent="4" source="cors_server_resp" target="cors_browser_block" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
             </root>
         </mxGraphModel>
     </diagram>
