@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" type="device">
+  <diagram name="Client-Side CSRF Sequence" id="csrf-seq">
+    <mxGraphModel dx="1400" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Client-Side CSRF Attack — Sequence Diagram" style="text;html=1;align=center;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="10" width="560" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sub" value="How fb.com's cookie lets attacker.com act on the victim's behalf" style="text;html=1;align=center;fontSize=12;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="220" y="40" width="560" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="vic" value="Victim" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#a5d8ff;strokeColor=#4a9eed;size=40;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="110" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="brw" value="Browser&#10;(cookie jar)" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#d0bfff;strokeColor=#8b5cf6;size=46;" vertex="1" parent="1">
+          <mxGeometry x="200" y="70" width="140" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="atk" value="attacker.com&#10;(malicious server)" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#ffc9c9;strokeColor=#ef4444;size=46;" vertex="1" parent="1">
+          <mxGeometry x="400" y="70" width="160" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="fb" value="fb.com&#10;(legitimate server)" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#b2f2bb;strokeColor=#22c55e;size=46;" vertex="1" parent="1">
+          <mxGeometry x="620" y="70" width="160" height="700" as="geometry" />
+        </mxCell>
+        <mxCell id="p1note" value="Phase 1 — Victim has an active fb.com session" style="text;html=1;align=left;fontSize=11;fontStyle=2;fontColor=#15803d;" vertex="1" parent="1">
+          <mxGeometry x="40" y="135" width="520" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m1" value="1. logs in to fb.com" style="html=1;endArrow=block;strokeColor=#22c55e;fontColor=#15803d;fontSize=12;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="95" y="170" as="sourcePoint" />
+            <mxPoint x="270" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="POST /login (credentials)" style="html=1;endArrow=block;strokeColor=#22c55e;fontColor=#15803d;fontSize=12;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="210" as="sourcePoint" />
+            <mxPoint x="700" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="200 OK + Set-Cookie: session=XYZ789" style="html=1;endArrow=open;dashed=1;strokeColor=#22c55e;fontColor=#15803d;fontSize=12;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="700" y="250" as="sourcePoint" />
+            <mxPoint x="270" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cookie" value="cookie jar&#10;fb.com → session=XYZ789" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3bf;strokeColor=#f59e0b;fontColor=#92400e;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="205" y="278" width="130" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="p2note" value="Phase 2 — Victim opens a malicious page (e.g. clicks an email link)" style="text;html=1;align=left;fontSize=11;fontStyle=2;fontColor=#b91c1c;" vertex="1" parent="1">
+          <mxGeometry x="40" y="335" width="520" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m4" value="2. opens attacker.com/free-iphone" style="html=1;endArrow=block;strokeColor=#4a9eed;fontColor=#2563eb;fontSize=12;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="95" y="370" as="sourcePoint" />
+            <mxPoint x="270" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5" value="GET /free-iphone" style="html=1;endArrow=block;strokeColor=#4a9eed;fontColor=#2563eb;fontSize=12;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="410" as="sourcePoint" />
+            <mxPoint x="480" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="HTML page + hidden auto-submit form" style="html=1;endArrow=open;dashed=1;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="450" as="sourcePoint" />
+            <mxPoint x="270" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="execnote" value="3. &lt;script&gt;form.submit()&lt;/script&gt;&#10;runs the moment the page loads" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0e6;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=10;fontStyle=2;align=center;" vertex="1" parent="1">
+          <mxGeometry x="195" y="478" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p3note" value="Phase 3 — Browser silently sends a forged request to fb.com" style="text;html=1;align=left;fontSize=11;fontStyle=2;fontColor=#b91c1c;" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="520" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="m7" value="4. POST /change-password (new_pw=hacked)" style="html=1;endArrow=block;strokeColor=#ef4444;strokeWidth=2;fontColor=#b91c1c;fontSize=12;fontStyle=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="580" as="sourcePoint" />
+            <mxPoint x="700" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cookienote" value="Browser auto-attaches fb.com cookie&#10;(destination = fb.com, regardless of initiator)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3bf;strokeColor=#f59e0b;fontColor=#92400e;fontSize=10;fontStyle=2;align=center;" vertex="1" parent="1">
+          <mxGeometry x="380" y="600" width="240" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="srvcheck" value="Auth: cookie OK ✓&#10;CSRF token: missing ✗&#10;(trusts the request)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0e6;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=10;fontStyle=2;align=center;" vertex="1" parent="1">
+          <mxGeometry x="630" y="645" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="m8" value="5. 200 OK — password changed" style="html=1;endArrow=open;dashed=1;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="700" y="715" as="sourcePoint" />
+            <mxPoint x="270" y="715" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="outcome" value="Attacker now controls the victim's account.   Defense: SameSite=Lax cookies + CSRF tokens on every state-change request." style="text;html=1;align=center;fontSize=11;fontStyle=2;fontColor=#1e1e1e;fillColor=#fff3bf;strokeColor=#f59e0b;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="745" width="900" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
