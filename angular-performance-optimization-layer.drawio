@@ -1,0 +1,163 @@
+<mxfile host="65bd71144e">
+    <diagram id="angular-perf-roadmap" name="Angular Performance Optimization">
+        <mxGraphModel dx="2843" dy="797" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1880" pageHeight="1180" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="codeLayer" value="Code Layer" style="swimlane;html=1;fontSize=16;fontStyle=1;startSize=46;fillColor=#eff6ff;strokeColor=#1d4ed8;strokeWidth=2;swimlaneFillColor=#f8fbff;horizontal=1;align=center;verticalAlign=middle;rounded=1;arcSize=4;fontColor=#1e3a8a;shadow=1;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="120" width="1360" height="640" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage2" value="Tối ưu hóa Tải &amp;amp; Tài nguyên" style="swimlane;html=1;fontSize=13;fontStyle=1;startSize=44;fillColor=#dbeafe;strokeColor=#1d4ed8;strokeWidth=1.5;swimlaneFillColor=#f5f9ff;horizontal=1;align=center;verticalAlign=middle;rounded=1;arcSize=4;fontColor=#1e3a8a;fontFamily=Helvetica;" parent="codeLayer" vertex="1">
+                    <mxGeometry x="30" y="60" width="400" height="560" as="geometry"/>
+                </mxCell>
+                <mxCell id="s2_lazy" value="&lt;b&gt;Lazy Loading&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;Module / Standalone Components&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;strokeWidth=1.5;fontSize=12;fontColor=#1e3a8a;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="stage2" vertex="1">
+                    <mxGeometry x="40" y="100" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="s2_image" value="&lt;b&gt;Tối ưu Hình ảnh&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;NgOptimizedImage, Responsive&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;strokeWidth=1.5;fontSize=12;fontColor=#1e3a8a;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="stage2" vertex="1">
+                    <mxGeometry x="40" y="190" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="s2_http" value="&lt;b&gt;Giảm HTTP Requests&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;Caching, API Merging&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;strokeWidth=1.5;fontSize=12;fontColor=#1e3a8a;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="stage2" vertex="1">
+                    <mxGeometry x="40" y="280" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="m2" value="&lt;b&gt;Metrics&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:11px;&#39;&gt;Giảm TTI · Cải thiện LCP&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#fefce8;strokeColor=#ca8a04;strokeWidth=1.5;dashed=1;dashPattern=6 4;fontSize=12;fontColor=#713f12;fontStyle=2;shadow=1;fontFamily=Helvetica;" parent="stage2" vertex="1">
+                    <mxGeometry x="40" y="430" width="320" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage3" value="Runtime &amp;amp; Change Detection" style="swimlane;html=1;fontSize=13;fontStyle=1;startSize=44;fillColor=#ffedd5;strokeColor=#c2410c;strokeWidth=1.5;swimlaneFillColor=#fffaf3;horizontal=1;align=center;verticalAlign=middle;rounded=1;arcSize=4;fontColor=#7c2d12;fontFamily=Helvetica;" parent="codeLayer" vertex="1">
+                    <mxGeometry x="470" y="60" width="400" height="560" as="geometry"/>
+                </mxCell>
+                <mxCell id="s3_onpush" value="&lt;b&gt;OnPush Strategy&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;ChangeDetectionStrategy.OnPush&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#c2410c;strokeWidth=1.5;fontSize=12;fontColor=#7c2d12;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="stage3" vertex="1">
+                    <mxGeometry x="40" y="60" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="s3_ngzone" value="&lt;b&gt;Chạy ngoài NgZone&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;runOutsideAngular cho event nặng&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#c2410c;strokeWidth=1.5;fontSize=12;fontColor=#7c2d12;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="stage3" vertex="1">
+                    <mxGeometry x="40" y="150" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="s3_trackby" value="&lt;b&gt;trackBy&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;Cho *ngFor danh sách lớn&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#c2410c;strokeWidth=1.5;fontSize=12;fontColor=#7c2d12;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="stage3" vertex="1">
+                    <mxGeometry x="40" y="240" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="s3_pipe" value="&lt;b&gt;Pure Pipes&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;Tránh tính toán lại không cần thiết&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#fff7ed;strokeColor=#c2410c;strokeWidth=1.5;fontSize=12;fontColor=#7c2d12;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="stage3" vertex="1">
+                    <mxGeometry x="40" y="330" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="m3" value="&lt;b&gt;Metrics&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:11px;&#39;&gt;Giảm CPU usage · Giảm độ trễ UI&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#fefce8;strokeColor=#ca8a04;strokeWidth=1.5;dashed=1;dashPattern=6 4;fontSize=12;fontColor=#713f12;fontStyle=2;shadow=1;fontFamily=Helvetica;" parent="stage3" vertex="1">
+                    <mxGeometry x="40" y="430" width="320" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="stage4" value="Kỹ thuật Nâng cao &amp;amp; Hiện đại" style="swimlane;html=1;fontSize=13;fontStyle=1;startSize=44;fillColor=#d1fae5;strokeColor=#047857;strokeWidth=1.5;swimlaneFillColor=#f3fbf6;horizontal=1;align=center;verticalAlign=middle;rounded=1;arcSize=4;fontColor=#064e3b;fontFamily=Helvetica;" parent="codeLayer" vertex="1">
+                    <mxGeometry x="910" y="60" width="400" height="560" as="geometry"/>
+                </mxCell>
+                <mxCell id="s4_signals" value="&lt;b&gt;Angular Signals&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;Reactivity cục bộ, chính xác&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#047857;strokeWidth=1.5;fontSize=12;fontColor=#064e3b;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="stage4" vertex="1">
+                    <mxGeometry x="40" y="60" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="s4_ssr" value="&lt;b&gt;SSR / SSG&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;Angular Universal cho SEO &amp;amp; First Paint&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#047857;strokeWidth=1.5;fontSize=12;fontColor=#064e3b;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="stage4" vertex="1">
+                    <mxGeometry x="40" y="150" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="s4_defer" value="&lt;b&gt;Deferrable Views&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;@defer cho block UI&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#047857;strokeWidth=1.5;fontSize=12;fontColor=#064e3b;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="stage4" vertex="1">
+                    <mxGeometry x="40" y="240" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="s4_zoneless" value="&lt;b&gt;Zoneless&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;Loại bỏ Zone.js hoàn toàn&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ecfdf5;strokeColor=#047857;strokeWidth=1.5;fontSize=12;fontColor=#064e3b;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="stage4" vertex="1">
+                    <mxGeometry x="40" y="330" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="m4" value="&lt;b&gt;Metrics&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:11px;&#39;&gt;SEO tốt hơn · First Paint nhanh · Tương lai-proof&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#fefce8;strokeColor=#ca8a04;strokeWidth=1.5;dashed=1;dashPattern=6 4;fontSize=12;fontColor=#713f12;fontStyle=2;shadow=1;fontFamily=Helvetica;" parent="stage4" vertex="1">
+                    <mxGeometry x="40" y="430" width="320" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4_4" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#047857;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="s4_zoneless" target="m4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2_1" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#1d4ed8;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="s2_lazy" target="s2_image" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2_2" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#1d4ed8;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="s2_image" target="s2_http" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2_3" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#1d4ed8;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="s2_http" target="m2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3_1" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#c2410c;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="s3_onpush" target="s3_ngzone" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3_2" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#c2410c;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="s3_ngzone" target="s3_trackby" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3_3" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#c2410c;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="s3_trackby" target="s3_pipe" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3_4" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#c2410c;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="s3_pipe" target="m3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4_1" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#047857;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="s4_signals" target="s4_ssr" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4_2" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#047857;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="s4_ssr" target="s4_defer" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4_3" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#047857;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="s4_defer" target="s4_zoneless" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="-30" width="490" height="630" as="geometry"/>
+                </mxCell>
+                <mxCell id="buildLayer" value="Build Layer" style="swimlane;html=1;fontSize=16;fontStyle=1;startSize=46;fillColor=#fff7ed;strokeColor=#c2410c;strokeWidth=2;swimlaneFillColor=#fffaf3;horizontal=1;align=center;verticalAlign=middle;rounded=1;arcSize=4;fontColor=#7c2d12;shadow=1;fontFamily=Helvetica;" parent="2" vertex="1">
+                    <mxGeometry x="20" y="120" width="460" height="640" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1_1" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#7e22ce;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="buildLayer" source="s1_start" target="s1_aot" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1_2" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#7e22ce;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="buildLayer" source="s1_aot" target="s1_tree" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1_3" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#7e22ce;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="buildLayer" source="s1_tree" target="s1_bundle" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1_4" style="endArrow=classic;html=1;strokeWidth=2;curved=1;rounded=1;strokeColor=#7e22ce;endFill=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="buildLayer" source="s1_bundle" target="m1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="m1" value="&lt;b&gt;Metrics&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:11px;&#39;&gt;Giảm Bundle Size · Tăng tốc Tải ban đầu&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#fefce8;strokeColor=#ca8a04;strokeWidth=1.5;dashed=1;dashPattern=6 4;fontSize=12;fontColor=#713f12;fontStyle=2;shadow=1;fontFamily=Helvetica;" parent="buildLayer" vertex="1">
+                    <mxGeometry x="90" y="465" width="320" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="s1_bundle" value="&lt;b&gt;Phân tích Bundle&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;Webpack Bundle Analyzer&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#7e22ce;strokeWidth=1.5;fontSize=12;fontColor=#3b0764;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="buildLayer" vertex="1">
+                    <mxGeometry x="90" y="355" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="s1_tree" value="&lt;b&gt;Tree-Shaking&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;Loại bỏ code không sử dụng&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#7e22ce;strokeWidth=1.5;fontSize=12;fontColor=#3b0764;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="buildLayer" vertex="1">
+                    <mxGeometry x="90" y="275" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="s1_aot" value="&lt;b&gt;AOT Compilation&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color: rgb(107, 114, 128); font-size: 11px;&quot;&gt;ng build --aot&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#7e22ce;strokeWidth=1.5;fontSize=12;fontColor=#3b0764;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" parent="buildLayer" vertex="1">
+                    <mxGeometry x="90" y="195" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="s1_start" value="Bắt đầu: Ứng dụng Chậm" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fillColor=#fee2e2;strokeColor=#b91c1c;strokeWidth=2;fontStyle=1;fontSize=12;fontColor=#7f1d1d;shadow=1;fontFamily=Helvetica;" parent="buildLayer" vertex="1">
+                    <mxGeometry x="90" y="105" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="legendFlow" style="endArrow=classic;html=1;strokeWidth=3;curved=1;rounded=1;strokeColor=#475569;endFill=1;" edge="1" parent="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="556" y="730" as="sourcePoint"/>
+                        <mxPoint x="586" y="730" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="networkLayer" value="Network Layer" style="swimlane;html=1;fontSize=16;fontStyle=1;startSize=46;fillColor=#f0fdfa;strokeColor=#0f766e;strokeWidth=2;swimlaneFillColor=#f7fefc;horizontal=1;align=center;verticalAlign=middle;rounded=1;arcSize=4;fontColor=#134e4a;shadow=1;fontFamily=Helvetica;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="800" width="1840" height="320" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_gzip" value="&lt;b&gt;Gzip / Brotli&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;color:#6b7280;font-size:11px;&#39;&gt;Nén response trên server&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=1.5;fontSize=12;fontColor=#134e4a;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="networkLayer">
+                    <mxGeometry x="30" y="80" width="420" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_cdn" value="&lt;b&gt;CDN&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;color:#6b7280;font-size:11px;&#39;&gt;Phân phối asset từ edge gần user&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=1.5;fontSize=12;fontColor=#134e4a;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="networkLayer">
+                    <mxGeometry x="480" y="80" width="420" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_http2" value="&lt;b&gt;HTTP/2 hoặc HTTP/3&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;color:#6b7280;font-size:11px;&#39;&gt;Multiplex, QUIC, giảm latency&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=1.5;fontSize=12;fontColor=#134e4a;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="networkLayer">
+                    <mxGeometry x="930" y="80" width="420" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_cache" value="&lt;b&gt;Cache-Control&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;color:#6b7280;font-size:11px;&#39;&gt;HTTP cache headers, ETag&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=1.5;fontSize=12;fontColor=#134e4a;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="networkLayer">
+                    <mxGeometry x="1380" y="80" width="420" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_preconnect" value="&lt;b&gt;Preconnect&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;color:#6b7280;font-size:11px;&#39;&gt;Mở sớm TCP + TLS handshake&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=1.5;fontSize=12;fontColor=#134e4a;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="networkLayer">
+                    <mxGeometry x="30" y="190" width="420" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_dns" value="&lt;b&gt;DNS-Prefetch&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;color:#6b7280;font-size:11px;&#39;&gt;Phân giải DNS sớm cho cross-origin&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=1.5;fontSize=12;fontColor=#134e4a;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="networkLayer">
+                    <mxGeometry x="480" y="190" width="420" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_prefetch" value="&lt;b&gt;Link Prefetching&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;color:#6b7280;font-size:11px;&#39;&gt;Tải trước resource cho trang kế tiếp&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=1.5;fontSize=12;fontColor=#134e4a;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="networkLayer">
+                    <mxGeometry x="930" y="190" width="420" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_bbf" value="&lt;b&gt;BBF&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;color:#6b7280;font-size:11px;&#39;&gt;Backend-For-Frontend, giảm payload&lt;/span&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#ccfbf1;strokeColor=#0f766e;strokeWidth=1.5;fontSize=12;fontColor=#134e4a;shadow=1;align=left;spacingLeft=14;fontFamily=Helvetica;" vertex="1" parent="networkLayer">
+                    <mxGeometry x="1380" y="190" width="420" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
