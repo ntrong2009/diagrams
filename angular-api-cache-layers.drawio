@@ -1,0 +1,94 @@
+<mxfile host="65bd71144e">
+    <diagram id="angular-api-cache-layers" name="Angular Cache Layers — API vs Static">
+        <mxGraphModel dx="932" dy="689" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="🔄 ANGULAR CACHE LAYERS — 2 LUỒNG SONG SONG: API PAYLOAD vs STATIC FILES" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#0F172A;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="20" width="2000" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ALABEL" value="🅰️ LUỒNG A — API PAYLOAD (dynamic JSON từ REST/GraphQL)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#b45309;strokeWidth=2;fontSize=14;fontStyle=1;fontColor=#78350f;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="105" width="2080" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="A0" value="&lt;b style=&#39;font-size:13px;&#39;&gt;🎯 KHỞI ĐẦU&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;&lt;br/&gt;&lt;b&gt;Component&lt;/b&gt; gọi:&lt;br/&gt;&lt;span style=&#39;font-family:Consolas,monospace;font-size:10px;background:#e2e8f0;padding:2px 4px;&#39;&gt;http.get(&#39;/api/users&#39;)&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Trả về JSON payload" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#475569;strokeWidth=2.5;fontSize=11;fontColor=#0F172A;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="180" width="320" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="A1" value="&lt;b style=&#39;font-size:13px;&#39;&gt;1️⃣ HTTP INTERCEPTOR&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:10px;color:#6b7280;&#39;&gt;(In-app memory cache)&lt;/span&gt;&lt;br/&gt;&lt;hr/&gt;&lt;br/&gt;&lt;span style=&#39;font-family:Consolas,monospace;font-size:10px;&#39;&gt;Map + shareReplay(1)&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;⚡ &lt;b&gt;~0ms&lt;/b&gt; · in-memory&lt;br/&gt;&lt;b&gt;Chủ thể:&lt;/b&gt; Developer IDE" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#7e22ce;strokeWidth=2.5;fontSize=11;fontColor=#3b0764;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="180" width="320" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="A2" value="&lt;b style=&#39;font-size:13px;&#39;&gt;2️⃣ BFF + Request Dedup&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:10px;color:#6b7280;&#39;&gt;(Gateway / aggregation)&lt;/span&gt;&lt;br/&gt;&lt;hr/&gt;&lt;br/&gt;Gộp call · single-flight&lt;br/&gt;In-process LRU&lt;br/&gt;&lt;br/&gt;⚡ &lt;b&gt;~10ms&lt;/b&gt; · gateway layer&lt;br/&gt;&lt;b&gt;Chủ thể:&lt;/b&gt; Server" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f0fdfa;strokeColor=#0f766e;strokeWidth=2.5;fontSize=11;fontColor=#134e4a;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="180" width="320" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="A3" value="&lt;b style=&#39;font-size:13px;&#39;&gt;3️⃣ REDIS / API CACHE&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:10px;color:#6b7280;&#39;&gt;(Distributed memcache)&lt;/span&gt;&lt;br/&gt;&lt;hr/&gt;&lt;br/&gt;Redis · Memcached&lt;br/&gt;TTL · tag-based invalidate&lt;br/&gt;&lt;br/&gt;⚡ &lt;b&gt;~5-10ms&lt;/b&gt; · cluster cache&lt;br/&gt;&lt;b&gt;Chủ thể:&lt;/b&gt; Server" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f0fdfa;strokeColor=#0f766e;strokeWidth=2.5;fontSize=11;fontColor=#134e4a;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1380" y="180" width="320" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="A4" value="&lt;b style=&#39;font-size:13px;&#39;&gt;🗄️ DATABASE / BACKEND&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:10px;color:#6b7280;&#39;&gt;(source of truth)&lt;/span&gt;&lt;br/&gt;&lt;hr/&gt;&lt;br/&gt;PostgreSQL · API gốc&lt;br/&gt;Disk I/O · JOIN · index lookup&lt;br/&gt;&lt;br/&gt;🐢 &lt;b&gt;~50-500ms&lt;/b&gt;&lt;br/&gt;&lt;i&gt;⚠️ Đắt nhất — cố tránh!&lt;/i&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#b91c1c;strokeWidth=2.5;fontSize=11;fontColor=#7f1d1d;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1820" y="180" width="320" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="AA01" value="miss" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0F172A;endFill=1;fontSize=11;fontStyle=1;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="A0" target="A1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="AA12" value="miss" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0F172A;endFill=1;fontSize=11;fontStyle=1;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="A1" target="A2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="AA23" value="miss" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0F172A;endFill=1;fontSize=11;fontStyle=1;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="A2" target="A3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="AA34" value="miss → DB" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#b91c1c;endFill=1;fontSize=11;fontStyle=1;fontColor=#b91c1c;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="A3" target="A4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="ANOTE" value="ℹ️ &lt;b&gt;Lưu ý:&lt;/b&gt; SW + CDN có thể chèn vào trước HTTP Interceptor &lt;b&gt;nếu&lt;/b&gt; API public (catalog, blog) + có Cache-Control phù hợp. Với private/auth API thì thường bypass." style="text;html=1;strokeColor=#b45309;fillColor=#fffbeb;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;arcSize=8;fontSize=11;fontStyle=2;fontColor=#78350f;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="375" width="2080" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="BLABEL" value="🅱️ LUỒNG B — STATIC FILES (JS bundles, CSS, fonts, images)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#1d4ed8;strokeWidth=2;fontSize=14;fontStyle=1;fontColor=#1e3a8a;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="430" width="2080" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="B0" value="&lt;b style=&#39;font-size:13px;&#39;&gt;🎯 KHỞI ĐẦU&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;&lt;br/&gt;&lt;b&gt;Browser&lt;/b&gt; yêu cầu:&lt;br/&gt;&lt;span style=&#39;font-family:Consolas,monospace;font-size:10px;background:#e2e8f0;padding:2px 4px;&#39;&gt;GET /main.[hash].js&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Trả về JS / CSS / image" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#475569;strokeWidth=2.5;fontSize=11;fontColor=#0F172A;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="505" width="320" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="B1" value="&lt;b style=&#39;font-size:13px;&#39;&gt;1️⃣ SERVICE WORKER&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:10px;color:#6b7280;&#39;&gt;(PWA precache · App Shell)&lt;/span&gt;&lt;br/&gt;&lt;hr/&gt;&lt;br/&gt;&lt;span style=&#39;font-family:Consolas,monospace;font-size:10px;&#39;&gt;@angular/service-worker&lt;/span&gt;&lt;br/&gt;Cache API · cache-first&lt;br/&gt;&lt;br/&gt;⚡ &lt;b&gt;~0-2ms&lt;/b&gt; · từ disk&lt;br/&gt;&lt;b&gt;Chủ thể:&lt;/b&gt; Browser" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;strokeWidth=2.5;fontSize=11;fontColor=#1e3a8a;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="505" width="320" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="B2" value="&lt;b style=&#39;font-size:13px;&#39;&gt;2️⃣ BROWSER HTTP CACHE&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:10px;color:#6b7280;&#39;&gt;(disk / memory · do browser quản)&lt;/span&gt;&lt;br/&gt;&lt;hr/&gt;&lt;br/&gt;Theo Cache-Control + ETag&lt;br/&gt;Immutable hash = cache 1 năm&lt;br/&gt;&lt;br/&gt;⚡ &lt;b&gt;~1-5ms&lt;/b&gt; · in-process&lt;br/&gt;&lt;b&gt;Chủ thể:&lt;/b&gt; Browser" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#eff6ff;strokeColor=#1d4ed8;strokeWidth=2.5;fontSize=11;fontColor=#1e3a8a;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="505" width="320" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="B3" value="&lt;b style=&#39;font-size:13px;&#39;&gt;3️⃣ CDN EDGE CACHE&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:10px;color:#6b7280;&#39;&gt;(Cloudflare / GCP CDN)&lt;/span&gt;&lt;br/&gt;&lt;hr/&gt;&lt;br/&gt;Edge POPs · TLS terminate&lt;br/&gt;Brotli compression&lt;br/&gt;&lt;br/&gt;⚡ &lt;b&gt;~20-50ms&lt;/b&gt; · edge gần user&lt;br/&gt;&lt;b&gt;Chủ thể:&lt;/b&gt; Server / CDN" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#f0fdfa;strokeColor=#0f766e;strokeWidth=2.5;fontSize=11;fontColor=#134e4a;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1380" y="505" width="320" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="B4" value="&lt;b style=&#39;font-size:13px;&#39;&gt;🗄️ ORIGIN STORAGE&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:10px;color:#6b7280;&#39;&gt;(source of truth)&lt;/span&gt;&lt;br/&gt;&lt;hr/&gt;&lt;br/&gt;GCS / S3 bucket · web server&lt;br/&gt;Built artifacts từ CI/CD&lt;br/&gt;&lt;br/&gt;🐢 &lt;b&gt;~100-300ms&lt;/b&gt;&lt;br/&gt;&lt;i&gt;⚠️ Chỉ chạm khi cache miss&lt;/i&gt;" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#b91c1c;strokeWidth=2.5;fontSize=11;fontColor=#7f1d1d;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
+                    <mxGeometry x="1820" y="505" width="320" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="BA01" value="miss" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0F172A;endFill=1;fontSize=11;fontStyle=1;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="B0" target="B1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="BA12" value="miss" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0F172A;endFill=1;fontSize=11;fontStyle=1;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="B1" target="B2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="BA23" value="miss" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0F172A;endFill=1;fontSize=11;fontStyle=1;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="B2" target="B3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="BA34" value="miss → Origin" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#b91c1c;endFill=1;fontSize=11;fontStyle=1;fontColor=#b91c1c;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" parent="1" source="B3" target="B4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="BNOTE" value="ℹ️ &lt;b&gt;Lưu ý:&lt;/b&gt; Static files KHÔNG bao giờ chạm HTTP Interceptor (chỉ chặn HttpClient) hay Redis/Database (đó là tầng dữ liệu, không phải tầng file)." style="text;html=1;strokeColor=#1d4ed8;fillColor=#f5f9ff;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;arcSize=8;fontSize=11;fontStyle=2;fontColor=#1e3a8a;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="700" width="2080" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="STITLE" value="⚙️ NGUYÊN TẮC CHUNG — Cache key, invalidation, consistency, monitor" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#0F172A;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="755" width="2000" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="S1" value="&lt;b style=&#39;font-size:12px;&#39;&gt;🔑 Cache Key Design&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;API:&lt;/b&gt; URL + query params + Vary header (Authorization, locale)&lt;br/&gt;• &lt;b&gt;Static:&lt;/b&gt; URL + content hash (outputHashing=all)&lt;br/&gt;• Normalize URL trước khi hash&lt;br/&gt;• Tránh collision (multi-tenant)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#475569;strokeWidth=1.5;fontSize=11;fontColor=#0F172A;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="790" width="510" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="S2" value="&lt;b style=&#39;font-size:12px;&#39;&gt;🗑️ Cache Invalidation&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;API:&lt;/b&gt; event-driven (backend publish → invalidate Redis + edge)&lt;br/&gt;• &lt;b&gt;Static:&lt;/b&gt; content hash đổi ⇒ URL đổi ⇒ cache tự bust&lt;br/&gt;• TTL hợp lý cho API (5 phút list, 1 giờ config)&lt;br/&gt;• Tag-based invalidate cho nhóm related" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#475569;strokeWidth=1.5;fontSize=11;fontColor=#0F172A;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="790" width="510" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="S3" value="&lt;b style=&#39;font-size:12px;&#39;&gt;⚖️ Consistency vs Speed&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• &lt;b&gt;API:&lt;/b&gt; Strong (banking, inventory) vs Eventual (catalog, profile)&lt;br/&gt;• &lt;b&gt;Static:&lt;/b&gt; Immutable 1 năm — không cần consistency&lt;br/&gt;• Stale-while-revalidate: trả cache cũ ngay, fetch ngầm&lt;br/&gt;• Cache stampede: dùng single-flight tránh thundering herd" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#475569;strokeWidth=1.5;fontSize=11;fontColor=#0F172A;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="790" width="510" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="S4" value="&lt;b style=&#39;font-size:12px;&#39;&gt;📈 Monitor &amp; Tune&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;• Hit rate mỗi tầng (target: in-app &gt; 30%, edge/HTTP &gt; 70%)&lt;br/&gt;• &lt;b&gt;Static:&lt;/b&gt; theo dõi CDN hit rate &gt; 95%&lt;br/&gt;• &lt;b&gt;API:&lt;/b&gt; theo dõi Redis hit + DB QPS&lt;br/&gt;• Alert khi hit rate giảm đột ngột (key lỗi?)" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#475569;strokeWidth=1.5;fontSize=11;fontColor=#0F172A;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;fontFamily=Helvetica;" parent="1" vertex="1">
+                    <mxGeometry x="1650" y="790" width="490" height="180" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

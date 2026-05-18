@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="BE Performance Optimization" id="be-perf-layers">
-        <mxGraphModel dx="841" dy="724" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="2100" math="0" shadow="0">
+        <mxGraphModel dx="932" dy="689" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="2100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -181,13 +181,13 @@
                 <mxCell id="L7e" value="Saga / Outbox Pattern&#xa;Eventual Consistency" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7D3C98;fontSize=11;" parent="1" vertex="1">
                     <mxGeometry x="1090" y="1170" width="300" height="45" as="geometry"/>
                 </mxCell>
-                <mxCell id="arr6" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1F3864;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" edge="1" target="L8">
+                <mxCell id="arr6" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1F3864;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" target="L8" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="410" y="1230" as="sourcePoint"/>
                         <mxPoint x="600" y="1280" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="arr7" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1F3864;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" edge="1" target="L8">
+                <mxCell id="arr7" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#1F3864;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" target="L8" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1090" y="1230" as="sourcePoint"/>
                         <mxPoint x="900" y="1280" as="targetPoint"/>
@@ -232,49 +232,28 @@
                 <mxCell id="L8note" value="📊 Monitoring: pg_stat_statements · Grafana · OpenTelemetry · APM (theo dõi slow query, p95 latency, throughput)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCF3CF;strokeColor=#CA6F1E;fontSize=11;fontStyle=2;align=center;" parent="1" vertex="1">
                     <mxGeometry x="110" y="1465" width="1300" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="legend-box" value="GHI CHÚ (Legend)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F6F7;strokeColor=#5D6D7E;fontSize=13;fontStyle=1;verticalAlign=top;align=left;spacingLeft=15;spacingTop=8;" parent="1" vertex="1">
-                    <mxGeometry x="80" y="1550" width="1340" height="180" as="geometry"/>
-                </mxCell>
-                <mxCell id="leg1" value="🌟 API MERGING" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC;strokeColor=#B85450;strokeWidth=2;fontSize=11;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="110" y="1595" width="160" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="leg1d" value="Ý tưởng trọng tâm — gộp nhiều API call nhỏ thành 1 request (giảm round-trip, giảm overhead TCP/TLS, tăng throughput)." style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="280" y="1595" width="1120" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="leg2" value="Tầng tối ưu" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="110" y="1645" width="160" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="leg2d" value="Tầng API Optimization — nơi áp dụng API merging, GraphQL, gRPC, response aggregation, pagination." style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="280" y="1645" width="1120" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="leg3" value="Tầng hỗ trợ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#5D6D7E;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="110" y="1685" width="160" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="leg3d" value="Các tầng phụ trợ (Client, Edge, Gateway, App, Cache, MQ, DB) — kết hợp đầy đủ để tối ưu hiệu năng end-to-end." style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="280" y="1685" width="1120" height="30" as="geometry"/>
-                </mxCell>
                 <mxCell id="detail-title" value="💡 CHI TIẾT &quot;API MERGING&quot; — Ý TƯỞNG CHÍNH" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#B85450;" parent="1" vertex="1">
-                    <mxGeometry x="300" y="1755" width="900" height="30" as="geometry"/>
+                    <mxGeometry x="310" y="1570" width="900" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="det-before" value="❌ TRƯỚC KHI MERGE&#xa;━━━━━━━━━━━━━━━━━&#xa;Client → GET /tasks (200ms)&#xa;Client → GET /users (180ms)&#xa;Client → GET /assets (220ms)&#xa;Client → GET /notifications (150ms)&#xa;━━━━━━━━━━━━━━━━━&#xa;Tổng: 4 round-trip ≈ 750ms&#xa;4× overhead TCP/TLS/Auth" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FADBD8;strokeColor=#C0392B;strokeWidth=2;fontSize=12;align=left;spacingLeft=15;spacingTop=10;" parent="1" vertex="1">
-                    <mxGeometry x="120" y="1800" width="420" height="200" as="geometry"/>
+                    <mxGeometry x="130" y="1615" width="420" height="200" as="geometry"/>
                 </mxCell>
                 <mxCell id="det-merge" value="🔄 MERGE&#xa;━━━━━━&#xa;BFF/Aggregator&#xa;gộp nhiều call&#xa;thành 1&#xa;&#xa;Parallel.WhenAll&#xa;internal call" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCF3CF;strokeColor=#D6B656;strokeWidth=2;fontSize=11;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="1830" width="200" height="140" as="geometry"/>
+                    <mxGeometry x="610" y="1645" width="200" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="det-after" value="✅ SAU KHI MERGE&#xa;━━━━━━━━━━━━━━━━━&#xa;Client → POST /aggregate&#xa;       (body: [tasks, users,&#xa;        assets, notifications])&#xa;Server → song song fetch&#xa;Server → 1 response gộp&#xa;━━━━━━━━━━━━━━━━━&#xa;Tổng: 1 round-trip ≈ 250ms&#xa;⚡ Nhanh hơn ~3x" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5F5E3;strokeColor=#27AE60;strokeWidth=2;fontSize=12;align=left;spacingLeft=15;spacingTop=10;" parent="1" vertex="1">
-                    <mxGeometry x="860" y="1800" width="420" height="200" as="geometry"/>
+                    <mxGeometry x="870" y="1615" width="420" height="200" as="geometry"/>
                 </mxCell>
                 <mxCell id="det-arr1" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#D6B656;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="540" y="1900" as="sourcePoint"/>
-                        <mxPoint x="600" y="1900" as="targetPoint"/>
+                        <mxPoint x="550" y="1715" as="sourcePoint"/>
+                        <mxPoint x="610" y="1715" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="det-arr2" style="endArrow=classic;html=1;rounded=0;strokeWidth=3;strokeColor=#27AE60;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="800" y="1900" as="sourcePoint"/>
-                        <mxPoint x="860" y="1900" as="targetPoint"/>
+                        <mxPoint x="810" y="1715" as="sourcePoint"/>
+                        <mxPoint x="870" y="1715" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
             </root>
