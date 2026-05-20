@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Istio Ingress Gateway" id="istio-ingress">
-        <mxGraphModel dx="788" dy="724" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1071" dy="934" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -146,6 +146,9 @@
                 </mxCell>
                 <mxCell id="s6" value="⑦" style="text;html=1;fontSize=16;fontColor=#FF6600;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="230" y="1080" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="pod disruption budget" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="921" y="601" width="186" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

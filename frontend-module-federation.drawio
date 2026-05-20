@@ -1,0 +1,274 @@
+<mxfile host="65bd71144e">
+    <diagram name="1. Setup &amp; Symptoms" id="page-setup">
+        <mxGraphModel dx="809" dy="724" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title-1" value="1. Setup &amp; Symptoms" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="700" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="arch-container" value="Architecture" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;verticalAlign=top;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="80" width="780" height="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="browser" value="Browser" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="130" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="host" value="HOST: gridsz-client&#xa;(http://localhost:4200)&#xa;&#xa;module-federation.config.ts&#xa;• name: &#39;gridsz-client&#39;&#xa;• remotes: [] (registered at runtime)&#xa;• shared: @angular/*, rxjs, zone.js,&#xa;  @ngrx/*, @angular/cdk, material,&#xa;  moment, leaflet, ..." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="220" width="340" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="remote" value="REMOTE: gridsz-module-ac&#xa;(http://localhost:4201)&#xa;&#xa;module-federation.config.ts&#xa;• exposes:&#xa;    &#39;./AcModule&#39;, &#39;./ADMModule&#39;,&#xa;    &#39;./ACEngineBoostModule&#39;,&#xa;    &#39;./AddressConnectionComponent&#39;,&#xa;    &#39;./DialogCreatePolygonComponent&#39;&#xa;• shared: SAME set as host" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="220" width="340" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-b-h" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#666;" parent="1" source="browser" target="host" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-h-r" value="loadRemote(...)" style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#666;dashed=1;" parent="1" source="host" target="remote" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="manifest" value="apps/gridsz-client/src/assets/module-federation.manifest.json&#xa;{ &quot;gridsz-module-ac&quot;: &quot;http://localhost:4201/mf-manifest.json&quot; }" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666;fontSize=11;align=left;spacing=6;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="440" width="720" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="symptoms-container" value="Symptoms observed in DevTools Network tab" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#b85450;verticalAlign=top;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="840" y="80" width="720" height="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="scn1" value="nx serve (dev server)&#xa;pnpm serve:client + pnpm serve:ac" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacing=8;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="130" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="scn1-r" value="✓ Angular libs served by HOST (4200)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#2E7D32;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1220" y="130" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="scn2" value="Docker (Dockerfile.dev)&#xa;build:development → nginx static" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="210" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="scn2-r" value="✗ Angular libs served by REMOTE (4201)&#xa;(no Nx runtime plugin in build executor)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#C62828;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1220" y="210" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="scn3" value="pnpm build (production) → Docker&#xa;build:production → minified, buildOptimizer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="290" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="scn3-r" value="✗ Angular libs served by REMOTE (4201)&#xa;~75 chunks from 4201, ~12 from 4200" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#C62828;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1220" y="290" width="320" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="key-q" value="Câu hỏi cốt lõi&#xa;Cả 3 cấu hình đều dùng cùng module-federation.config.ts.&#xa;Vì sao chỉ nx serve thắng scope (host phục vụ libs),&#xa;còn cả 2 build qua Docker (dev và prod) đều thua (remote phục vụ libs)?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;spacing=10;fontSize=12;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="880" y="380" width="640" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="consequence-container" value="Hậu quả khi remote thắng shareScope" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#b85450;verticalAlign=top;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="540" width="1520" height="380" as="geometry"/>
+                </mxCell>
+                <mxCell id="cons-1" value="① Remote tải sớm&#xa;remoteEntry.mjs (localhost:4201) được fetch&#xa;ngay trong lúc host.init() chạy&#xa;(version-first auto-load mọi remote)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="590" width="340" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="cons-2" value="② Remote đăng ký dependency vào scope&#xa;container.init(scope) register&#xa;@angular/*, rxjs, ngrx, cdk, material...&#xa;với from=&#39;gridsz-module-ac&#39;, loaded:true&#xa;TRƯỚC khi host kịp đăng ký bản của mình" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="590" width="340" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="cons-3" value="③ Host KHÔNG tải lib từ domain của nó&#xa;Khi host import @angular/core, MF resolver&#xa;tra shareScope → thấy entry của remote&#xa;đã loaded → trả về copy của remote.&#xa;Chunk @angular/core của host (4200)&#xa;không bao giờ được fetch hay evaluate." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="590" width="340" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="cons-4" value="④ NullInjectorError tại runtime&#xa;Provider của host (bootstrapApplication,&#xa;providers: [...]) được declare bằng symbol&#xa;của host&#39;s Angular bundle.&#xa;inject(...) tra qua injector của remote&#39;s&#xa;Angular instance → không khớp symbol&#xa;→ NullInjectorError: No provider for X" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;fontStyle=1;fontColor=#7B0000;" parent="1" vertex="1">
+                    <mxGeometry x="1160" y="590" width="380" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-c12" style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#b85450;" parent="1" source="cons-1" target="cons-2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-c23" style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#b85450;" parent="1" source="cons-2" target="cons-3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-c34" style="endArrow=classic;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#b85450;" parent="1" source="cons-3" target="cons-4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="why-null" value="Vì sao có NullInjectorError?&#xa;Cả host và remote đều bundle riêng code Angular của mình (mỗi bundle có class/symbol/decorator metadata được tree-shake riêng). MF chỉ khóa MỘT instance Angular tại runtime — nếu remote thắng scope:&#xa;• Mọi import @angular/core trong host code đều resolve về phiên bản RUNTIME của remote.&#xa;• Nhưng các provider/InjectionToken được biên dịch trong host bundle vẫn dùng symbol identity riêng của host&#39;s compile-time Angular.&#xa;• Khi component host gọi inject(TOKEN), framework dùng injector tree của remote&#39;s Angular instance. Token instance trong injector đó (nếu có) lại là của remote, KHÔNG bằng (===) TOKEN của host code.&#xa;• Lookup fail → NullInjectorError: No provider for ServiceX!" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;spacing=10;fontSize=11;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="720" width="1460" height="180" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram name="2. Root Cause" id="page-root-cause">
+        <mxGraphModel dx="809" dy="724" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title-2" value="2. Root cause: race condition with shareStrategy = &#39;version-first&#39; (default)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="1500" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="tl-host" value="HOST timeline (browser executes main.js)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="80" width="400" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="t1" value="t1: main.js evaluate&#xa;webpack auto-init host MF container&#xa;(name=&#39;gridsz_client&#39;, shared declared,&#xa;but chunks not loaded yet)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="120" width="320" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="t2" value="t2: main.ts user code runs&#xa;fetch(&#39;module-federation.manifest.json&#39;)&#xa;registerPlugins([fallbackPlugin])&#xa;registerRemotes([{name:&#39;gridsz-module-ac&#39;,...}])" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="230" width="320" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="t3" value="t3: import(&#39;./bootstrap&#39;)&#xa;bootstrap.ts loads (async)&#xa;triggers Angular imports →&#xa;__webpack_require__(&#39;@angular/core&#39;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="340" width="320" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="t4" value="t4: Inside host.init() — runtime-core/shared/index.js&#xa;register host&#39;s @angular/core in scope&#xa;THEN (version-first only):&#xa;  remotes.forEach(initRemoteModule)&#xa;  ← auto-loads remoteEntry.mjs of EVERY remote!" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="450" width="320" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="t5" value="t5: remoteEntry.mjs loaded from 4201&#xa;runtime calls container.init(scope)&#xa;remote registers its @angular/core version&#xa;into the same scope" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="580" width="320" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="t6" value="t6: Race resolved by register() logic&#xa;If host chunk not yet loaded:&#xa;  remote&#39;s entry has loaded:true first&#xa;  → wins singleton resolution&#xa;App now uses REMOTE&#39;s Angular instance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="690" width="320" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr12" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="t1" target="t2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr23" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="t2" target="t3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr34" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="t3" target="t4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr45" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="t4" target="t5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr56" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="t5" target="t6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="net-title" value="What appears in Network tab" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="80" width="400" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="net1" value="localhost:4200/main.js&#xa;localhost:4200/vendor.js&#xa;localhost:4200/polyfills.js&#xa;localhost:4200/bootstrap.ts.js" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacing=8;fontFamily=monospace;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="120" width="320" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="net2" value="(if loaded-first or hostWins lock)&#xa;Host shared chunks load next&#xa;and populate scope first" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999;align=left;spacing=8;fontSize=11;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="230" width="320" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="net3" value="(version-first, default)&#xa;localhost:4201/remoteEntry.mjs ←&#xa;then 70+ chunks from 4201:&#xa;  angular_core, angular_common,&#xa;  angular_cdk, angular_material,&#xa;  angular_router, rxjs, ...&#xa;Only ~12 chunks from 4200." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;fontFamily=monospace;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="340" width="320" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="code-title" value="Code reference (runtime-core/shared/index.js)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="840" y="80" width="600" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="code1" value="// inside host.init() — line ~192&#xa;if (host.options.shareStrategy === &#39;version-first&#39;&#xa;    || strategy === &#39;version-first&#39;) {&#xa;  host.options.remotes.forEach((remote) =&gt; {&#xa;    if (remote.shareScope === shareScopeName)&#xa;      promises.push(initRemoteModule(remote.name));&#xa;    // ← this is what triggers remote auto-init&#xa;  });&#xa;}" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666;align=left;spacing=10;fontFamily=monospace;fontSize=11;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="840" y="120" width="700" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="code2" value="// inside register() — line ~164&#xa;if (!activeVersion&#xa;    || activeVersion.strategy !== &#39;loaded-first&#39;&#xa;       &amp;&amp; !activeVersion.loaded&#xa;       &amp;&amp; (eager-or-hostName-comparison))&#xa;  versions[version] = shared;  // overwrite entry&#xa;// With &#39;loaded-first&#39;, existing entries are STICKY&#xa;// — no overwrite, even if a remote tries later." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666;align=left;spacing=10;fontFamily=monospace;fontSize=11;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="840" y="300" width="700" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="conclusion" value="Conclusion&#xa;Default &#39;version-first&#39; has TWO behaviors that cause the bug:&#xa;1. Auto-loads every remote during host.init() → race begins immediately.&#xa;2. Lets later registrations overwrite earlier scope entries based on eager/version/hostName.&#xa;Result: in prod build (no eager, no Nx runtime plugin), the remote can win the share scope." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;spacing=10;verticalAlign=top;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="840" y="500" width="700" height="180" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram name="3. Why nx serve works" id="page-nx-serve">
+        <mxGraphModel dx="809" dy="689" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title-3" value="3. Why nx serve works (and Docker prod doesn&#39;t)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="1200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="nx-flow-title" value="nx serve (works ✓)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="80" width="720" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="docker-flow-title" value="Docker (any build:development / build:production) — broken ✗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;fontStyle=1;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="80" width="720" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="nx-1" value="Executor: @nx/angular:module-federation-dev-server&#xa;(see project.json &quot;serve&quot; target)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="140" width="720" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="nx-2" value="start-remote-iterators.js (line 22-25)&#xa;process.env.NX_MF_DEV_REMOTES = JSON.stringify([&#xa;  ...devRemoteNames.map(normalize),&#xa;  normalize(project.name),     // ← HOST included in list&#xa;]);" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacing=8;fontFamily=monospace;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="220" width="720" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="nx-3" value="with-module-federation.js (line 59-65 &amp; 72-74)&#xa;if (process.env.NX_MF_DEV_REMOTES) {&#xa;  mfPluginOptions.runtimePlugins = [&#xa;    require.resolve(&#39;runtime-library-control.plugin.js&#39;),&#xa;  ];&#xa;}&#xa;new DefinePlugin({&#xa;  &#39;process.env.NX_MF_DEV_REMOTES&#39;: process.env.NX_MF_DEV_REMOTES,&#xa;});" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacing=8;fontFamily=monospace;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="340" width="720" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="nx-4" value="runtime-library-control.plugin.js (at runtime)&#xa;resolveShare(args) {&#xa;  args.resolver = function () {&#xa;    const dev = GlobalFederation.__INSTANCES__.find(i =&gt;&#xa;      i.options.shared[pkgName]&#xa;      &amp;&amp; runtimeStore.devRemotes.includes(i.name));&#xa;    if (!dev) return originalResolver();&#xa;    return dev.options.shared[pkgName].find(s =&gt; s.from === dev.name);&#xa;  };&#xa;}&#xa;HOST is first in __INSTANCES__ (auto-init) AND in devRemotes&#xa;→ host wins every shared resolve." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacing=8;fontFamily=monospace;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="520" width="720" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="d-1" value="Executor: @nx/angular:webpack-browser&#xa;(invoked by Dockerfile.dev or pnpm build)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="140" width="720" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="d-2" value="No module-federation-dev-server in the chain.&#xa;Therefore: process.env.NX_MF_DEV_REMOTES is undefined." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="220" width="720" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="d-3" value="with-module-federation.js sees env var = undefined&#xa;Therefore: ModuleFederationPlugin.runtimePlugins = undefined&#xa;No DefinePlugin entry for NX_MF_DEV_REMOTES.&#xa;Bundle ships without the library-control plugin." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;fontFamily=monospace;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="340" width="720" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="d-4" value="At runtime, default MF resolver runs:&#xa;findSingletonVersionOrderByVersion()&#xa;+ register() with version-first logic&#xa;+ host.init() auto-triggers initRemoteModule for every remote&#xa;&#xa;→ Remote often wins the scope race&#xa;→ Angular chunks fetched from localhost:4201" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacing=8;fontFamily=monospace;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="520" width="720" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow-nx-12" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="nx-1" target="nx-2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow-nx-23" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="nx-2" target="nx-3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow-nx-34" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="nx-3" target="nx-4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow-d-12" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="d-1" target="d-2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow-d-23" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="d-2" target="d-3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arrow-d-34" style="endArrow=classic;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="d-3" target="d-4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="takeaway" value="Takeaway&#xa;Nx hides the issue in dev by injecting a runtime plugin tied to an env var. The plugin is dev-only — production never gets it. So the same MF config behaves differently between dev and prod.&#xa;Any production-safe fix must NOT rely on Nx&#39;s dev-only runtime plugin." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;spacing=10;verticalAlign=top;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="780" width="1480" height="140" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram name="4. Solutions explored" id="page-solutions">
+        <mxGraphModel dx="809" dy="689" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title-4" value="4. Solutions explored" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="1200" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sol-a-head" value="A. eager: true on shared deps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;fontStyle=1;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="80" width="360" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sol-a-body" value="Mechanism&#xa;Bundle host&#39;s shared modules into initial chunks. They&#xa;register synchronously before any remote container.init runs.&#xa;&#xa;Cost&#xa;+ Initial bundle ~+300-500 kB gzip (Angular core+cdk+material+rxjs)&#xa;&#xa;Verdict&#xa;Works, but trade bundle size for safety." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fffceb;strokeColor=#d6b656;align=left;spacing=8;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="120" width="360" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="sol-b-head" value="B. Custom hostWinsPlugin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;fontStyle=1;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="80" width="360" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sol-b-body" value="Mechanism&#xa;Custom MF runtime plugin hooks resolveShare. For every&#xa;shared package, returns the host&#39;s entry from __INSTANCES__.&#xa;Must be registered SYNCHRONOUSLY at top of main.ts.&#xa;&#xa;Cost&#xa;+ Hardcoded HOST_NAME — drift risk on rename.&#xa;+ Custom code to maintain.&#xa;&#xa;Verdict&#xa;Works, but reinvents what MF already supports." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fffceb;strokeColor=#d6b656;align=left;spacing=8;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="120" width="360" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="sol-c-head" value="C. setRemoteDefinitions + loadRemoteModule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;fontStyle=1;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="80" width="360" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sol-c-body" value="Mechanism (Nx-old API)&#xa;loadRemoteContainer() explicitly calls&#xa;  await __webpack_init_sharing__(&#39;default&#39;)&#xa;before every container.init.&#xa;That populates host&#39;s shares synchronously in scope.&#xa;&#xa;Cost&#xa;+ @nx/angular/mf is deprecated (gone in Nx 22).&#xa;&#xa;Verdict&#xa;Same idea as loaded-first, but on deprecated API." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fffceb;strokeColor=#d6b656;align=left;spacing=8;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="120" width="360" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="sol-d-head" value="D. shareStrategy: &#39;loaded-first&#39; ✓ ADOPTED" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;fontStyle=1;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry x="1180" y="80" width="360" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="sol-d-body" value="Mechanism (official MF setting)&#xa;Two effects in runtime-core/shared/index.js:&#xa;&#xa;Effect 1 (line ~192)&#xa;Skips the auto-load-remotes step during host.init().&#xa;Remotes only load when user code calls loadRemote(...).&#xa;&#xa;Effect 2 (line ~164)&#xa;register() refuses to overwrite an existing scope entry&#xa;whose strategy is &#39;loaded-first&#39;. Sticky entries.&#xa;&#xa;Result&#xa;Host registers first, remote can&#39;t overwrite later.&#xa;Zero bundle bloat, zero custom code, official API." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eaf5e1;strokeColor=#82b366;align=left;spacing=8;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="1180" y="120" width="360" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="adopted-title" value="Adopted: shareStrategy: &#39;loaded-first&#39;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;fontStyle=1;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="380" width="1500" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="adopted-code-title" value="Change applied in apps/gridsz-client/webpack.config.ts (passed via configOverride to withModuleFederation)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="430" width="1500" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="adopted-code" value="// apps/gridsz-client/module-federation.config.ts (or via configOverride)&#xa;const config: ModuleFederationConfig = {&#xa;  name: &#39;gridsz-client&#39;,&#xa;  remotes: [],&#xa;  shared: (libraryName, defaultConfig) =&gt; {&#xa;    if (librariesNotToShare.has(libraryName)) return false;&#xa;    return defaultConfig;&#xa;  },&#xa;};&#xa;export default config;&#xa;&#xa;// apps/gridsz-client/webpack.config.ts&#xa;const wmf = await withModuleFederation(config, { dts: false, shareStrategy: &#39;loaded-first&#39; });&#xa;return wmf({ ...wco, plugins: [..., new MomentLocalesPlugin(...)] });" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666;align=left;spacing=10;fontFamily=monospace;fontSize=11;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="470" width="760" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="effects-title" value="Effects of &#39;loaded-first&#39; (with source-line references)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="820" y="430" width="720" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="effect-1" value="Effect 1 — Lazy remote init&#xa;runtime-core/shared/index.js, ~line 192&#xa;&#xa;if (host.options.shareStrategy === &#39;version-first&#39; || strategy === &#39;version-first&#39;) {&#xa;  host.options.remotes.forEach((remote) =&gt; { promises.push(initRemoteModule(...)); });&#xa;}&#xa;// &#39;loaded-first&#39; → this block is SKIPPED&#xa;// Remote loads only when user calls loadRemote(name/Module)." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666;align=left;spacing=10;fontFamily=monospace;fontSize=11;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="820" y="470" width="720" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="effect-2" value="Effect 2 — Sticky scope entries&#xa;runtime-core/shared/index.js, ~line 164 (inside register())&#xa;&#xa;if (!activeVersion&#xa;    || activeVersion.strategy !== &#39;loaded-first&#39;&#xa;       &amp;&amp; !activeVersion.loaded&#xa;       &amp;&amp; (eager-or-hostname-comparison)) versions[version] = shared;&#xa;// &#39;loaded-first&#39; on the existing entry → SHORT CIRCUIT, no overwrite." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666;align=left;spacing=10;fontFamily=monospace;fontSize=11;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="820" y="610" width="720" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="final-state" value="Final runtime behavior&#xa;1. main.js runs → webpack auto-inits host MF instance.&#xa;2. main.ts calls registerRemotes (URLs only, no fetch).&#xa;3. import(&#39;./bootstrap&#39;) loads host&#39;s shared chunks → host registers @angular/* in scope.&#xa;4. No remote auto-load happens (because &#39;loaded-first&#39;).&#xa;5. When the user navigates to a federated route, loadRemote(&#39;gridsz-module-ac/AcModule&#39;) fetches remoteEntry.mjs.&#xa;6. Remote&#39;s container.init runs. register() sees existing &#39;loaded-first&#39; entries → does NOT overwrite. Host&#39;s Angular remains the singleton.&#xa;Verify in DevTools console:&#xa;  window.__FEDERATION__.__SHARE_SCOPE_MAP__.default[&#39;@angular/core&#39;]  // entry.from === &#39;gridsz_client&#39;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacing=12;verticalAlign=top;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="770" width="1500" height="200" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
