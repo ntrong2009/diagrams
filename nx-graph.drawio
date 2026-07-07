@@ -1,0 +1,139 @@
+<mxfile host="65bd71144e">
+    <diagram id="w4S0QyXMgM7UGsNmniu8" name="Page-1">
+        <mxGraphModel dx="1456" dy="1139" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="#3159: thêm import &#39;@angular/localize/init&#39;&lt;br/&gt;vào source (kể cả file .spec.ts)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#e65100;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="40" width="380" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Tầng 1 — Nx project graph" style="text;html=1;align=left;verticalAlign=middle;fontStyle=1;fontSize=13;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="145" width="360" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Phân tích tĩnh import&lt;br/&gt;quét TẤT CẢ file .ts (KHÔNG loại .spec.ts)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="170" width="380" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Tạo cạnh graph:&lt;br/&gt;app → external:@angular/localize" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="290" width="380" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Cache ở .nx/&lt;br/&gt;(lý do lúc có lúc không)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="400" width="240" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Tầng 2 — withModuleFederation (build-time)" style="text;html=1;align=left;verticalAlign=middle;fontStyle=1;fontSize=13;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="505" width="400" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Đọc project graph&lt;br/&gt;(KHÔNG quét lại import)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="530" width="380" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Package có trong graph&lt;br&gt;(được import) ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="630" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Đưa vào &#39;shared&#39;&lt;br/&gt;eager singleton" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="720" y="650.5" width="116" height="49" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Không share" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="146" y="655" width="91" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="librariesNotToShare&lt;br&gt;chỉ override (loại trừ ở đây)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="770" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="webpack ModuleFederationPlugin&lt;br/&gt;sinh polyfills.js" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="870" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="localize là shared singleton?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="970" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Route qua loadShareSync /&lt;br/&gt;initialConsumes" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="1110" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="polyfills MẤT dòng&lt;br/&gt;__webpack_require__(22147)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="1200" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="globalThis.$localize KHÔNG set kịp" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="1290" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="ngb-pagination render&lt;br/&gt;→ $localize is not defined ❌" style="rounded=1;arcSize=40;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="1390" width="300" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Bundle như polyfill thuần" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1110" width="280" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="Cuối file chạy&lt;br/&gt;__webpack_require__(22147)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1200" width="280" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="globalThis.$localize = ... (side-effect)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1290" width="280" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="$localize sẵn sàng ✅" style="rounded=1;arcSize=40;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1390" width="280" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Xóa import &#39;@angular/localize/init&#39;&amp;nbsp;&lt;div&gt;trong remote module&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1565c0;" parent="1" vertex="1">
+                    <mxGeometry x="1060" y="1223" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Test (Jest): stub $localize trong&lt;br/&gt;test-setup.ts (KHÔNG import package)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1565c0;" parent="1" vertex="1">
+                    <mxGeometry x="1060" y="1310" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" parent="1" source="2" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" parent="1" source="4" target="5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" parent="1" source="5" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" parent="1" source="6" target="8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" parent="1" source="8" target="9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="31" value="Có" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" parent="1" source="9" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="Không" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" parent="1" source="9" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" parent="1" source="12" target="13" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" parent="1" source="13" target="14" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="Có (bản lỗi)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#c62828;" parent="1" source="14" target="15" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#c62828;" parent="1" source="15" target="16" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#c62828;" parent="1" source="16" target="17" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#c62828;" parent="1" source="17" target="18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="Không (bản đúng)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2e7d32;" parent="1" source="14" target="19" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2e7d32;" parent="1" source="19" target="20" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2e7d32;" parent="1" source="20" target="21" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2e7d32;" parent="1" source="21" target="22" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="Cho test" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;strokeColor=#1565c0;" parent="1" source="18" target="25" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="9" target="12">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="583" y="710" as="sourcePoint"/>
+                        <mxPoint x="583" y="770" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

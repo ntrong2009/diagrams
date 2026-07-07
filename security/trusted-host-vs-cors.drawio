@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="trusted-host-vs-cors" name="Trusted Host vs CORS">
-        <mxGraphModel dx="868" dy="827" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1019" dy="797" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -168,10 +168,10 @@
                         <mxPoint x="470" y="87.02173913043475" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="5" value="&lt;div style=&quot;text-align:left;font-size:10px&quot;&gt;&lt;b&gt;Response WITHOUT&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align:left;font-size:10px&quot;&gt;&lt;b&gt;CORS headers&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#e63946;strokeWidth=2;fontSize=10;" vertex="1" parent="4">
+                <mxCell id="5" value="&lt;div style=&quot;text-align:left;font-size:10px&quot;&gt;&lt;b&gt;Response WITHOUT&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align:left;font-size:10px&quot;&gt;&lt;b&gt;CORS headers&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#e63946;strokeWidth=2;fontSize=10;" parent="4" vertex="1">
                     <mxGeometry x="460" y="65" width="145" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#c62828;endFill=1;curved=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="cors_browser_error">
+                <mxCell id="6" value="" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#c62828;endFill=1;curved=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="5" target="cors_browser_error" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1470" y="635" as="sourcePoint"/>
                         <mxPoint x="1473" y="700" as="targetPoint"/>
