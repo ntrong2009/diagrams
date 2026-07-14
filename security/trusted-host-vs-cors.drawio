@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="trusted-host-vs-cors" name="Trusted Host vs CORS">
-        <mxGraphModel dx="1019" dy="797" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="735" dy="797" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -31,7 +31,7 @@
                 <mxCell id="th_server_label" value="&lt;b&gt;Web Server / Reverse Proxy (e.g. Nginx, Kestrel)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontColor=#2e7d32;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="180" y="315" width="430" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="th_middleware" value="&lt;b&gt;Trusted Host Middleware&lt;/b&gt;&lt;br&gt;&lt;br&gt;Allowed Hosts:&lt;br&gt;&lt;code&gt;api.gridsz.com&lt;/code&gt;&lt;br&gt;&lt;code&gt;admin.gridsz.com&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#e63946;strokeWidth=2;fontSize=12;shadow=1;" parent="1" vertex="1">
+                <mxCell id="th_middleware" value="&lt;b&gt;Trusted Host Middleware&lt;/b&gt;&lt;br&gt;&lt;br&gt;Allowed Hosts:&lt;br&gt;&lt;code&gt;api.gridsz.com&lt;/code&gt;&lt;br&gt;&lt;code&gt;admin.gridsz.com&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#e63946;strokeWidth=2;fontSize=12;shadow=0;" parent="1" vertex="1">
                     <mxGeometry x="100" y="355" width="200" height="110" as="geometry"/>
                 </mxCell>
                 <mxCell id="th_decision" value="Host header&lt;br&gt;in allowed&lt;br&gt;list?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#e63946;strokeWidth=2;fontSize=12;fontStyle=1;" parent="1" vertex="1">
@@ -88,7 +88,7 @@
                 <mxCell id="cors_subtitle" value="Browser-enforced policy that controls cross-origin requests&lt;br&gt;Relaxes the Same-Origin Policy selectively" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;fontColor=#555555;" parent="1" vertex="1">
                     <mxGeometry x="1040" y="125" width="480" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="cors_browser" value="&lt;b&gt;Browser&lt;/b&gt;&lt;br&gt;&lt;code&gt;https://app.gridsz.com&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f77f00;strokeWidth=2;fontSize=12;shadow=1;" parent="1" vertex="1">
+                <mxCell id="cors_browser" value="&lt;b&gt;Browser&lt;/b&gt;&lt;br&gt;&lt;code&gt;https://app.gridsz.com&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f77f00;strokeWidth=2;fontSize=12;shadow=0;" parent="1" vertex="1">
                     <mxGeometry x="1155" y="198.75" width="200" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="cors_preflight" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;Preflight Request&lt;/b&gt;&lt;br&gt;&lt;code&gt;OPTIONS /api/data HTTP/1.1&lt;/code&gt;&lt;br&gt;&lt;code style=&quot;color: rgb(247, 127, 0);&quot;&gt;Origin: https://app.gridsz.com&lt;/code&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3cd;strokeColor=#ffc107;strokeWidth=2;fontSize=11;align=center;" parent="1" vertex="1">
@@ -103,7 +103,7 @@
                 <mxCell id="cors_server_label" value="&lt;b&gt;API Server (Origin B: https://api.gridsz.com)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontColor=#2e7d32;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="1000" y="315" width="390" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="cors_middleware" value="&lt;b&gt;CORS Middleware&lt;/b&gt;&lt;br&gt;&lt;br&gt;Allowed Origins:&lt;br&gt;&lt;code&gt;https://app.gridsz.com&lt;/code&gt;&lt;br&gt;&lt;code&gt;https://admin.gridsz.com&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#f77f00;strokeWidth=2;fontSize=12;shadow=1;" parent="1" vertex="1">
+                <mxCell id="cors_middleware" value="&lt;b&gt;CORS Middleware&lt;/b&gt;&lt;br&gt;&lt;br&gt;Allowed Origins:&lt;br&gt;&lt;code&gt;https://app.gridsz.com&lt;/code&gt;&lt;br&gt;&lt;code&gt;https://admin.gridsz.com&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#f77f00;strokeWidth=2;fontSize=12;shadow=0;" parent="1" vertex="1">
                     <mxGeometry x="892.5" y="360" width="220" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="cors_decision" value="Origin in&lt;br&gt;allowed&lt;br&gt;list?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff;strokeColor=#f77f00;strokeWidth=2;fontSize=12;fontStyle=1;" parent="1" vertex="1">
@@ -133,7 +133,7 @@
                 <mxCell id="cors_arrow_to_allows" value="&lt;span style=&#39;font-size:10px&#39;&gt;Step 2: response&lt;br&gt;back to browser&lt;/span&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#2e7d32;endFill=1;curved=1;" parent="1" source="cors_resp_yes" target="cors_browser_allows" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="cors_browser_error" value="&lt;b style=&quot;color: rgb(198, 40, 40); font-size: 14px;&quot;&gt;Browser THROWS ERROR&lt;/b&gt;&lt;br&gt;&lt;code style=&quot;color: rgb(198, 40, 40); font-size: 9px;&quot;&gt;Access to fetch at &#39;https://api.gridsz.com/api/data&#39; from origin &#39;https://evil.com&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present.&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=2;fontSize=11;shadow=1;" parent="1" vertex="1">
+                <mxCell id="cors_browser_error" value="&lt;b style=&quot;color: rgb(198, 40, 40); font-size: 14px;&quot;&gt;Browser THROWS ERROR&lt;/b&gt;&lt;br&gt;&lt;code style=&quot;color: rgb(198, 40, 40); font-size: 9px;&quot;&gt;Access to fetch at &#39;https://api.gridsz.com/api/data&#39; from origin &#39;https://evil.com&#39; has been blocked by CORS policy: No &#39;Access-Control-Allow-Origin&#39; header is present.&lt;/code&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdd2;strokeColor=#c62828;strokeWidth=2;fontSize=11;shadow=0;" parent="1" vertex="1">
                     <mxGeometry x="1361.25" y="570" width="272.5" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="cors_arrow_to_error" value="&lt;span style=&#39;font-size:10px&#39;&gt;Step 2: response&lt;br&gt;back to browser&lt;/span&gt;" style="endArrow=block;html=1;strokeWidth=2;strokeColor=#c62828;endFill=1;curved=1;" parent="1" source="cors_resp_no" target="cors_browser_error" edge="1">

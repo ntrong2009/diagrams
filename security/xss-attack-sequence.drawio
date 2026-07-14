@@ -1,106 +1,115 @@
-<mxfile host="app.diagrams.net" type="device">
-  <diagram name="XSS Attack Sequence" id="xss-seq">
-    <mxGraphModel dx="1400" dy="800" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="700" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="title" value="XSS (Stored) Attack — Sequence Diagram" style="text;html=1;align=center;fontSize=20;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="280" y="10" width="540" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="sub" value="Attacker submits a payload through a normal form; victim's browser later loads and executes it" style="text;html=1;align=center;fontSize=12;fontColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="180" y="40" width="740" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="att" value="Attacker" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#ffc9c9;strokeColor=#ef4444;size=40;" vertex="1" parent="1">
-          <mxGeometry x="40" y="70" width="110" height="560" as="geometry" />
-        </mxCell>
-        <mxCell id="abrw" value="Attacker Browser" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#fde0e0;strokeColor=#ef4444;size=40;" vertex="1" parent="1">
-          <mxGeometry x="180" y="70" width="130" height="560" as="geometry" />
-        </mxCell>
-        <mxCell id="vic" value="Victim" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#a5d8ff;strokeColor=#4a9eed;size=40;" vertex="1" parent="1">
-          <mxGeometry x="340" y="70" width="110" height="560" as="geometry" />
-        </mxCell>
-        <mxCell id="vbrw" value="Victim Browser" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#d0bfff;strokeColor=#8b5cf6;size=40;" vertex="1" parent="1">
-          <mxGeometry x="480" y="70" width="130" height="560" as="geometry" />
-        </mxCell>
-        <mxCell id="srv" value="Web Server" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#ffd8a8;strokeColor=#f59e0b;size=40;" vertex="1" parent="1">
-          <mxGeometry x="640" y="70" width="160" height="560" as="geometry" />
-        </mxCell>
-        <mxCell id="db" value="Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#c3fae8;strokeColor=#06b6d4;size=40;" vertex="1" parent="1">
-          <mxGeometry x="830" y="70" width="130" height="560" as="geometry" />
-        </mxCell>
-        <mxCell id="p1note" value="Phase 1 — Attacker injects payload via a normal form submission" style="text;html=1;align=left;fontSize=11;fontStyle=2;fontColor=#b91c1c;" vertex="1" parent="1">
-          <mxGeometry x="40" y="120" width="500" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="m1" value="types &lt;script&gt; in input field" style="html=1;endArrow=block;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="95" y="150" as="sourcePoint" />
-            <mxPoint x="245" y="150" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="m2" value="1. Submit form with malicious payload" style="html=1;endArrow=block;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="245" y="190" as="sourcePoint" />
-            <mxPoint x="720" y="190" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="m3" value="2. Store script (no sanitization)" style="html=1;endArrow=block;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="720" y="230" as="sourcePoint" />
-            <mxPoint x="895" y="230" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="ack1" value="200 OK" style="html=1;endArrow=open;dashed=1;strokeColor=#999999;fontColor=#666666;fontSize=11;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="720" y="265" as="sourcePoint" />
-            <mxPoint x="245" y="265" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="p2note" value="Phase 2 — Victim later loads the compromised page" style="text;html=1;align=left;fontSize=11;fontStyle=2;fontColor=#2563eb;" vertex="1" parent="1">
-          <mxGeometry x="40" y="295" width="500" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="m4" value="opens page" style="html=1;endArrow=block;strokeColor=#4a9eed;fontColor=#2563eb;fontSize=12;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="395" y="325" as="sourcePoint" />
-            <mxPoint x="545" y="325" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="m5" value="3. Request page" style="html=1;endArrow=block;strokeColor=#4a9eed;fontColor=#2563eb;fontSize=12;fontStyle=1;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="545" y="365" as="sourcePoint" />
-            <mxPoint x="720" y="365" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="m6" value="fetch page data" style="html=1;endArrow=block;strokeColor=#666666;fontColor=#666666;fontSize=11;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="720" y="405" as="sourcePoint" />
-            <mxPoint x="895" y="405" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="m7" value="4. Returns data + stored script" style="html=1;endArrow=open;dashed=1;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="895" y="445" as="sourcePoint" />
-            <mxPoint x="720" y="445" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="m8" value="5. Returns infected page" style="html=1;endArrow=open;dashed=1;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="720" y="485" as="sourcePoint" />
-            <mxPoint x="545" y="485" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="p3note" value="Phase 3 — Browser executes the script and exfiltrates victim's data" style="text;html=1;align=left;fontSize=11;fontStyle=2;fontColor=#b91c1c;" vertex="1" parent="1">
-          <mxGeometry x="40" y="515" width="500" height="20" as="geometry" />
-        </mxCell>
-        <mxCell id="exec" value="render &amp; execute &lt;script&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e8ff;strokeColor=#8b5cf6;fontColor=#6d28d9;fontSize=11;fontStyle=2;" vertex="1" parent="1">
-          <mxGeometry x="485" y="543" width="120" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="m9" value="6. Steals cookies / session → attacker" style="html=1;endArrow=block;strokeColor=#ef4444;strokeWidth=2;fontColor=#b91c1c;fontSize=12;fontStyle=1;" edge="1" parent="1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="545" y="600" as="sourcePoint" />
-            <mxPoint x="95" y="600" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram name="XSS Attack Sequence" id="xss-seq">
+        <mxGraphModel dx="735" dy="797" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="700" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="XSS (Stored) Attack — Sequence Diagram" style="text;html=1;align=center;fontSize=20;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="10" width="540" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="sub" value="Attacker submits a payload through a normal form; victim&#39;s browser later loads and executes it" style="text;html=1;align=center;fontSize=12;fontColor=#666666;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="40" width="740" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="att" value="Attacker" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#ffc9c9;strokeColor=#ef4444;size=40;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="70" width="110" height="560" as="geometry"/>
+                </mxCell>
+                <mxCell id="abrw" value="Attacker Browser" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#fde0e0;strokeColor=#ef4444;size=40;" parent="1" vertex="1">
+                    <mxGeometry x="180" y="70" width="130" height="560" as="geometry"/>
+                </mxCell>
+                <mxCell id="vic" value="Victim" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#a5d8ff;strokeColor=#4a9eed;size=40;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="70" width="110" height="560" as="geometry"/>
+                </mxCell>
+                <mxCell id="vbrw" value="Victim Browser" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#d0bfff;strokeColor=#8b5cf6;size=40;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="70" width="130" height="560" as="geometry"/>
+                </mxCell>
+                <mxCell id="srv" value="Web Server" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#ffd8a8;strokeColor=#f59e0b;size=40;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="70" width="160" height="560" as="geometry"/>
+                </mxCell>
+                <mxCell id="db" value="Database" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#c3fae8;strokeColor=#06b6d4;size=40;" parent="1" vertex="1">
+                    <mxGeometry x="830" y="70" width="130" height="560" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1note" value="Phase 1 — Attacker injects payload via a normal form submission" style="text;html=1;align=left;fontSize=11;fontStyle=2;fontColor=#b91c1c;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="120" width="500" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="m1" value="types &lt;script&gt; in input field" style="html=1;endArrow=block;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="95" y="150" as="sourcePoint"/>
+                        <mxPoint x="245" y="150" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m2" value="1. Submit form with malicious payload" style="html=1;endArrow=block;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="245" y="190" as="sourcePoint"/>
+                        <mxPoint x="720" y="190" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m3" value="2. Store script (no sanitization)" style="html=1;endArrow=block;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="720" y="230" as="sourcePoint"/>
+                        <mxPoint x="895" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="ack1" value="200 OK" style="html=1;endArrow=open;dashed=1;strokeColor=#999999;fontColor=#666666;fontSize=11;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="720" y="265" as="sourcePoint"/>
+                        <mxPoint x="245" y="265" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="p2note" value="Phase 2 — Victim later loads the compromised page" style="text;html=1;align=left;fontSize=11;fontStyle=2;fontColor=#2563eb;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="295" width="500" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="m4" value="opens page" style="html=1;endArrow=block;strokeColor=#4a9eed;fontColor=#2563eb;fontSize=12;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="395" y="325" as="sourcePoint"/>
+                        <mxPoint x="545" y="325" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m5" value="3. Request page" style="html=1;endArrow=block;strokeColor=#4a9eed;fontColor=#2563eb;fontSize=12;fontStyle=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="545" y="365" as="sourcePoint"/>
+                        <mxPoint x="720" y="365" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m6" value="fetch page data" style="html=1;endArrow=block;strokeColor=#666666;fontColor=#666666;fontSize=11;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="720" y="405" as="sourcePoint"/>
+                        <mxPoint x="895" y="405" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m7" value="4. Returns data + stored script" style="html=1;endArrow=open;dashed=1;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="895" y="445" as="sourcePoint"/>
+                        <mxPoint x="720" y="445" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="m8" value="5. Returns infected page" style="html=1;endArrow=open;dashed=1;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="720" y="485" as="sourcePoint"/>
+                        <mxPoint x="545" y="485" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="p3note" value="Phase 3 — Browser executes the script and exfiltrates victim&#39;s data" style="text;html=1;align=left;fontSize=11;fontStyle=2;fontColor=#b91c1c;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="515" width="500" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="exec" value="render &amp; execute &lt;script&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e8ff;strokeColor=#8b5cf6;fontColor=#6d28d9;fontSize=11;fontStyle=2;" parent="1" vertex="1">
+                    <mxGeometry x="485" y="543" width="120" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="m9" value="6. Steals cookies / session → attacker" style="html=1;endArrow=block;strokeColor=#ef4444;strokeWidth=2;fontColor=#b91c1c;fontSize=12;fontStyle=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="545" y="600" as="sourcePoint"/>
+                        <mxPoint x="95" y="600" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="Defence" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="948" y="303" width="193" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="UI framework domsanitizer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="2">
+                    <mxGeometry y="30" width="193" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;Server domsanitizer&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="2">
+                    <mxGeometry y="60" width="193" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>
