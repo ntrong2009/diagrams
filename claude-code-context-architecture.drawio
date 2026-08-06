@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="claude-code-context-architecture" name="Claude Code Context">
-        <mxGraphModel dx="2329" dy="713" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1450" pageHeight="1050" background="#ffffff" math="0" shadow="0">
+        <mxGraphModel dx="2470" dy="907" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1450" pageHeight="1050" background="#ffffff" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -146,6 +146,15 @@
                 </mxCell>
                 <mxCell id="2" value="&lt;span style=&quot;box-sizing: border-box; line-height: 28px; font-family: Tiempos, serif; font-size: 20px; letter-spacing: -0.1px; color: rgb(20, 20, 19); background-color: rgb(250, 249, 245); text-align: left; box-shadow: none !important;&quot;&gt;4D Framework for AI Fluency&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#d3f9d8;strokeColor=#2f9e44;fontSize=14;fontColor=#1f2937;verticalAlign=middle;" parent="1" vertex="1">
                     <mxGeometry x="1100" y="114" width="220" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;b&gt;Subagents&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#fff3bf;strokeColor=#e8a33d;fontSize=12;fontColor=#1f2937;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="497" y="977" width="300" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;b&gt;Hooks&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#fff3bf;strokeColor=#e8a33d;fontSize=12;fontColor=#1f2937;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="497" y="1035" width="300" height="42" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;b&gt;MCP servers&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#fff3bf;strokeColor=#e8a33d;fontSize=12;fontColor=#1f2937;verticalAlign=middle;" vertex="1" parent="1">
+                    <mxGeometry x="497" y="1088" width="300" height="42" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
