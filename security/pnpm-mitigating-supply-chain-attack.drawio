@@ -1,0 +1,79 @@
+<mxfile host="65bd71144e">
+    <diagram id="supply-chain-attack" name="Supply Chain Attack">
+        <mxGraphModel dx="889" dy="790" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="a1" value="&lt;b&gt;1. Chiếm quyền publish&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#a83232&quot;&gt;Phishing, token bị lộ&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fbe4e4;strokeColor=#d98a8a;strokeWidth=1;fontColor=#7a1f1f;fontSize=15;verticalAlign=middle;spacingTop=4;spacingBottom=4;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="60" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="a2" value="&lt;b&gt;2. Publish version độc&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#a83232&quot;&gt;Đẩy lên npm registry&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fbe4e4;strokeColor=#d98a8a;strokeWidth=1;fontColor=#7a1f1f;fontSize=15;verticalAlign=middle;spacingTop=4;spacingBottom=4;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="290" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="a3" value="&lt;b&gt;3. Pipeline kéo bản mới&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#a83232&quot;&gt;Install tự động trên CI/dev&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fbe4e4;strokeColor=#d98a8a;strokeWidth=1;fontColor=#7a1f1f;fontSize=15;verticalAlign=middle;spacingTop=4;spacingBottom=4;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="520" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="a4" value="&lt;b&gt;4. Chạy mã độc lúc cài&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#a83232&quot;&gt;Qua postinstall script&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fbe4e4;strokeColor=#d98a8a;strokeWidth=1;fontColor=#7a1f1f;fontSize=15;verticalAlign=middle;spacingTop=4;spacingBottom=4;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="750" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="d0" value="&lt;b&gt;Ngoài phạm vi pnpm&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#6b6b6b&quot;&gt;2FA, bảo mật tài khoản&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#bdbdbd;strokeWidth=1;fontColor=#3a3a3a;fontSize=15;verticalAlign=middle;spacingTop=4;spacingBottom=4;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="60" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="d1" value="&lt;b&gt;minimumReleaseAge&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8a5a00&quot;&gt;mặc định:&amp;nbsp;&lt;span style=&quot;color: rgb(31, 138, 95);&quot;&gt;1440&lt;/span&gt;&amp;nbsp;(số phút)&amp;nbsp;&lt;/font&gt;&lt;font color=&quot;#1f8a5f&quot;&gt;chờ 24h mới resolve&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e0f3ea;strokeColor=#7fc9a6;strokeWidth=1;fontColor=#14603f;fontSize=14;verticalAlign=middle;spacingTop=4;spacingBottom=4;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="290" width="323" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="d2" value="&lt;b&gt;Lockfile verification supply-chain policies&lt;/b&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e0f3ea;strokeColor=#7fc9a6;strokeWidth=1;fontColor=#14603f;fontSize=15;verticalAlign=middle;spacingTop=4;spacingBottom=4;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="520" width="353" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="d3" value="&lt;b&gt;allowBuilds&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#1f8a5f&quot;&gt;Chặn build script mặc định&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e0f3ea;strokeColor=#7fc9a6;strokeWidth=1;fontColor=#14603f;fontSize=15;verticalAlign=middle;spacingTop=4;spacingBottom=4;" parent="1" vertex="1">
+                    <mxGeometry x="490" y="750" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="f1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#9aa0a6;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="a1" target="a2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="f2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#9aa0a6;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="a2" target="a3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="f3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#9aa0a6;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" parent="1" source="a3" target="a4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="g1" style="edgeStyle=none;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2fae82;strokeWidth=2;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" parent="1" source="d1" target="a2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="g2" style="edgeStyle=none;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2fae82;strokeWidth=2;dashed=1;dashPattern=6 4;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" parent="1" source="d2" target="a3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="xmark" value="✕" style="text;html=1;fontColor=#c0392b;fontSize=28;fontStyle=1;align=center;verticalAlign=middle;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="404" y="545" width="40" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="w1" value="&lt;b&gt;⚠ trustLockfile = true&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8a5a00&quot;&gt;Bỏ qua lockfile verification → lớp bảo vệ mất tác dụng&lt;/font&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fff4d6;strokeColor=#e0a52e;strokeWidth=1;fontColor=#8a5a00;fontSize=13;verticalAlign=middle;spacingTop=4;spacingBottom=4;spacingLeft=6;spacingRight=6;" parent="1" vertex="1">
+                    <mxGeometry x="333" y="652" width="366" height="62" as="geometry"/>
+                </mxCell>
+                <mxCell id="w1e" style="edgeStyle=none;rounded=0;html=1;endArrow=classic;endFill=1;strokeColor=#e0a52e;strokeWidth=1.5;dashed=1;dashPattern=6 4;exitX=0.25;exitY=0;entryX=0.5;entryY=1;" parent="1" source="w1" target="xmark" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="g3" style="edgeStyle=none;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#2fae82;strokeWidth=2;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" parent="1" source="d3" target="a4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="&lt;span style=&quot;color: rgb(31, 138, 95); font-size: 15px;&quot;&gt;trustPolicy&lt;/span&gt;&lt;br style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); font-size: 15px;&quot;&gt;Query attestation API của npm (SLSA provenance, Sigstore, trustedPublisher, dist.attestations.provenance) để gán &quot;trust level&quot; cho từng version" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="939" y="490" width="469" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;span style=&quot;color: rgb(31, 138, 95); font-size: 15px;&quot;&gt;blockExoticSubdeps&lt;/span&gt;&lt;br style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); font-size: 15px;&quot;&gt;&amp;nbsp;Kiểm tra tĩnh ngay trong lockfile — xem dep transitive có dùng nguồn &quot;exotic&quot; (git/tarball/file URL) hay không" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="939" y="574" width="469" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="d2">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="734" y="621" as="sourcePoint"/>
+                        <mxPoint x="784" y="571" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="d2">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="734" y="621" as="sourcePoint"/>
+                        <mxPoint x="784" y="571" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
