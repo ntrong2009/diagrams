@@ -152,6 +152,53 @@ Bước 3 là điểm cốt lõi: instance mới, context trắng, nhưng vẫn 
 
 Phụ thuộc auto memory: tắt `autoMemoryEnabled` hoặc `CLAUDE_CODE_DISABLE_AUTO_MEMORY` thì field này vô hiệu. Chỉ 200 dòng đầu (hoặc 25KB) của `MEMORY.md` được nạp.
 
+### 6.5. [Hooks in frontmatter](https://code.claude.com/docs/en/sub-agents#hooks-in-subagent-frontmatter) — **demo**
+
+`hooks:` khai ngay trong frontmatter → chạy **chỉ khi subagent đó active**, xong là dọn. Dùng `PreToolUse` để đặt **luật có điều kiện**: cho dùng tool nhưng chặn từng thao tác cụ thể — khác `tools`/`disallowedTools` vốn chỉ cho/cấm **cứng** cả tool.
+
+Event hay dùng trong frontmatter:
+
+| Event         | Matcher   | Fire khi                                       |
+| ------------- | --------- | ---------------------------------------------- |
+| `PreToolUse`  | tên tool  | Trước khi subagent gọi tool                    |
+| `PostToolUse` | tên tool  | Sau khi gọi tool                               |
+| `Stop`        | (không)   | Khi subagent xong (runtime đổi thành `SubagentStop`) |
+
+```yaml
+hooks:
+  PreToolUse:
+    - matcher: "Bash"
+      hooks:
+        - type: command
+          command: "$CLAUDE_PROJECT_DIR/.claude/scripts/validate-no-delete.sh"
+```
+
+Cơ chế: Claude Code truyền input **JSON qua stdin** cho script. **`exit 0`** = cho qua; **`exit 2`** = chặn, đẩy message ở stderr về subagent.
+
+Vài điểm cần nhớ:
+
+- **Frontmatter vs `settings.json`**: hook frontmatter chỉ sống trong subagent; hook `settings.json` là toàn session và cũng fire bên trong subagent. Cả hai cùng áp lên một tool call.
+- **Trust**: hook frontmatter của agent **project-level** cần trust folder trước; chưa trust thì subagent vẫn chạy nhưng **bỏ qua hook** và ghi lý do vào debug log. Agent user-level (`~/.claude/agents/`), `--agents`, và hook trong `settings.json` **không** cần trust. (Chặt hơn hook settings: trust folder cha không đủ, phiên `-p` không tính là trusted.)
+
+#### Lệnh demo
+
+Agent `demo-block-delete` (`tools: Bash`, có `PreToolUse` hook trỏ tới `validate-no-delete.sh`). Nó cố chạy `rm` xóa `demo-ask-permission.md`; script thấy `rm` → `exit 2`.
+
+```text
+# 1. Chạy — hook phải chặn
+@agent-demo-block-delete run the delete-block demo
+
+# 2. Kiểm chứng file còn sống
+!ls gridsz-frontend/.claude/agents/demo-ask-permission.md
+```
+
+Kỳ vọng:
+
+1. Lệnh `rm` **bị hook chặn** (`Blocked by hook: ...`), không kịp xóa
+2. File `demo-ask-permission.md` **vẫn còn**
+
+> Bỏ hook đi thì mất lớp chặn tự động — nhưng `rm` vẫn qua tầng **permission** (`default` → vẫn hỏi). Muốn "bỏ hook là xóa luôn, không hỏi" phải thêm `permissionMode: bypassPermissions`.
+
 ## 7. [Resume subagent](https://code.claude.com/docs/en/sub-agents#resume-subagents)
 
 ## 8. [Fork trong subagent](https://code.claude.com/docs/en/sub-agents#fork-the-current-conversation)
