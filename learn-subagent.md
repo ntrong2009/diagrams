@@ -4,23 +4,21 @@ Nguồn: <https://code.claude.com/docs/en/sub-agents>
 
 ---
 
-## 1. [Subagent UI run](https://code.claude.com/docs/en/context-window)
+## 1. [Subagent scope](https://code.claude.com/docs/en/sub-agents#choose-the-subagent-scope)
 
-## 2. [Subagent scope](https://code.claude.com/docs/en/sub-agents#choose-the-subagent-scope)
+## 2. [Lúc start thì load gì](https://code.claude.com/docs/en/sub-agents#what-loads-at-startup)
 
-## 3. [Lúc start thì load gì](https://code.claude.com/docs/en/sub-agents#what-loads-at-startup)
+## 3. [Cách gọi subagent](https://code.claude.com/docs/en/sub-agents#invoke-subagents-explicitly)
 
-## 4. [Cách gọi subagent](https://code.claude.com/docs/en/sub-agents#invoke-subagents-explicitly)
+## 4. [Cấu trúc subagent file](https://code.claude.com/docs/en/sub-agents#write-subagent-files)
 
-## 5. [Cấu trúc subagent file](https://code.claude.com/docs/en/sub-agents#write-subagent-files)
+### 4.1. [Cách chọn model](https://code.claude.com/docs/en/sub-agents#choose-a-model)
 
-### 5.1. [Cách chọn model](https://code.claude.com/docs/en/sub-agents#choose-a-model)
+### 4.2. [`tools` / `disallowedTools`](https://code.claude.com/docs/en/sub-agents#available-tools) — **demo**
 
-### 5.2. [`tools` / `disallowedTools`](https://code.claude.com/docs/en/sub-agents#available-tools) — **demo**
+## 5. [Control capabilities](https://code.claude.com/docs/en/sub-agents#control-subagent-capabilities)
 
-## 6. [Control capabilities](https://code.claude.com/docs/en/sub-agents#control-subagent-capabilities)
-
-### 6.1. [Scope MCP servers to a subagent](https://code.claude.com/docs/en/sub-agents#scope-mcp-servers-to-a-subagent) — **demo**
+### 5.1. [Scope MCP servers to a subagent](https://code.claude.com/docs/en/sub-agents#scope-mcp-servers-to-a-subagent) — **demo**
 
 **Đo thử trước khi tin** — `/context` trên session: schema MCP mặc định ở dạng **deferred**, context chỉ chứa tên tool, nạp theo yêu cầu qua tool search. Nên 89 MCP tool chỉ tốn **950 token**, không phải 34.9k. Con số 34.9k là chi phí _nếu_ nạp hết.
 
@@ -55,7 +53,7 @@ Kỳ vọng:
 
 Lưu ý: inline server trong `.claude/agents/` của project cần trust folder trước, nếu chưa thì Claude Code bỏ qua server và ghi lý do vào debug log (`--debug`).
 
-### 6.2. [Permission mode](https://code.claude.com/docs/en/sub-agents#permission-modes) — **demo**
+### 5.2. [Permission mode](https://code.claude.com/docs/en/sub-agents#permission-modes) — **demo**
 
 Chọn cách subagent xử lý khi cần xin phép dùng tool. 6 giá trị:
 
@@ -86,7 +84,7 @@ Chọn cách subagent xử lý khi cần xin phép dùng tool. 6 giá trị:
 | 1    | Manual (ask) | `bypassPermissions` (free) | **Không hỏi** | Nới lỏng → frontmatter **thắng**      |
 | 2    | auto (free)  | `default` (ask)            | **Không hỏi** | Siết chặt → frontmatter **bị bỏ qua** |
 
-### 6.3. [Preload skills](https://code.claude.com/docs/en/sub-agents#preload-skills-into-subagents)
+### 5.3. [Preload skills](https://code.claude.com/docs/en/sub-agents#preload-skills-into-subagents)
 
 `skills:` nạp **toàn bộ nội dung** skill vào context subagent lúc start. Lấy từ project / user / plugin / built-in — chỉ cần ghi tên.
 
@@ -106,7 +104,7 @@ skills:
 - Chặn hẳn: bỏ `Skill` khỏi `tools`, hoặc thêm vào `disallowedTools`.
 - Không preload được skill có `disable-model-invocation: true`.
 
-### 6.4. [Persistent memory](https://code.claude.com/docs/en/sub-agents#enable-persistent-memory) — **demo**
+### 5.4. [Persistent memory](https://code.claude.com/docs/en/sub-agents#enable-persistent-memory) — **demo**
 
 `memory:` cho subagent một **thư mục ghi chú** không mất khi session kết thúc. Lần sau chạy, nó đọc lại được.
 
@@ -152,7 +150,7 @@ Bước 3 là điểm cốt lõi: instance mới, context trắng, nhưng vẫn 
 
 Phụ thuộc auto memory: tắt `autoMemoryEnabled` hoặc `CLAUDE_CODE_DISABLE_AUTO_MEMORY` thì field này vô hiệu. Chỉ 200 dòng đầu (hoặc 25KB) của `MEMORY.md` được nạp.
 
-### 6.5. [Hooks in frontmatter](https://code.claude.com/docs/en/sub-agents#hooks-in-subagent-frontmatter) — **demo**
+### 5.5. [Hooks in frontmatter](https://code.claude.com/docs/en/sub-agents#hooks-in-subagent-frontmatter) — **demo**
 
 `hooks:` khai ngay trong frontmatter → chạy **chỉ khi subagent đó active**, xong là dọn. Dùng `PreToolUse` để đặt **luật có điều kiện**: cho dùng tool nhưng chặn từng thao tác cụ thể — khác `tools`/`disallowedTools` vốn chỉ cho/cấm **cứng** cả tool.
 
@@ -199,11 +197,11 @@ Kỳ vọng:
 
 > Bỏ hook đi thì mất lớp chặn tự động — nhưng `rm` vẫn qua tầng **permission** (`default` → vẫn hỏi). Muốn "bỏ hook là xóa luôn, không hỏi" phải thêm `permissionMode: bypassPermissions`.
 
-## 7. [Resume subagent](https://code.claude.com/docs/en/sub-agents#resume-subagents)
+## 6. [Resume subagent](https://code.claude.com/docs/en/sub-agents#resume-subagents)
 
-## 8. [Fork trong subagent](https://code.claude.com/docs/en/sub-agents#fork-the-current-conversation)
+## 7. [Fork trong subagent](https://code.claude.com/docs/en/sub-agents#fork-the-current-conversation)
 
-### 8.1. `/subtask` vs `/fork`
+### 7.1. `/subtask` vs `/fork`
 
 Khác biệt chính **không phải** worktree, mà là: `/subtask` tạo **subagent trong session này**, `/fork` tạo **một session riêng**. Worktree chỉ là hệ quả — mọi background session đều tự chuyển vào worktree trước khi sửa file.
 
@@ -223,7 +221,7 @@ Khác biệt chính **không phải** worktree, mà là: `/subtask` tạo **suba
 - Từ `v2.1.212`: lệnh đó đổi tên thành `/subtask`, còn `/fork` được dùng lại cho việc copy session.
 - Nếu agent view bị tắt: `/fork` quay về nghĩa cũ và `/subtask` không khả dụng.
 
-## 9. Non-fork vs fork subagent
+## 8. Non-fork vs fork subagent
 
 > "non-fork" chỉ có một nghĩa: **context trắng**. Cứ thấy kế thừa context thì đó là fork.
 
@@ -235,4 +233,4 @@ Khác biệt chính **không phải** worktree, mà là: `/subtask` tạo **suba
 
 **Sai lầm thường gặp:** gọi `/subtask` là non-fork. Nó chính là fork. Còn `/fork` thì thuật ngữ fork/non-fork không áp dụng, vì nó không phải subagent.
 
-## 10. `hooks` · `isolation: worktree` — để cuối cùng mới đụng
+## 9. `hooks` · `isolation: worktree` — để cuối cùng mới đụng
