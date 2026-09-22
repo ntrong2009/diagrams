@@ -1,0 +1,238 @@
+<mxfile host="65bd71144e">
+    <diagram name="Automated Workflow — Process Map" id="procmap-1">
+        <mxGraphModel dx="1884" dy="1444" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1640" pageHeight="1700" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="Automated Workflow — Process Map (cross-functional, cột dọc)" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=18;fontStyle=1;spacingLeft=4;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="18" width="760" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="subtitle" value="Worker luôn KÉO (long-poll) việc về — Temporal KHÔNG đẩy.  •  Đọc từ trên xuống; mỗi cột = 1 service/actor." style="shape=note;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#666666;fontSize=12;fontColor=#555555;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;size=14;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="56" width="760" height="34" as="geometry"/>
+                </mxCell>
+
+                <!-- ===================== LANES (vertical columns) ===================== -->
+                <mxCell id="lane1" value="gridsz-task-api-task&#xa;CLIENT + WORKER · task-queue" style="swimlane;html=1;horizontal=1;startSize=44;fontSize=13;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;swimlaneFillColor=#fbfcff;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="100" width="300" height="1320" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane2" value="Temporal Server&#xa;broker + kho state · Postgres" style="swimlane;html=1;horizontal=1;startSize=44;fontSize=13;fontStyle=1;fillColor=#b0e3e6;strokeColor=#0e8088;swimlaneFillColor=#fbffff;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="100" width="300" height="1320" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane3" value="gridsz-workflow-automation&#xa;WORKER · automation-queue" style="swimlane;html=1;horizontal=1;startSize=44;fontSize=13;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;swimlaneFillColor=#fcfffb;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="100" width="300" height="1320" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane4" value="Prometheus&#xa;metrics store · scrape/pull" style="swimlane;html=1;horizontal=1;startSize=44;fontSize=13;fontStyle=1;fillColor=#ffe6cc;strokeColor=#d79b00;swimlaneFillColor=#fffdfb;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="1000" y="100" width="260" height="1320" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane5" value="Grafana&#xa;dashboards + alerts · query/pull" style="swimlane;html=1;horizontal=1;startSize=44;fontSize=13;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;swimlaneFillColor=#fefdff;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="1280" y="100" width="260" height="1320" as="geometry"/>
+                </mxCell>
+
+                <!-- ===================== LANE 1 · task-api-task ===================== -->
+                <mxCell id="n_start" value="Trigger nghiệp vụ&#xa;(điều kiện business)" style="shape=terminator;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" parent="lane1" vertex="1">
+                    <mxGeometry x="65" y="65" width="170" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_p1_start" value="① StartWorkflow(AutomationWorkflow, payload)&#xa;[vai trò CLIENT]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" parent="lane1" vertex="1">
+                    <mxGeometry x="35" y="155" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_p4_poll" value="④ Long-poll task-queue (KÉO)&#xa;[vai trò WORKER]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" parent="lane1" vertex="1">
+                    <mxGeometry x="35" y="765" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_p5_run" value="⑤ CHẠY activity&#xa;sửa task (DB) · gọi OFS / CP / CRM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" parent="lane1" vertex="1">
+                    <mxGeometry x="35" y="875" width="230" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="cyl_taskdb" value="task&#xa;(DB)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" parent="lane1" vertex="1">
+                    <mxGeometry x="20" y="985" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="ext_sys" value="OFS / CP / CRM&#xa;(hệ thống ngoài)" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" parent="lane1" vertex="1">
+                    <mxGeometry x="175" y="985" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_p6_report" value="⑥ report Completed / Failed" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" parent="lane1" vertex="1">
+                    <mxGeometry x="35" y="1070" width="230" height="50" as="geometry"/>
+                </mxCell>
+
+                <!-- ===================== LANE 2 · Temporal Server ===================== -->
+                <mxCell id="n_enq_wf" value="enqueue workflow-task&#xa;→ automation-queue" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;fontSize=11;" parent="lane2" vertex="1">
+                    <mxGeometry x="35" y="155" width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_metrics_ep" value="expose /metrics :9090  (scrape target)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#0e8088;dashed=1;fontSize=9;fontColor=#0e8088;" parent="lane2" vertex="1">
+                    <mxGeometry x="55" y="330" width="190" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_enq_act" value="enqueue activity-task&#xa;→ task-queue" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;fontSize=11;" parent="lane2" vertex="1">
+                    <mxGeometry x="35" y="665" width="230" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_retry" value="RETRY (≤ 5 lần)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="lane2" vertex="1">
+                    <mxGeometry x="35" y="880" width="150" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="dec_completed" value="Activity&#xa;Completed?&#xa;(ghi state mỗi bước)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="lane2" vertex="1">
+                    <mxGeometry x="55" y="1020" width="190" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="cyl_pg" value="Postgres&#xa;event history + state" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" parent="lane2" vertex="1">
+                    <mxGeometry x="75" y="1140" width="150" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_end_state" value="state = Completed" style="shape=terminator;whiteSpace=wrap;html=1;fillColor=#b0e3e6;strokeColor=#0e8088;fontSize=11;fontStyle=1;" parent="lane2" vertex="1">
+                    <mxGeometry x="65" y="1250" width="170" height="50" as="geometry"/>
+                </mxCell>
+
+                <!-- ===================== LANE 3 · workflow-automation ===================== -->
+                <mxCell id="n_p2_poll" value="② Long-poll automation-queue (KÉO)&#xa;[vai trò WORKER]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="lane3" vertex="1">
+                    <mxGeometry x="35" y="245" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_run_wf" value="run AutomationWorkflow&#xa;đọc automation_rules → đánh giá điều kiện" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="lane3" vertex="1">
+                    <mxGeometry x="35" y="355" width="230" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="cyl_rules" value="automation_rules&#xa;(DB)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" parent="lane3" vertex="1">
+                    <mxGeometry x="90" y="460" width="120" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="dec_cond" value="Điều kiện&#xa;thoả?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="lane3" vertex="1">
+                    <mxGeometry x="10" y="550" width="150" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_end_noop" value="Kết thúc&#xa;(không hành động)" style="shape=terminator;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" parent="lane3" vertex="1">
+                    <mxGeometry x="175" y="570" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_p3_sched" value="③ schedule action-activity&#xa;→ task-queue" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="lane3" vertex="1">
+                    <mxGeometry x="35" y="680" width="230" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_recv" value="nhận kết quả&#xa;→ AutomationWorkflow chạy tiếp" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="lane3" vertex="1">
+                    <mxGeometry x="35" y="1170" width="230" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_end_wf" value="⑦ workflow Completed" style="shape=terminator;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" parent="lane3" vertex="1">
+                    <mxGeometry x="65" y="1250" width="170" height="50" as="geometry"/>
+                </mxCell>
+
+                <!-- ===================== LANE 4 · Prometheus ===================== -->
+                <mxCell id="n_scrape" value="scrape /metrics (pull)&#xa;Temporal + workers · mỗi 15s" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="lane4" vertex="1">
+                    <mxGeometry x="25" y="200" width="210" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="cyl_tsdb" value="metrics TSDB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" parent="lane4" vertex="1">
+                    <mxGeometry x="40" y="340" width="130" height="60" as="geometry"/>
+                </mxCell>
+
+                <!-- ===================== LANE 5 · Grafana ===================== -->
+                <mxCell id="n_query" value="query Prometheus → dashboards" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;" parent="lane5" vertex="1">
+                    <mxGeometry x="25" y="370" width="210" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="dec_threshold" value="Vượt ngưỡng&#xa;lỗi?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" parent="lane5" vertex="1">
+                    <mxGeometry x="30" y="500" width="150" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="n_alert" value="🔔 gửi cảnh báo&#xa;(alert → Teams)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" parent="lane5" vertex="1">
+                    <mxGeometry x="25" y="670" width="210" height="60" as="geometry"/>
+                </mxCell>
+
+                <!-- ===================== EDGES ===================== -->
+                <mxCell id="e1" value="① StartWorkflow(payload)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=10;strokeColor=#6c8ebf;strokeWidth=1.5;" parent="1" source="n_p1_start" target="n_enq_wf" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" value="② long-poll (KÉO)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=10;strokeColor=#82b366;strokeWidth=1.5;" parent="1" source="n_p2_poll" target="n_enq_wf" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" value="trả workflow-task" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=6;dashed=1;fontSize=10;strokeColor=#999999;" parent="1" source="n_enq_wf" target="n_p2_poll" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;strokeColor=#555555;" parent="1" source="n_p2_poll" target="n_run_wf" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" value="đọc rules" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=6;fontSize=9;strokeColor=#666666;" parent="1" source="n_run_wf" target="cyl_rules" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;strokeColor=#555555;" parent="1" source="n_run_wf" target="dec_cond" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" value="Có" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=10;strokeColor=#555555;fontStyle=1;" parent="1" source="dec_cond" target="n_p3_sched" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e8" value="Không" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=10;strokeColor=#999999;fontStyle=1;" parent="1" source="dec_cond" target="n_end_noop" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e9" value="③ schedule action-activity" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=10;strokeColor=#e8590c;strokeWidth=1.5;" parent="1" source="n_p3_sched" target="n_enq_act" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e10" value="④ long-poll (KÉO)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=10;strokeColor=#82b366;strokeWidth=1.5;" parent="1" source="n_p4_poll" target="n_enq_act" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e11" value="trả activity-task" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=6;dashed=1;fontSize=10;strokeColor=#999999;" parent="1" source="n_enq_act" target="n_p4_poll" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;strokeColor=#555555;" parent="1" source="n_p4_poll" target="n_p5_run" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e13" value="sửa task" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=6;fontSize=9;strokeColor=#666666;" parent="1" source="n_p5_run" target="cyl_taskdb" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e14" value="gọi API" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=6;fontSize=9;strokeColor=#b85450;" parent="1" source="n_p5_run" target="ext_sys" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;strokeColor=#555555;" parent="1" source="n_p5_run" target="n_p6_report" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e16" value="⑥ report Completed / Failed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=10;strokeColor=#6c8ebf;strokeWidth=1.5;" parent="1" source="n_p6_report" target="dec_completed" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e17" value="Failed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=10;strokeColor=#d79b00;fontStyle=1;" parent="1" source="dec_completed" target="n_retry" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e18" value="re-schedule (loop)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=9;strokeColor=#d79b00;dashed=1;" parent="1" source="n_retry" target="n_enq_act" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e19" value="Completed — trả kết quả" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=6;dashed=1;fontSize=10;strokeColor=#999999;" parent="1" source="dec_completed" target="n_recv" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e20" value="ghi state" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=6;fontSize=9;strokeColor=#666666;" parent="1" source="dec_completed" target="cyl_pg" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;strokeColor=#555555;" parent="1" source="n_recv" target="n_end_wf" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e22" value="⑦ workflow Completed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=10;strokeColor=#82b366;strokeWidth=1.5;" parent="1" source="n_end_wf" target="n_end_state" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- monitoring edges -->
+                <mxCell id="e24" value="scrape /metrics (pull)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=6;dashed=1;fontSize=10;strokeColor=#d79b00;" parent="1" source="n_scrape" target="n_metrics_ep" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e25" value="lưu metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=9;strokeColor=#d79b00;" parent="1" source="n_scrape" target="cyl_tsdb" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e26" value="query (pull)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=6;dashed=1;fontSize=10;strokeColor=#9673a6;" parent="1" source="n_query" target="cyl_tsdb" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;strokeColor=#555555;" parent="1" source="n_query" target="dec_threshold" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e28" value="Có" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=10;strokeColor=#9673a6;fontStyle=1;" parent="1" source="dec_threshold" target="n_alert" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e29" value="Không — tiếp tục theo dõi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endSize=6;fontSize=9;strokeColor=#999999;dashed=1;" parent="1" source="dec_threshold" target="n_query" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- ===================== LEGENDS ===================== -->
+                <mxCell id="legend_colors" value="&lt;b&gt;Chú giải màu đường (connector)&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&#39;color:#6c8ebf&#39;&gt;━&lt;/span&gt; client start (task-api → Temporal)&lt;br&gt;&lt;span style=&#39;color:#82b366&#39;&gt;━&lt;/span&gt; worker KÉO việc (long-poll)&lt;br&gt;&lt;span style=&#39;color:#e8590c&#39;&gt;━&lt;/span&gt; schedule activity&lt;br&gt;&lt;span style=&#39;color:#d79b00&#39;&gt;━&lt;/span&gt; retry / scrape metrics (pull)&lt;br&gt;&lt;span style=&#39;color:#9673a6&#39;&gt;━&lt;/span&gt; Grafana query / alert (pull)&lt;br&gt;&lt;span style=&#39;color:#999999&#39;&gt;┈┈&lt;/span&gt; trả kết quả / return (nét đứt)" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1440" width="440" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="legend_shapes" value="&lt;b&gt;Chú giải hình khối (ISO 5807 · process map)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="1440" width="600" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="lk_term" value="Bắt đầu / Kết thúc" style="shape=terminator;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#666666;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="536" y="1480" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="lk_proc" value="Bước xử lý" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#666666;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="536" y="1530" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="lk_dec" value="Quyết định" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="1478" width="120" height="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="lk_db" value="CSDL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="1532" width="90" height="46" as="geometry"/>
+                </mxCell>
+                <mxCell id="lk_ext" value="Hệ thống ngoài" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="860" y="1480" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="lk_note" value="⑦ số khoanh tròn = thứ tự bước gốc trong sequence" style="text;html=1;align=left;whiteSpace=wrap;fontSize=10;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="860" y="1530" width="250" height="50" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
