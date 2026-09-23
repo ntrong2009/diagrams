@@ -1,81 +1,185 @@
 <mxfile host="65bd71144e">
-    <diagram name="CI Gridsz Client" id="ci-gridsz-client">
-        <mxGraphModel dx="871" dy="797" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="2800" math="0" shadow="0">
+    <diagram name="Payment — luồng thật" id="payment-real-flow">
+        <mxGraphModel dx="1013" dy="506" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2460" pageHeight="1330" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="19" value="Payment Flow" style="text;html=1;fontSize=28;fontStyle=1;align=center;verticalAlign=middle;fontColor=#2E3B4E;" vertex="1" parent="1">
-                    <mxGeometry x="410" y="90" width="320" height="50" as="geometry"/>
+                <mxCell id="title" value="Luồng thanh toán thật — 4 bên, kết quả về bằng webhook chứ không phải response" style="text;html=1;fontSize=17;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="1700" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="&lt;b&gt;User&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=18;fontColor=#1A3C6E;shadow=1;arcSize=20;verticalAlign=middle;" vertex="1" parent="1">
-                    <mxGeometry x="160" y="380" width="180" height="100" as="geometry"/>
+                <mxCell id="sub" value="Mũi tên liền = lời gọi đồng bộ · gạch đứt vàng = webhook (bất đồng bộ) · hình thoi = điểm rẽ nhánh. Toàn bộ phần dưới xảy ra sau đó hàng ngày, không phải hàng giây." style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="54" width="1900" height="22" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="&lt;b&gt;Payment Service&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=18;fontColor=#1E5B2E;shadow=1;arcSize=20;verticalAlign=middle;" vertex="1" parent="1">
-                    <mxGeometry x="820" y="380" width="180" height="100" as="geometry"/>
+                <mxCell id="hdr_cus" value="Khách hàng&#xa;(trình duyệt)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontColor=#3a5a86;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="150" width="180" height="215" as="geometry"/>
                 </mxCell>
-                <mxCell id="22" value="Request" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;html=1;endArrow=classic;strokeColor=#6c8ebf;strokeWidth=2;fontSize=13;fontStyle=1;fontColor=#1A3C6E;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="21">
+                <mxCell id="lane_cus" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="150" width="2200" height="215" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_app" value="App của bạn&#xa;(server)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;fontColor=#4f7a34;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="365" width="180" height="215" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_app" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="365" width="2200" height="215" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_psp" value="PSP / cổng&#xa;thanh toán" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;fontColor=#7f6000;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="580" width="180" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_psp" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="580" width="2200" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_bank" value="Ngân hàng phát hành&#xa;/ tổ chức thẻ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;fontColor=#6a4a8a;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="760" width="180" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_bank" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="760" width="2200" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="s1" value="&lt;b&gt;① Khách bấm &quot;Thanh toán&quot;&lt;/b&gt;&lt;br&gt;Đặt hàng xong, bắt đầu trả tiền." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="175" width="240" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="s4" value="&lt;b&gt;④ Nhập thẻ trên hosted field của PSP&lt;/b&gt;&lt;br&gt;Iframe/SDK do PSP cung cấp. Số thẻ đi thẳng từ trình duyệt sang PSP." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1060" y="175" width="240" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="s5a" value="&lt;b&gt;⑤a Xác thực 3-D Secure&lt;/b&gt;&lt;br&gt;Khách bị đẩy sang trang ngân hàng: OTP, app banking, sinh trắc học." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1330" y="175" width="240" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="note_pci" value="&lt;b&gt;Dữ liệu thẻ KHÔNG đi qua server của bạn&lt;/b&gt;&lt;br&gt;Server của bạn không bao giờ thấy số thẻ ⇒ phạm vi PCI DSS giảm mạnh (SAQ A thay vì SAQ D). Đừng tự làm form thẻ." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="175" width="510" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="note_return" value="&lt;b&gt;Redirect về /return KHÔNG phải bằng chứng đã trả tiền&lt;/b&gt;&lt;br&gt;Khách có thể đóng tab, mất mạng, hoặc sửa URL. Chỉ webhook và API của PSP mới là nguồn sự thật." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1870" y="175" width="510" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="s2" value="&lt;b&gt;② Tạo payment intent&lt;/b&gt;&lt;br&gt;POST /payments kèm Idempotency-Key = mã đơn hàng.&lt;br&gt;Gọi lại 2 lần = vẫn một giao dịch, không trừ tiền đôi." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="390" width="240" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="s8" value="&lt;b&gt;⑧ Nhận webhook, xác thực rồi mới tin&lt;/b&gt;&lt;br&gt;Kiểm chữ ký HMAC · chống replay bằng event id + timestamp · xử lý idempotent (webhook có thể đến nhiều lần)." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1870" y="390" width="240" height="125" as="geometry"/>
+                </mxCell>
+                <mxCell id="s9" value="&lt;b&gt;⑨ Capture rồi ghi sổ&lt;/b&gt;&lt;br&gt;Capture (hoặc PSP auto-capture) ⇒ tiền thực sự bị trừ. Ghi ledger, kích hoạt dịch vụ, gửi hoá đơn." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="2140" y="390" width="240" height="125" as="geometry"/>
+                </mxCell>
+                <mxCell id="note_recon" value="&lt;b&gt;Job đối soát — bắt buộc phải có&lt;/b&gt;&lt;br&gt;Webhook SẼ có lúc rớt. Chạy định kỳ: quét giao dịch còn pending quá X phút rồi gọi API PSP hỏi trạng thái thật." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1060" y="390" width="510" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="s3" value="&lt;b&gt;③ PSP tạo giao dịch&lt;/b&gt;&lt;br&gt;Trả về client secret / redirect URL cho trình duyệt." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="600" width="240" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="gate" value="⑤ Cần 3-D Secure (SCA) ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1340" y="595" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="s7" value="&lt;b&gt;⑦ Bắn webhook payment.authorized&lt;/b&gt;&lt;br&gt;Kèm chữ ký; PSP sẽ gửi lại nếu bạn không trả 2xx." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1600" y="600" width="240" height="85" as="geometry"/>
+                </mxCell>
+                <mxCell id="s6" value="&lt;b&gt;⑥ Authorize — GIỮ tiền, chưa trừ&lt;/b&gt;&lt;br&gt;Hạn mức của khách bị giữ lại. Tiền vẫn nằm ở tài khoản khách." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1600" y="780" width="240" height="95" as="geometry"/>
+                </mxCell>
+                <mxCell id="note_authcap" value="&lt;b&gt;Authorize ≠ Capture — chỗ hay nhầm nhất&lt;/b&gt;&lt;br&gt;Authorize chỉ giữ hạn mức. Không capture trong ~7 ngày thì hold tự rơi (Expired).&lt;br&gt;Huỷ TRƯỚC capture gọi là Void — miễn phí, khách không thấy gì.&lt;br&gt;Trả lại SAU capture gọi là Refund — là một giao dịch mới, mất phí, hiện trên sao kê của khách." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="780" width="1030" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="s1" target="s2" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="470" y="330"/>
-                            <mxPoint x="690" y="330"/>
+                            <mxPoint x="370" y="310"/>
+                            <mxPoint x="640" y="310"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="23" value="Cancel" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;html=1;endArrow=classic;strokeColor=#009999;strokeWidth=2;fontSize=13;fontStyle=1;fontColor=#006666;labelBackgroundColor=#FFFFFF;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="21">
+                <mxCell id="e2" value="Idempotency-Key" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="s2" target="s3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" value="client secret / redirect URL" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="s3" target="s4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="s4" target="gate" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="470" y="300"/>
-                            <mxPoint x="690" y="300"/>
+                            <mxPoint x="1250" y="645"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="24" value="Charge back" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;html=1;endArrow=classic;strokeColor=#9673a6;strokeWidth=2;fontSize=13;fontStyle=1;fontColor=#5B3A73;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="20" target="21">
+                <mxCell id="e5" value="có" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontStyle=1;fontColor=#4f7a34;" parent="1" source="gate" target="s5a" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" value="không — luồng miễn SCA" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontStyle=1;fontColor=#b85450;" parent="1" source="gate" target="s6" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="470" y="270"/>
-                            <mxPoint x="690" y="270"/>
+                            <mxPoint x="1560" y="828"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="25" value="Success" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;html=1;endArrow=classic;strokeColor=#82b366;strokeWidth=2;fontSize=13;fontStyle=1;fontColor=#1E5B2E;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="20">
+                <mxCell id="e7" value="kết quả xác thực" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="s5a" target="s6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="s6" target="s7" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="690" y="530"/>
-                            <mxPoint x="470" y="530"/>
+                            <mxPoint x="1770" y="730"/>
+                            <mxPoint x="1770" y="730"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="26" value="Fault" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;html=1;endArrow=classic;strokeColor=#b85450;strokeWidth=2;fontSize=13;fontStyle=1;fontColor=#8A2A26;labelBackgroundColor=#FFFFFF;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="20">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="690" y="560"/>
-                            <mxPoint x="470" y="560"/>
-                        </Array>
-                    </mxGeometry>
+                <mxCell id="e9" value="webhook payment.authorized" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;dashed=1;strokeColor=#7f6000;fontColor=#7f6000;fontStyle=1;" parent="1" source="s7" target="s8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" value="Dispute" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;html=1;endArrow=classic;strokeColor=#d79b00;strokeWidth=2;fontSize=13;fontStyle=1;fontColor=#9A6F00;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="20">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="690" y="590"/>
-                            <mxPoint x="470" y="590"/>
-                        </Array>
-                    </mxGeometry>
+                <mxCell id="e10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="s8" target="s9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="Expire" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;html=1;endArrow=classic;strokeColor=#666666;strokeWidth=2;fontSize=13;fontStyle=1;fontColor=#444444;labelBackgroundColor=#FFFFFF;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="20">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="690" y="620"/>
-                            <mxPoint x="470" y="620"/>
-                        </Array>
-                    </mxGeometry>
+                <mxCell id="life_t" value="Sau khi authorize — vòng đời của khoản tiền (tính bằng ngày, không phải giây)" style="text;html=1;fontSize=13;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="975" width="1200" height="24" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="Refund" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;html=1;endArrow=classic;strokeColor=#9673a6;strokeWidth=2;fontSize=13;fontStyle=1;fontColor=#5B3A73;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.9;exitDx=0;exitDy=0;entryX=1;entryY=0.9;entryDx=0;entryDy=0;" edge="1" parent="1" source="21" target="20">
-                    <mxGeometry relative="1" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="690" y="650"/>
-                            <mxPoint x="470" y="650"/>
-                        </Array>
-                    </mxGeometry>
+                <mxCell id="st_auth" value="Authorized&#xa;tiền bị GIỮ" style="rounded=1;whiteSpace=wrap;html=1;arcSize=14;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="620" y="1010" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_capt" value="Captured&#xa;đã trừ tiền" style="rounded=1;whiteSpace=wrap;html=1;arcSize=14;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="990" y="1010" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_settle" value="Settled&#xa;tiền về, trừ phí (T+n)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=14;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1360" y="1010" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_void" value="Voided&#xa;huỷ trước capture" style="rounded=1;whiteSpace=wrap;html=1;arcSize=14;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="1110" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_exp" value="Expired&#xa;hold tự rơi (~7 ngày)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=14;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="435" y="1200" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_refund" value="Refunded&#xa;(toàn phần / một phần)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=14;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="990" y="1110" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_disp" value="Disputed&#xa;khách mở tranh chấp" style="rounded=1;whiteSpace=wrap;html=1;arcSize=14;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1360" y="1110" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_win" value="Thắng — giữ tiền" style="rounded=1;whiteSpace=wrap;html=1;arcSize=14;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1360" y="1210" width="170" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="st_lose" value="Chargeback&#xa;bị trừ tiền + phí" style="rounded=1;whiteSpace=wrap;html=1;arcSize=14;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1155" y="1210" width="190" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="note_life" value="&lt;b&gt;Ai khởi động cái gì&lt;/b&gt;&lt;br&gt;• Void / Refund: BẠN chủ động gọi API. Void chỉ dùng được khi chưa capture.&lt;br&gt;• Expired: không ai gọi cả — hết hạn authorization thì hold tự rơi, đơn hàng coi như hỏng.&lt;br&gt;• Disputed / Chargeback: KHÁCH mở với ngân hàng phát hành, về hệ thống bạn dưới dạng webhook, không phải API call của bạn. Bạn có hạn nộp bằng chứng (thường 7–21 ngày); quá hạn là mặc định thua.&lt;br&gt;• Mọi lần đổi trạng thái phải ghi vào ledger để đối soát được với sao kê của PSP." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1600" y="1005" width="820" height="175" as="geometry"/>
+                </mxCell>
+                <mxCell id="l1" value="capture" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="st_auth" target="st_capt" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="l2" value="T+n ngày" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="st_capt" target="st_settle" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="l3" value="void" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="st_auth" target="st_void" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="l4" value="không capture" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="st_auth" target="st_exp" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="l5" value="refund" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="st_capt" target="st_refund" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="l6" value="khách khiếu nại" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="st_settle" target="st_disp" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="l7" value="nộp bằng chứng, thắng" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontStyle=1;fontColor=#4f7a34;" parent="1" source="st_disp" target="st_win" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="l8" value="thua" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontStyle=1;fontColor=#b85450;" parent="1" source="st_disp" target="st_lose" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

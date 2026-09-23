@@ -1,0 +1,129 @@
+<mxfile host="65bd71144e">
+    <diagram name="SSO Token Renewal (IAP session refresher)" id="sso-token-renewal">
+        <mxGraphModel dx="2193" dy="1713" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2250" pageHeight="1080" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="SSO Token Renewal — iframe ẩn của Google IAP tự gia hạn session" style="text;html=1;fontSize=17;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="1500" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="sub" value="iframe được tạo NGAY khi vào site, không đợi token sắp hết hạn. Hẹn giờ nằm trong thẻ &lt;meta refresh&gt; do IAP trả về, không phải setTimeout của app." style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="54" width="1900" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_app" value="Trang chính&#xa;app.example.com" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontColor=#3a5a86;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="150" width="180" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_app" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="150" width="1990" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_iap" value="IAP (Google)&#xa;đứng trước app.example.com" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;fontColor=#7f6000;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="300" width="180" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_iap" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="300" width="1990" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_ifr" value="iframe ẩn&#xa;tài liệu đổi origin theo bước" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;fontColor=#a06a00;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="460" width="180" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_ifr" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d79b00;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="460" width="1990" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_sto" value="Lưu trữ của origin&#xa;idp.example.com" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;fontColor=#4f7a34;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="650" width="180" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_sto" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="650" width="1990" height="190" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_idp" value="IDP / GCIP&#xa;idp.example.com" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;fontColor=#6a4a8a;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="840" width="180" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_idp" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="840" width="1990" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="n1" value="&lt;b&gt;① Ngay khi vào site&lt;/b&gt;&lt;br&gt;Trang chính tạo &amp;lt;iframe&amp;gt; ẩn ngay lúc load — không đợi token sắp hết hạn.&lt;br&gt;src=&quot;/?gcp-iap-mode=SESSION_REFRESHER&quot; — đường dẫn tương đối, CÙNG origin với app." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="165" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="n8" value="&lt;b&gt;⑧ app.example.com có session mới&lt;/b&gt;&lt;br&gt;Người dùng không hề bị gián đoạn: không popup, không reload trang chính." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1930" y="165" width="240" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="n2" value="&lt;b&gt;② IAP trả trang refresher&lt;/b&gt;&lt;br&gt;&amp;lt;meta content=&quot;2700;url=/?gcp-iap-mode=DO_SESSION_REFRESH&quot; http-equiv=&quot;refresh&quot;&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="320" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="n4" value="&lt;b&gt;④ IAP chạy refresh&lt;/b&gt;&lt;br&gt;Nhận DO_SESSION_REFRESH rồi chuyển hướng iframe sang IDP để xác thực lại." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="990" y="320" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="note_hdr" value="&lt;b&gt;Điều kiện để iframe sống được&lt;/b&gt;&lt;br&gt;• Trang nhúng (app.example.com) gửi Content-Security-Policy: child-src https://idp.example.com — mình được nhúng CÁI GÌ.&lt;br&gt;• Trang bị nhúng (idp.example.com) gửi Content-Security-Policy: frame-ancestors https://app.example.com — AI được nhúng mình.&lt;br&gt;• X-Frame-Options: ALLOW-FROM chỉ là fallback cũ — Chrome và Safari chưa bao giờ hỗ trợ, Firefox đã bỏ." style="shape=note;whiteSpace=wrap;html=1;size=16;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1560" y="476" width="520" height="152" as="geometry"/>
+                </mxCell>
+                <mxCell id="n3" value="&lt;b&gt;③ iframe đếm giờ rồi TỰ điều hướng&lt;/b&gt;&lt;br&gt;2700 giây = 45 phút. Hết giờ, iframe tự chuyển sang /?gcp-iap-mode=DO_SESSION_REFRESH — hẹn giờ nằm ở thẻ meta, không cần JS." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="478" width="240" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="n5" value="&lt;b&gt;⑤ iframe sang origin idp.example.com&lt;/b&gt;&lt;br&gt;Vẫn là một thẻ &amp;lt;iframe&amp;gt;, nhưng tài liệu bên trong giờ thuộc origin khác. Trang IDP chạy luồng login như bình thường." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1220" y="476" width="240" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="note_ss" value="&lt;b&gt;Vì sao login trong iframe lại tự động: cùng site *.example.com&lt;/b&gt;&lt;br&gt;Both share *.example.com (same-site), so the iframe at idp.example.com retains full access to its own IndexedDB — no third-party storage restrictions apply.&lt;br&gt;Nếu hai bên KHÁC site, trình duyệt phân vùng storage theo cặp (top-level site, origin) và chặn cookie third-party ⇒ iframe KHÔNG đọc được dữ liệu đăng nhập cũ ⇒ bước ⑥ hỏng, login không còn tự động." style="shape=note;whiteSpace=wrap;html=1;size=16;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="670" width="1050" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="n6" value="&lt;b&gt;⑥ Đọc IndexedDB của origin idp.example.com&lt;/b&gt;&lt;br&gt;Đã có sẵn { tokens, session data } từ lần đăng nhập trước ⇒ login chạy TỰ ĐỘNG, người dùng không phải nhập gì. Token mới được ghi lại sau khi gia hạn (read / write)." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1370" y="668" width="240" height="155" as="geometry"/>
+                </mxCell>
+                <mxCell id="n7" value="&lt;b&gt;⑦ IDP trả 302 → app.example.com/authenticating&lt;/b&gt;&lt;br&gt;Set-Cookie: session=... — cookie quay về cho app.example.com, session IAP của trang chính được làm mới." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1650" y="862" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="n1" target="n2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="n2" target="n3" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="650" y="480"/>
+                            <mxPoint x="650" y="480"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e3" value="sau 45 phút" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="n3" target="n4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1040" y="553"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="n4" target="n5" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1340" y="380"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="n5" target="n6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" value="gửi phiên sẵn có lên IDP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="n6" target="n7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" value="trả cookie về trang chính" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="n7" target="n8" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="2110" y="922"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e8" value="vòng lặp: iframe nhận meta refresh mới, đếm tiếp 45 phút" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;dashed=1;strokeColor=#3a5a86;fontColor=#3a5a86;fontStyle=1;" parent="1" source="n8" target="n3" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="830" y="235"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;dashed=1;strokeColor=#d6b656;" parent="1" source="note_hdr" target="n5" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1500" y="552"/>
+                            <mxPoint x="1500" y="552"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

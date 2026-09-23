@@ -1,206 +1,155 @@
 <mxfile host="65bd71144e">
-    <diagram id="postgres-export-comparison" name="Postgres Export — Component Architecture">
-        <mxGraphModel dx="1019" dy="797" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1450" math="0" shadow="0">
+    <diagram name="Postgres export — Traditional vs Streaming" id="postgres-export-comparison">
+        <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2260" pageHeight="1460" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="title" value="🐘 POSTGRES EXPORT — COMPONENT ARCHITECTURE: TRADITIONAL vs STREAMING" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#0F172A;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="100" y="20" width="2200" height="45" as="geometry"/>
+                <mxCell id="title" value="Postgres export — Traditional vs Streaming: khác nhau ở đúng một lane" style="text;html=1;fontSize=17;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="1600" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="subtitle" value="So sánh kiến trúc 2 cách xuất dữ liệu DB → CSV. Khác biệt then chốt: cách RAM của Application Server xử lý dữ liệu." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=2;fontColor=#475569;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="100" y="68" width="2200" height="25" as="geometry"/>
+                <mxCell id="sub" value="Hai cách cùng đi qua ba nơi giống hệt nhau. Toàn bộ khác biệt nằm ở lane giữa — RAM của App Server. Code trích từ Mose.Api.Task/Services/Exporter/BaseExporter.cs." style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="54" width="1900" height="22" as="geometry"/>
                 </mxCell>
-                <mxCell id="H1" value="❌ CÁCH 1 — TRADITIONAL (load-all-then-write) · ANTI-PATTERN với data lớn" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2.5;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;fontFamily=Helvetica;gradientDirection=south;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="115" width="690" height="50" as="geometry"/>
+                <mxCell id="band1" value="CÁCH 1 — Traditional: load hết rồi mới ghi" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=13;align=left;spacingLeft=12;fontColor=#8a3b38;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="150" width="960" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1D" value="&lt;b style=&#39;font-size:15px;&#39;&gt;PostgreSQL&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:11px;color:#6b7280;&#39;&gt;&amp;lt;&amp;lt;database&amp;gt;&amp;gt;&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&#39;font-family:Consolas,monospace;font-size:11px;background:#e2e8f0;padding:2px 6px;&#39;&gt;SELECT * FROM ...&lt;/span&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=20;fillColor=#e0f2fe;strokeColor=#0369a1;strokeWidth=3;fontSize=12;fontColor=#0c4a6e;align=center;verticalAlign=middle;fontFamily=Helvetica;shadow=1;gradientColor=#bae6fd;gradientDirection=south;" parent="1" vertex="1">
-                    <mxGeometry x="100" y="280" width="260" height="220" as="geometry"/>
+                <mxCell id="band2" value="CÁCH 2 — Streaming: COPY TO STDOUT, ghi cuốn chiếu" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;align=left;spacingLeft=12;fontColor=#4f7a34;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="150" width="960" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1AS" value="🖥️ &lt;b&gt;Application Server&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:10px;color:#6b7280;&#39;&gt;&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;/span&gt;" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#475569;strokeWidth=2.5;fontSize=13;fontStyle=1;fontColor=#0F172A;align=center;verticalAlign=top;spacingTop=10;fontFamily=Helvetica;shadow=1;dashed=0;" parent="1" vertex="1">
-                    <mxGeometry x="500" y="230" width="900" height="320" as="geometry"/>
+                <mxCell id="hdr_pg" value="PostgreSQL" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;fontColor=#6a4a8a;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="210" width="180" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1R" value="&lt;b style=&#39;font-size:15px;&#39;&gt;💥 RAM (Heap)&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:10px;color:#7f1d1d;&#39;&gt;Phình to theo data size&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Nạp &lt;b&gt;TOÀN BỘ&lt;/b&gt; result set vào&lt;br/&gt;List&amp;lt;User&amp;gt; / Array&amp;lt;T&amp;gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;1 triệu rows × 1 KB = 1 GB RAM&lt;/b&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fecaca;strokeColor=#b91c1c;strokeWidth=3;fontSize=12;fontColor=#7f1d1d;align=center;verticalAlign=middle;spacingLeft=15;spacingRight=15;fontFamily=Helvetica;shadow=1;gradientColor=#fef2f2;gradientDirection=south;" parent="1" vertex="1">
-                    <mxGeometry x="540" y="290" width="500" height="180" as="geometry"/>
+                <mxCell id="l_pg_1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="210" width="960" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1MB" value="&lt;b style=&#39;font-size:11px;color:#7f1d1d;&#39;&gt;Memory:&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontColor=#7f1d1d;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="1070" y="290" width="65" height="20" as="geometry"/>
+                <mxCell id="l_pg_2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="210" width="960" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1MB_frame" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7f1d1d;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="1070" y="315" width="310" height="32" as="geometry"/>
+                <mxCell id="hdr_ram" value="RAM của&#xa;App Server" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontColor=#3a5a86;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="350" width="180" height="290" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1MB_fill" value="█████████████ &gt; LIMIT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dc2626;strokeColor=none;fontSize=11;fontStyle=1;fontColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="1072" y="317" width="305" height="28" as="geometry"/>
+                <mxCell id="l_ram_1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="350" width="960" height="290" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1MB_label" value="⚠️ OOM khi data &gt; heap size" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=2;fontColor=#7f1d1d;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="1070" y="350" width="310" height="20" as="geometry"/>
+                <mxCell id="l_ram_2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="350" width="960" height="290" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1Chart" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;" parent="1" vertex="1">
-                    <mxGeometry x="1070" y="385" width="310" height="135" as="geometry"/>
+                <mxCell id="hdr_disk" value="Đĩa —&#xa;file CSV" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;fontColor=#7f6000;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="640" width="180" height="150" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1ChartTitle" value="📊 Memory profile (linear growth → 💥)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontStyle=1;fontColor=#7f1d1d;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="1075" y="390" width="300" height="18" as="geometry"/>
+                <mxCell id="l_disk_1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="640" width="960" height="150" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1B1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fca5a5;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1090" y="495" width="20" height="15" as="geometry"/>
+                <mxCell id="l_disk_2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="640" width="960" height="150" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1B2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fca5a5;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1120" y="485" width="20" height="25" as="geometry"/>
+                <mxCell id="pg1" value="&lt;b&gt;SELECT * FROM ...&lt;/b&gt;&lt;br&gt;Npgsql trả về TOÀN BỘ result set trong một lần, app phải nhận hết mới đi tiếp." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="235" width="920" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1B3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f87171;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1150" y="470" width="20" height="40" as="geometry"/>
+                <mxCell id="pg2" value="&lt;b&gt;COPY (query) TO STDOUT (FORMAT CSV, DELIMITER ';', NULL '', QUOTE '&quot;', ESCAPE '&quot;')&lt;/b&gt;&lt;br&gt;Postgres tự sinh CSV và đẩy ra liên tục theo khối, không chờ gom đủ." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1260" y="235" width="920" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1B4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f87171;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1180" y="450" width="20" height="60" as="geometry"/>
+                <mxCell id="ram1" value="&lt;b&gt;Toàn bộ dữ liệu nằm trong heap — RAM = O(n)&lt;/b&gt;&lt;br&gt;List&amp;lt;T&amp;gt; reportData — toàn bộ object đọc từ DB&lt;br&gt;List&amp;lt;string&amp;gt; lines — toàn bộ dòng ĐÃ format&lt;br&gt;⇒ hai bản dữ liệu tồn tại cùng lúc, cộng mảng lines.ToArray()&lt;br&gt;&lt;br&gt;1 triệu dòng × 1 KB ≈ 2 GB heap. Data lớn hơn heap ⇒ OutOfMemoryException.&lt;br&gt;Kích thước khối này lớn lên đúng bằng tốc độ dữ liệu lớn lên." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="380" width="920" height="230" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1B5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ef4444;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1210" y="425" width="20" height="85" as="geometry"/>
+                <mxCell id="buf" value="&lt;b&gt;char[4096] — 4 KB&lt;/b&gt;&lt;br&gt;Một buffer duy nhất, tái sử dụng." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1260" y="430" width="280" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1B6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dc2626;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1240" y="400" width="20" height="110" as="geometry"/>
+                <mxCell id="cap2" value="RAM = O(1). Buffer không lớn lên theo số dòng — 10 nghìn dòng hay 100 triệu dòng đều dùng đúng 4 KB này.&#xa;Khoảng trống còn lại của lane chính là phần RAM bạn không phải trả." style="text;html=1;fontSize=11;align=left;verticalAlign=top;fontColor=#4f7a34;" parent="1" vertex="1">
+                    <mxGeometry x="1580" y="435" width="600" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1B7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b91c1c;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1270" y="412" width="20" height="98" as="geometry"/>
+                <mxCell id="disk1" value="&lt;b&gt;File.WriteAllLines(path, lines.ToArray())&lt;/b&gt;&lt;br&gt;Ghi MỘT lần, sau khi đã load và format xong tất cả.&lt;br&gt;Byte đầu tiên của file chỉ xuất hiện ở cuối quá trình." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="665" width="920" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1Boom" value="💥" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=36;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="1300" y="430" width="60" height="60" as="geometry"/>
+                <mxCell id="disk2" value="&lt;b&gt;StreamWriter ghi nối tiếp từng khối&lt;/b&gt;&lt;br&gt;File có byte đầu tiên ngay sau khối đầu tiên.&lt;br&gt;Ghi tới đâu giải phóng buffer tới đó." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1260" y="665" width="920" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1C" value="&lt;b style=&#39;font-size:15px;&#39;&gt;Export File&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:11px;color:#6b7280;&#39;&gt;&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;output.csv&lt;br/&gt;&lt;br/&gt;⏱️ Ghi 1 lần&lt;br/&gt;sau khi load xong" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#fef9c3;strokeColor=#ca8a04;strokeWidth=2.5;fontSize=12;fontColor=#713f12;align=center;verticalAlign=middle;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="1500" y="280" width="240" height="220" as="geometry"/>
-                </mxCell>
-                <mxCell id="C1Code" value="&lt;b style=&#39;font-size:13px;color:#7f1d1d;&#39;&gt;💻 CODE PATTERN&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&#39;font-family:Consolas,monospace;font-size:11px;background:#fee2e2;padding:4px 6px;display:block;&#39;&gt;var users = ctx.Users&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;.ToList(); // ❌ load all&lt;br/&gt;&lt;br/&gt;File.WriteAllLines(path,&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;users.Select(u =&amp;gt; ...));&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Vấn đề:&lt;/b&gt; RAM = O(n) · OOM" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#b91c1c;strokeWidth=2;fontSize=12;fontColor=#7f1d1d;align=left;verticalAlign=top;spacingLeft=15;spacingTop=12;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="1820" y="230" width="240" height="320" as="geometry"/>
-                </mxCell>
-                <mxCell id="C1AR1" value="①  Query" style="endArrow=classic;html=1;strokeWidth=3.5;strokeColor=#0F172A;endFill=1;fontSize=12;fontStyle=1;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=1;" parent="1" source="C1D" target="C1AS" edge="1">
+                <mxCell id="e1" value="① nạp hết" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="pg1" target="ram1" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="C1AR2" value="②  Write" style="endArrow=classic;html=1;strokeWidth=3.5;strokeColor=#0F172A;endFill=1;fontSize=12;fontStyle=1;fontColor=#0F172A;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=1;" parent="1" source="C1AS" target="C1C" edge="1">
+                <mxCell id="e2" value="② ghi một lần" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="ram1" target="disk1" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="H2" value="✅ CÁCH 2 — STREAMING / COPY (continuous pipeline) · BEST PRACTICE production-grade" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2.5;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;fontFamily=Helvetica;gradientDirection=south;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="620" width="740" height="50" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2D" value="&lt;b style=&#39;font-size:15px;&#39;&gt;PostgreSQL&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:11px;color:#6b7280;&#39;&gt;&amp;lt;&amp;lt;database&amp;gt;&amp;gt;&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&#39;font-family:Consolas,monospace;font-size:11px;background:#dcfce7;padding:2px 6px;&#39;&gt;COPY TO STDOUT&lt;/span&gt;&lt;br/&gt;hoặc cursor FETCH" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=20;fillColor=#e0f2fe;strokeColor=#0369a1;strokeWidth=3;fontSize=12;fontColor=#0c4a6e;align=center;verticalAlign=middle;fontFamily=Helvetica;shadow=1;gradientColor=#bae6fd;gradientDirection=south;" parent="1" vertex="1">
-                    <mxGeometry x="100" y="785" width="260" height="220" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2AS" value="🖥️ &lt;b&gt;Application Server&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:10px;color:#6b7280;&#39;&gt;&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;/span&gt;" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=#f1f5f9;strokeColor=#475569;strokeWidth=2.5;fontSize=13;fontStyle=1;fontColor=#0F172A;align=center;verticalAlign=top;spacingTop=10;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="500" y="735" width="900" height="320" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2R" value="&lt;b style=&#39;font-size:14px;&#39;&gt;✅ Stream Buffer&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:10px;color:#14532d;&#39;&gt;Fixed size · không phình&lt;/span&gt;&lt;br/&gt;~ vài MB" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#bbf7d0;strokeColor=#15803d;strokeWidth=3;fontSize=11;fontColor=#14532d;align=center;verticalAlign=middle;spacingLeft=10;spacingRight=10;fontFamily=Helvetica;shadow=1;gradientColor=#f0fdf4;gradientDirection=south;" parent="1" vertex="1">
-                    <mxGeometry x="540" y="800" width="240" height="100" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2Pipe" value="🔄 PIPELINE (chunk-by-chunk)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=1;fontColor=#15803d;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="540" y="910" width="240" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2PipeA" value="read N rows → write → next batch" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontStyle=2;fontColor=#475569;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="540" y="930" width="240" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2MB" value="&lt;b style=&#39;font-size:11px;color:#14532d;&#39;&gt;Memory:&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontColor=#14532d;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="820" y="800" width="65" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2MB_frame" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#14532d;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="820" y="825" width="560" height="32" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2MB_fill" value="█ 5 MB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#15803d;strokeColor=none;fontSize=11;fontStyle=1;fontColor=#FFFFFF;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="822" y="827" width="20" height="28" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2MB_label" value="✅ Constant · không lệ thuộc data size" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=2;fontColor=#14532d;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="820" y="860" width="560" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2Chart" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94a3b8;strokeWidth=1.5;dashed=1;" parent="1" vertex="1">
-                    <mxGeometry x="820" y="895" width="560" height="135" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2ChartTitle" value="📊 Memory profile (flat constant ✅)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontStyle=1;fontColor=#14532d;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="825" y="900" width="550" height="18" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2B1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#86efac;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="850" y="995" width="20" height="15" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2B2" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#86efac;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="900" y="995" width="20" height="15" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2B3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#86efac;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="950" y="995" width="20" height="15" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2B4" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#86efac;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1000" y="995" width="20" height="15" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2B5" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#86efac;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1050" y="995" width="20" height="15" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2B6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#86efac;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1100" y="995" width="20" height="15" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2B7" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#86efac;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1150" y="995" width="20" height="15" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2B8" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#86efac;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1200" y="995" width="20" height="15" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2B9" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#86efac;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1250" y="995" width="20" height="15" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2B10" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#86efac;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1300" y="995" width="20" height="15" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2Check" value="✅" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="1335" y="985" width="40" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2C" value="&lt;b style=&#39;font-size:15px;&#39;&gt;Export File&lt;/b&gt;&lt;br/&gt;&lt;span style=&#39;font-size:11px;color:#6b7280;&#39;&gt;&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;output.csv ↑&lt;br/&gt;&lt;br/&gt;⚡ Append cuốn chiếu&lt;br/&gt;có data ngay" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#fef9c3;strokeColor=#ca8a04;strokeWidth=2.5;fontSize=12;fontColor=#713f12;align=center;verticalAlign=middle;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="1500" y="785" width="240" height="220" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2Code" value="&lt;b style=&#39;font-size:13px;color:#14532d;&#39;&gt;💻 CODE PATTERN&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;&lt;span style=&#39;font-family:Consolas,monospace;font-size:11px;background:#dcfce7;padding:4px 6px;display:block;&#39;&gt;await using var reader =&lt;br/&gt;&amp;nbsp;&amp;nbsp;conn.BeginTextExport(&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&quot;COPY users TO STDOUT&quot;);&lt;br/&gt;&lt;br/&gt;await reader.CopyToAsync(&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;fileStream);&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Lợi ích:&lt;/b&gt; RAM = O(1) · scale ∞" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#15803d;strokeWidth=2;fontSize=12;fontColor=#14532d;align=left;verticalAlign=top;spacingLeft=15;spacingTop=12;fontFamily=Helvetica;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="1820" y="735" width="230" height="320" as="geometry"/>
-                </mxCell>
-                <mxCell id="C2AR1" value="① Stream rows" style="endArrow=classic;html=1;strokeWidth=3.5;strokeColor=#15803d;endFill=1;fontSize=12;fontStyle=1;fontColor=#14532d;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=1;" parent="1" source="C2D" target="C2AS" edge="1">
+                <mxCell id="e3" value="① đọc 4 KB" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="pg2" target="buf" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="C2AR2" value="② Append" style="endArrow=classic;html=1;strokeWidth=3.5;strokeColor=#15803d;endFill=1;fontSize=12;fontStyle=1;fontColor=#14532d;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;rounded=1;" parent="1" source="C2AS" target="C2C" edge="1">
+                <mxCell id="e4" value="② ghi ngay" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="buf" target="disk2" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_h1" value="&lt;b&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Metric&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0F172A;strokeColor=#0F172A;strokeWidth=1.5;fontSize=12;fontColor=#FFFFFF;fontStyle=1;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="1100" width="400" height="40" as="geometry"/>
+                <mxCell id="e5" value="③ lặp tới khi hết dữ liệu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;dashed=1;strokeColor=#4f7a34;fontColor=#4f7a34;fontStyle=1;" parent="1" source="disk2" target="buf" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_h2" value="&lt;b&gt;&amp;nbsp;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Cách 1 — Traditional&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b91c1c;strokeColor=#0F172A;strokeWidth=1.5;fontSize=12;fontColor=#FFFFFF;fontStyle=1;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="440" y="1100" width="960" height="40" as="geometry"/>
+                <mxCell id="code1" value="// BaseExporter.SaveToCsv&lt;T&gt;&#xa;var lines = new List&lt;string&gt;();&#xa;lines.Add(header);&#xa;var valueLines = reportData&#xa;    .Select(row =&gt; string.Join(&quot;;&quot;, ...))&#xa;    .ToList();                          // toàn bộ dòng đã format&#xa;lines.AddRange(valueLines);&#xa;File.WriteAllLines(path, lines.ToArray(), Encoding.UTF8);" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=10;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="820" width="960" height="180" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_h3" value="&lt;b&gt;&lt;font style=&quot;color: rgb(255, 255, 255);&quot;&gt;Cách 2 — Streaming&lt;/font&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#15803d;strokeColor=#0F172A;strokeWidth=1.5;fontSize=12;fontColor=#FFFFFF;fontStyle=1;align=center;verticalAlign=middle;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="1400" y="1100" width="960" height="40" as="geometry"/>
+                <mxCell id="code2" value="// BaseExporter.ExportAsPostgresCommand   (bufferSize = 4 * 1024)&#xa;await using var streamWriter = new StreamWriter(path, false, Encoding.UTF8, bufferSize);&#xa;await streamWriter.WriteLineAsync(string.Join(delimiter, selectedColumns));&#xa;using var copyOut = await connection.BeginTextExportAsync(copyCommand);&#xa;var buffer = new char[bufferSize];&#xa;while ((read = await copyOut.ReadAsync(buffer)) &gt; 0)&#xa;    await streamWriter.WriteAsync(buffer.AsMemory(0, read));" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;verticalAlign=top;spacingLeft=10;spacingTop=4;fontSize=10;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="820" width="960" height="180" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_r1a" value="&lt;b&gt;RAM usage&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#0F172A;strokeWidth=1;fontSize=12;fontColor=#0F172A;align=left;verticalAlign=middle;spacingLeft=15;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="1140" width="400" height="40" as="geometry"/>
+                <mxCell id="tbl_title" value="So sánh" style="text;html=1;fontSize=13;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1020" width="600" height="24" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_r1b" value="O(n) — 1M rows × 1KB ≈ 1 GB heap" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#0F172A;strokeWidth=1;fontSize=12;fontColor=#7f1d1d;align=left;verticalAlign=middle;spacingLeft=15;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="440" y="1140" width="960" height="40" as="geometry"/>
+                <mxCell id="th_a" value="Tiêu chí" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1052" width="180" height="36" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_r1c" value="O(1) — buffer cố định ~vài MB" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#0F172A;strokeWidth=1;fontSize=12;fontColor=#14532d;align=left;verticalAlign=middle;spacingLeft=15;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="1400" y="1140" width="960" height="40" as="geometry"/>
+                <mxCell id="th_b" value="CÁCH 1 — Traditional" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="1052" width="960" height="36" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_r2a" value="&lt;b&gt;Time-to-first-byte&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#0F172A;strokeWidth=1;fontSize=12;fontColor=#0F172A;align=left;verticalAlign=middle;spacingLeft=15;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="1180" width="400" height="40" as="geometry"/>
+                <mxCell id="th_c" value="CÁCH 2 — Streaming" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="1052" width="960" height="36" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_r2b" value="🐢 Đợi load xong toàn bộ (vài phút)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#0F172A;strokeWidth=1;fontSize=12;fontColor=#7f1d1d;align=left;verticalAlign=middle;spacingLeft=15;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="440" y="1180" width="960" height="40" as="geometry"/>
+                <mxCell id="ta0" value="RAM usage" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1088" width="180" height="56" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_r2c" value="⚡ Vài giây — file có byte đầu ngay" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#0F172A;strokeWidth=1;fontSize=12;fontColor=#14532d;align=left;verticalAlign=middle;spacingLeft=15;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="1400" y="1180" width="960" height="40" as="geometry"/>
+                <mxCell id="tb0" value="O(n) — 1 triệu dòng × 1 KB ≈ 2 GB heap" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="1088" width="960" height="56" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_r3a" value="&lt;b&gt;Implementation&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#0F172A;strokeWidth=1;fontSize=12;fontColor=#0F172A;align=left;verticalAlign=middle;spacingLeft=15;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="1220" width="400" height="40" as="geometry"/>
+                <mxCell id="tc0" value="O(1) — char[4096] cố định, ~4 KB" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="1088" width="960" height="56" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_r3b" value="ToList() / ToArray() + File.WriteAllLines()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#0F172A;strokeWidth=1;fontSize=12;fontColor=#7f1d1d;align=left;verticalAlign=middle;spacingLeft=15;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="440" y="1220" width="960" height="40" as="geometry"/>
+                <mxCell id="ta1" value="Bản sao dữ liệu trong heap" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1144" width="180" height="56" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_r3c" value="Npgsql BeginTextExport / cursor FETCH / IAsyncEnumerable" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#0F172A;strokeWidth=1;fontSize=12;fontColor=#14532d;align=left;verticalAlign=middle;spacingLeft=15;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="1400" y="1220" width="960" height="40" as="geometry"/>
+                <mxCell id="tb1" value="2 — List&lt;T&gt; object + List&lt;string&gt; dòng đã format" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="1144" width="960" height="56" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_r4a" value="&lt;b&gt;Use case&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#0F172A;strokeWidth=1;fontSize=12;fontColor=#0F172A;align=left;verticalAlign=middle;spacingLeft=15;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="1260" width="400" height="40" as="geometry"/>
+                <mxCell id="tc1" value="1 buffer, tái sử dụng cho mọi khối" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="1144" width="960" height="56" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_r4b" value="Data nhỏ (&lt; 10k rows) · prototype · báo cáo nội bộ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef2f2;strokeColor=#0F172A;strokeWidth=1;fontSize=12;fontColor=#7f1d1d;align=left;verticalAlign=middle;spacingLeft=15;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="440" y="1260" width="960" height="40" as="geometry"/>
+                <mxCell id="ta2" value="Time-to-first-byte" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1200" width="180" height="56" as="geometry"/>
                 </mxCell>
-                <mxCell id="SUM_r4c" value="Data lớn (&gt; 100k rows) · ETL · export báo cáo · production" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0fdf4;strokeColor=#0F172A;strokeWidth=1;fontSize=12;fontColor=#14532d;align=left;verticalAlign=middle;spacingLeft=15;fontFamily=Helvetica;" parent="1" vertex="1">
-                    <mxGeometry x="1400" y="1260" width="960" height="40" as="geometry"/>
+                <mxCell id="tb2" value="Đợi load và format xong toàn bộ (vài phút)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="1200" width="960" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="tc2" value="Vài giây — file có byte đầu ngay" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="1200" width="960" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="ta3" value="Biến đổi dữ liệu trong app" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1256" width="180" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="tb3" value="Được — map/format từng dòng bằng C#" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="1256" width="960" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="tc3" value="Hạn chế — Postgres tự sinh CSV; muốn đổi format phải sửa câu COPY" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="1256" width="960" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="ta4" value="Implementation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1312" width="180" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="tb4" value="SaveToCsv&lt;T&gt;: ToList() + File.WriteAllLines()" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="1312" width="960" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="tc4" value="ExportAsPostgresCommand: COPY TO STDOUT + BeginTextExportAsync" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="1312" width="960" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="ta5" value="Use case" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1368" width="180" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="tb5" value="Data nhỏ (&lt; 10k dòng) · prototype · báo cáo nội bộ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="1368" width="960" height="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="tc5" value="Data lớn (&gt; 100k dòng) · ETL · export báo cáo · production" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1240" y="1368" width="960" height="56" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
