@@ -1,0 +1,160 @@
+<mxfile host="65bd71144e">
+    <diagram name="nginx proxy_pass — URI upstream" id="nginx-proxy-pass">
+        <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1230" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="nginx proxy_pass — dấu / quyết định URI mà upstream nhận được" style="text;html=1;fontSize=17;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="1600" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="sub" value="Toàn bộ hành vi nằm ở một câu hỏi: proxy_pass có phần URI hay không. Ví dụ trong bảng lấy từ chính config nginx của bạn." style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="54" width="1900" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="rule_t" value="Quy tắc gốc" style="text;html=1;fontSize=13;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="110" width="600" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="req" value="&lt;b&gt;Request&lt;/b&gt;&lt;br&gt;GET /api/users&lt;br&gt;khớp location /api/ { ... }" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="150" width="280" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="gate" value="proxy_pass&#xa;có phần URI&#xa;không ?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="145" width="220" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="bA" value="&lt;b&gt;KHÔNG có URI&lt;/b&gt;&lt;br&gt;proxy_pass http://backend:3000;&lt;br&gt;⇒ giữ NGUYÊN toàn bộ request URI, không cắt gì cả." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="120" width="520" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="rA" value="backend:3000/api/users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=middle;spacingLeft=8;fontSize=12;fontStyle=1;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="1230" y="140" width="420" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="bB" value="&lt;b&gt;CÓ URI (kể cả chỉ một dấu /)&lt;/b&gt;&lt;br&gt;proxy_pass http://backend:3000/;&lt;br&gt;⇒ THAY phần khớp location (/api/) bằng URI đó." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="660" y="245" width="520" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="rB" value="backend:3000/users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=middle;spacingLeft=8;fontSize=12;fontStyle=1;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="1230" y="265" width="420" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="note_rule" value="&lt;b&gt;Chỗ bản vẽ cũ ghi sai&lt;/b&gt;&lt;br&gt;Bản excalidraw ghi &quot;/api/users → backend:3000/users&quot; nhưng config bên cạnh lại là proxy_pass http://backend:3000; (không có URI). Với config đó, upstream nhận /api/users chứ KHÔNG phải /users. Muốn ra /users thì phải có dấu / ở cuối." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1700" y="140" width="460" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="tbl_t" value="Bảng ánh xạ — hàng 3 và 4 lấy từ config thật trong repo" style="text;html=1;fontSize=13;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="380" width="1200" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="th0" value="location" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="412" width="230" height="38" as="geometry"/>
+                </mxCell>
+                <mxCell id="th1" value="proxy_pass" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="412" width="500" height="38" as="geometry"/>
+                </mxCell>
+                <mxCell id="th2" value="Request vào" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="412" width="250" height="38" as="geometry"/>
+                </mxCell>
+                <mxCell id="th3" value="Upstream nhận" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="412" width="290" height="38" as="geometry"/>
+                </mxCell>
+                <mxCell id="th4" value="Ghi chú" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;align=left;spacingLeft=8;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="1350" y="412" width="810" height="38" as="geometry"/>
+                </mxCell>
+                <mxCell id="r0a" value="/api/" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="450" width="230" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r0b" value="http://backend:3000;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="450" width="500" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r0c" value="/api/users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="450" width="250" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r0d" value="/api/users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="450" width="290" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r0e" value="Không có URI ⇒ giữ nguyên. Đây chính là ca mà bản vẽ cũ mô tả sai." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="1350" y="450" width="810" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r1a" value="/api/" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="548" width="230" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r1b" value="http://backend:3000/;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="548" width="500" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r1c" value="/api/users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="548" width="250" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r1d" value="/users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="548" width="290" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r1e" value="Có URI ⇒ cắt prefix /api/ rồi ghép. Đây mới là ca ra /users." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="1350" y="548" width="810" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r2a" value="/api/idp/" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f8f0;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="646" width="230" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r2b" value="http://gridsz-identity-provider/api/v1/;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f8f0;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="646" width="500" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r2c" value="/api/idp/login" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f8f0;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="646" width="250" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r2d" value="/api/v1/login" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f8f0;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="646" width="290" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r2e" value="Đúng. Dạng dùng nhiều nhất trong repo của bạn: đổi prefix ngoài thành prefix thật của service." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f0f8f0;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="1350" y="646" width="810" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r3a" value="/api/info/" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fdecea;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="744" width="230" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r3b" value="http://…/api/v1;   ← thiếu dấu /" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fdecea;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="744" width="500" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r3c" value="/api/info/users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fdecea;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="744" width="250" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r3d" value="/api/v1users" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fdecea;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="744" width="290" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r3e" value="DÍNH CHỮ. Prefix /api/info/ bị thay bằng /api/v1 (không có / cuối) nên ghép thẳng vào users. Có ở 4 file: gridsz-frontend/apps/{gridsz-client, gridsz-module-ac, gridsz-module-build, gridsz-module-crm}/nginx/nginx.conf:86" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fdecea;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="1350" y="744" width="810" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r4a" value="~ \.(?:css|js)$" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="842" width="230" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r4b" value="http://backend;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="842" width="500" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r4c" value="bất kỳ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="842" width="250" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r4d" value="giữ nguyên" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;fontFamily=Courier New;" parent="1" vertex="1">
+                    <mxGeometry x="1050" y="842" width="290" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="r4e" value="Location dạng regex thì proxy_pass KHÔNG được có phần URI — viết vào là nginx từ chối khởi động." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontSize=11;align=left;spacingLeft=8;verticalAlign=top;spacingTop=6;" parent="1" vertex="1">
+                    <mxGeometry x="1350" y="842" width="810" height="98" as="geometry"/>
+                </mxCell>
+                <mxCell id="trap_t" value="Ba chỗ bản vẽ cũ thiếu hoặc nói sai" style="text;html=1;fontSize=13;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="950" width="900" height="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="t1" value="&lt;b&gt;① nginx KHÔNG tự thêm X-Forwarded-*&lt;/b&gt;&lt;br&gt;Bản cũ ghi &quot;Headers Added by Nginx: X-Real-IP, X-Forwarded-For, X-Forwarded-Proto&quot; — không đúng. Mặc định nginx chỉ đặt Host: $proxy_host và Connection: close. Ba header kia phải tự khai bằng proxy_set_header, đúng như hộp config ngay bên cạnh trong chính bản vẽ đó đang làm." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="980" width="700" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="t2" value="&lt;b&gt;② Tên host được resolve MỘT LẦN lúc khởi động&lt;/b&gt;&lt;br&gt;Khi proxy_pass dùng tên cố định (không có biến), nginx resolve DNS lúc nạp config rồi cache mãi. Trong Kubernetes, nếu Service bị tạo lại và đổi ClusterIP thì nginx vẫn gửi tới IP cũ cho tới khi reload. Muốn resolve theo từng request thì phải dùng biến + directive resolver — repo của bạn hiện không có resolver nào." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="760" y="980" width="700" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="t3" value="&lt;b&gt;③ Ba ô &quot;App :3000 / :3001 / :3002&quot; không có thật&lt;/b&gt;&lt;br&gt;Bản cũ vẽ 3 upstream như thể nginx cân bằng tải giữa chúng, nhưng không có block upstream nào trong repo. Việc chia tải do Kubernetes Service làm, nginx chỉ trỏ tới một tên Service duy nhất. Muốn nginx tự cân bằng thì mới cần upstream { server ...; } và chọn round-robin / least_conn / ip_hash." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1480" y="980" width="680" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="req" target="gate" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" value="không" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontStyle=1;fontColor=#4f7a34;" parent="1" source="gate" target="bA" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" value="có" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;fontStyle=1;fontColor=#b85450;" parent="1" source="gate" target="bB" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="bA" target="rA" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;" parent="1" source="bB" target="rB" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
