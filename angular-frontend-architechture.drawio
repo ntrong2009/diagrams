@@ -1,17 +1,167 @@
 <mxfile host="65bd71144e">
-    <diagram id="RTxqViCyq0r_Pwkw2Q6O" name="Page-1">
-        <mxGraphModel dx="790" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <diagram name="Frontend tech stack theo giai đoạn" id="angular-frontend-stack">
+        <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1818" pageHeight="1180" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="&lt;div&gt;Storybook&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="170" y="80" width="120" height="60" as="geometry"/>
+                <mxCell id="title" value="Công nghệ áp dụng cho Angular frontend — xếp theo giai đoạn bắt lỗi" style="text;html=1;fontSize=17;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="1400" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="Style lint" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="130" y="260" width="120" height="60" as="geometry"/>
+                <mxCell id="sub" value="Đọc từ trên xuống: lỗi bị chặn càng sớm càng rẻ. Nội dung lấy từ package.json, .github/workflows và CLAUDE.md của gridsz-frontend." style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="54" width="1500" height="22" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="TS lint" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="130" y="360" width="120" height="60" as="geometry"/>
+                <mxCell id="lg1" value="đang dùng" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="88" width="110" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg2" value="nên cân nhắc thêm" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="88" width="150" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg3" value="khoảng trống / vấn đề" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="88" width="180" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_local" value="Local / IDE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;fontColor=#3a5a86;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="150" width="180" height="198" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_local" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="150" width="1558" height="198" as="geometry"/>
+                </mxCell>
+                <mxCell id="local_0" value="&lt;b&gt;Angular 21.2 · TypeScript 5.9&lt;/b&gt;&lt;br&gt;nền tảng framework + ngôn ngữ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="168" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="local_1" value="&lt;b&gt;Nx 22.7&lt;/b&gt;&lt;br&gt;monorepo: task graph, cache, chỉ chạy project bị ảnh hưởng" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="168" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="local_2" value="&lt;b&gt;pnpm&lt;/b&gt;&lt;br&gt;quản lý package, lockfile dùng chung cho cả workspace" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="168" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="local_3" value="&lt;b&gt;Prettier 3.6&lt;/b&gt;&lt;br&gt;format code · plugin organize-attributes" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="168" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="local_4" value="&lt;b&gt;Angular Language Service&lt;/b&gt;&lt;br&gt;gợi ý và báo lỗi template ngay trong IDE" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1470" y="168" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="local_5" value="&lt;b&gt;Storybook 10.6&lt;/b&gt;&lt;br&gt;dựng và thử từng component riêng lẻ · addon-docs, pseudo-states" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="258" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="local_6" value="&lt;b&gt;MSW 2.12&lt;/b&gt;&lt;br&gt;giả API cho Storybook và test, không cần backend thật" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="258" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="local_7" value="&lt;b&gt;NgRx store-devtools&lt;/b&gt;&lt;br&gt;soi state, time-travel debug" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="258" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_pre" value="Pre-commit" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontStyle=1;fontSize=13;fontColor=#666666;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="348" width="180" height="108" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_pre" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="348" width="1558" height="108" as="geometry"/>
+                </mxCell>
+                <mxCell id="pre_0" value="&lt;b&gt;husky + lint-staged&lt;/b&gt;&lt;br&gt;chạy Prettier + ESLint + Stylelint trên đúng file vừa sửa, trước khi commit" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="366" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="pre_1" value="&lt;b&gt;commitlint&lt;/b&gt;&lt;br&gt;ép commit message theo quy ước đã ghi trong CLAUDE.md" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="366" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="pre_2" value="&lt;b&gt;Lane này đang TRỐNG&lt;/b&gt;&lt;br&gt;Không có .husky, không lint-staged, không cả script prepare. Mọi lỗi format/lint chỉ bị bắt sau khi đã push lên CI — vòng phản hồi dài hơn nhiều so với chặn ngay lúc commit." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="366" width="906" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_ci" value="PR / CI  (GitHub Actions)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;fontColor=#4f7a34;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="456" width="180" height="378" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_ci" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="456" width="1558" height="378" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_0" value="&lt;b&gt;GitHub Actions&lt;/b&gt;&lt;br&gt;19 workflow: ci-*, pr-*, hf-* cho 5 app + e2e, sonar, storybook" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="474" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_1" value="&lt;b&gt;dorny/paths-filter&lt;/b&gt;&lt;br&gt;chỉ chạy job cho app thực sự bị đổi" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="474" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_2" value="&lt;b&gt;ESLint 9&lt;/b&gt;&lt;br&gt;nx lint · @angular-eslint, @typescript-eslint, boundaries, storybook, cypress" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="474" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_3" value="&lt;b&gt;Stylelint 16&lt;/b&gt;&lt;br&gt;lint:style:* · scss, order, prettier — chạy như bước RIÊNG, nx lint không bao gồm" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="474" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_4" value="&lt;b&gt;Jest 30&lt;/b&gt;&lt;br&gt;unit test · jest-preset-angular · coverage ≥ 50% trên code mới" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1470" y="474" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_5" value="&lt;b&gt;Storybook test-runner&lt;/b&gt;&lt;br&gt;chạy story như test, nền Playwright" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="564" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_6" value="&lt;b&gt;Cypress 15&lt;/b&gt;&lt;br&gt;e2e trên gridsz-client" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="564" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_7" value="&lt;b&gt;SonarQube&lt;/b&gt;&lt;br&gt;quét chất lượng &amp; bug tĩnh theo ma trận app" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="564" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_8" value="&lt;b&gt;Chromatic 13&lt;/b&gt;&lt;br&gt;visual regression dựng từ Storybook" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="564" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_9" value="&lt;b&gt;jira-title&lt;/b&gt;&lt;br&gt;kiểm tiêu đề PR có mã Jira" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1470" y="564" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_10" value="&lt;b&gt;Dependabot / Renovate&lt;/b&gt;&lt;br&gt;tự nâng phụ thuộc và vá bảo mật" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="654" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_11" value="&lt;b&gt;pnpm audit / Snyk&lt;/b&gt;&lt;br&gt;quét lỗ hổng trong cây phụ thuộc" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="654" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_12" value="&lt;b&gt;libs/ không được test trong CI&lt;/b&gt;&lt;br&gt;Không workflow nào chạy nx test cho lib; coverage chỉ đo ở 5 app. Test viết trong libs/ không bao giờ chạy và không tính vào con số nào." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="654" width="598" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="ci_13" value="&lt;b&gt;Ràng buộc tầng không chặn gì&lt;/b&gt;&lt;br&gt;eslint-plugin-boundaries đã cài nhưng chưa cấu hình ở đâu. @nx/enforce-module-boundaries vẫn dùng tag mẫu của Nx (scope:orders, scope:products) trong khi mọi project.json đều tags: []." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="744" width="598" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_build" value="Build" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=13;fontColor=#7f6000;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="834" width="180" height="198" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_build" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="834" width="1558" height="198" as="geometry"/>
+                </mxCell>
+                <mxCell id="build_0" value="&lt;b&gt;@angular/build + @nx/webpack&lt;/b&gt;&lt;br&gt;biên dịch và đóng gói" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="852" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="build_1" value="&lt;b&gt;Module Federation 2.9&lt;/b&gt;&lt;br&gt;1 host (gridsz-client) + 3 remote, chia sẻ singleton" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="852" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="build_2" value="&lt;b&gt;SWC&lt;/b&gt;&lt;br&gt;transpile nhanh cho test và tooling" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="852" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="build_3" value="&lt;b&gt;@angular/localize&lt;/b&gt;&lt;br&gt;i18n en/nl" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="852" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="build_4" value="&lt;b&gt;moment-locales-webpack-plugin&lt;/b&gt;&lt;br&gt;cắt locale không dùng khỏi bundle" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1470" y="852" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="build_5" value="&lt;b&gt;gzipper&lt;/b&gt;&lt;br&gt;nén dist trước khi đưa lên nginx" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="942" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="build_6" value="&lt;b&gt;esbuild-visualizer · madge&lt;/b&gt;&lt;br&gt;soi thành phần bundle và đồ thị import" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="942" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="build_7" value="&lt;b&gt;@angular/pwa&lt;/b&gt;&lt;br&gt;sinh service worker + manifest" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="942" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_run" value="Runtime" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=13;fontColor=#6a4a8a;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1032" width="180" height="108" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_run" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="1032" width="1558" height="108" as="geometry"/>
+                </mxCell>
+                <mxCell id="run_0" value="&lt;b&gt;Module Federation runtime&lt;/b&gt;&lt;br&gt;nạp remote qua module-federation.manifest.json" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="1050" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="run_1" value="&lt;b&gt;NgRx&lt;/b&gt;&lt;br&gt;quản lý state tập trung" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="1050" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="run_2" value="&lt;b&gt;PWA service worker&lt;/b&gt;&lt;br&gt;cache app shell, chạy được offline" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="1050" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="run_3" value="&lt;b&gt;Sentry (hoặc tương đương)&lt;/b&gt;&lt;br&gt;gom lỗi thật của người dùng — hiện không có gì" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="1050" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="run_4" value="&lt;b&gt;web-vitals / Lighthouse CI&lt;/b&gt;&lt;br&gt;đo LCP · INP · CLS trên môi trường thật" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="1470" y="1050" width="290" height="72" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

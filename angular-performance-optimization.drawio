@@ -1,98 +1,173 @@
 <mxfile host="65bd71144e">
-    <diagram id="angular-perf-3-phases" name="Angular Performance — 4 Phases">
-        <mxGraphModel dx="4175" dy="2024" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3200" pageHeight="1300" math="0" shadow="0">
+    <diagram name="Angular performance — hiện trạng" id="angular-performance-optimization">
+        <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1818" pageHeight="1450" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="38" value="&lt;span style=&quot;font-size: 18px; font-weight: 700; color: rgb(59, 7, 100);&quot;&gt;⚡ User Experience&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#faf5ff;strokeColor=#7e22ce;strokeWidth=2;dashed=1;dashPattern=12 6;arcSize=16;opacity=70;verticalAlign=top;spacingTop=10;spacingLeft=18;align=left;" parent="1" vertex="1">
-                    <mxGeometry x="-2170" y="98" width="340" height="1022" as="geometry"/>
+                <mxCell id="title" value="Tối ưu hiệu năng Angular — hiện trạng gridsz-frontend theo từng giai đoạn" style="text;html=1;fontSize=17;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="20" width="1400" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="35" value="&lt;span style=&quot;font-size: 18px; font-weight: 700; color: rgb(120, 53, 15);&quot;&gt;🎨 Rendering&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fef3c7;strokeColor=#b45309;strokeWidth=2;dashed=1;dashPattern=12 6;arcSize=16;opacity=70;verticalAlign=top;spacingTop=10;spacingLeft=18;align=left;" parent="1" vertex="1">
-                    <mxGeometry x="-1510" y="98" width="340" height="1022" as="geometry"/>
+                <mxCell id="sub" value="Mỗi hộp là một kỹ thuật, kèm trạng thái thật trong repo. Số liệu đếm từ project.json, package.json và mã nguồn apps/ + libs/." style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="54" width="1500" height="22" as="geometry"/>
                 </mxCell>
-                <mxCell id="34" value="&lt;span style=&quot;font-size: 18px; font-weight: 700; color: rgb(12, 74, 110);&quot;&gt;📡 Server / Network&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0f2fe;strokeColor=#0369a1;strokeWidth=2;dashed=1;dashPattern=12 6;arcSize=16;opacity=70;verticalAlign=top;spacingTop=10;spacingLeft=18;align=left;" parent="1" vertex="1">
-                    <mxGeometry x="-2080" y="-506" width="800" height="460" as="geometry"/>
+                <mxCell id="lg1" value="đang dùng" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="88" width="110" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="31" value="&lt;span style=&quot;font-size: 18px; font-weight: 700; color: rgb(20, 83, 45);&quot;&gt;🏗️ CI/CD Build-Time&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dcfce7;strokeColor=#15803d;strokeWidth=2;dashed=1;dashPattern=12 6;arcSize=16;opacity=70;verticalAlign=top;spacingTop=10;spacingLeft=18;align=left;" parent="1" vertex="1">
-                    <mxGeometry x="-2150" y="-1010" width="950" height="460" as="geometry"/>
+                <mxCell id="lg2" value="nên cân nhắc thêm" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="88" width="150" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="P0C4" value="&lt;b style=&quot;font-size: 13px; color: rgb(21, 128, 61);&quot;&gt;🚦 Prerender Build&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;SSR / SSG Build (Angular Universal)&lt;/li&gt;&lt;li&gt;Static prerender routes&lt;/li&gt;&lt;li&gt;Critical CSS extraction&lt;/li&gt;&lt;li&gt;i18n locale builds&lt;/li&gt;&lt;li&gt;Differential loading (modern/legacy)&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#15803d;strokeWidth=2;fontSize=11;fontColor=#14532d;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-2120" y="-950" width="280" height="170" as="geometry"/>
+                <mxCell id="lg3" value="khoảng trống / vấn đề" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="88" width="180" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="P0C3" value="&lt;b style=&quot;font-size: 13px; color: rgb(21, 128, 61);&quot;&gt;🔍 Audit &amp;amp; Gate&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Bundle Analyzer (source-map-explorer)&lt;/li&gt;&lt;li&gt;Lighthouse CI (audit headless)&lt;/li&gt;&lt;li&gt;Performance Budget Gate (block deploy)&lt;/li&gt;&lt;li&gt;ESLint perf rules · tsc --noEmit&lt;/li&gt;&lt;li&gt;Test coverage gate&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#15803d;strokeWidth=2;fontSize=11;fontColor=#14532d;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1820" y="-950" width="280" height="170" as="geometry"/>
+                <mxCell id="hdr_build" value="Build-time&#xa;(CI/CD)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;fontColor=#4f7a34;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="150" width="180" height="288" as="geometry"/>
                 </mxCell>
-                <mxCell id="P0C2" value="&lt;b style=&quot;font-size: 13px; color: rgb(21, 128, 61);&quot;&gt;📦 Bundle &amp;amp; Optimize&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Tree-Shaking (loại dead code)&lt;/li&gt;&lt;li&gt;esbuild Builder (build nhanh 10×)&lt;/li&gt;&lt;li&gt;Code splitting (lazy chunks)&lt;/li&gt;&lt;li&gt;Asset Versioning (outputHashing=all)&lt;/li&gt;&lt;li&gt;Bundle Budget (cảnh báo size)&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#15803d;strokeWidth=2;fontSize=11;fontColor=#14532d;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1520" y="-950" width="280" height="170" as="geometry"/>
+                <mxCell id="lane_build" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="150" width="1558" height="288" as="geometry"/>
                 </mxCell>
-                <mxCell id="P0C1" value="&lt;b style=&quot;font-size: 13px; color: rgb(21, 128, 61);&quot;&gt;🔨 Compile&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;AOT Compilation (ng build)&lt;/li&gt;&lt;li&gt;TypeScript strict mode&lt;/li&gt;&lt;li&gt;Minify + mangle + scope hoisting&lt;/li&gt;&lt;li&gt;Production configuration&lt;/li&gt;&lt;li&gt;Source map generation&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#15803d;strokeWidth=2;fontSize=11;fontColor=#14532d;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-2044" y="-760" width="280" height="170" as="geometry"/>
+                <mxCell id="build_0" value="&lt;b&gt;AOT + production optimization&lt;/b&gt;&lt;br&gt;optimization: scripts, styles.minify, fonts đều bật" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="168" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P0C5" value="&lt;b style=&quot;font-size: 13px; color: rgb(21, 128, 61);&quot;&gt;🚀 Ship &amp;amp; Deploy&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Push artifacts → Container Registry&lt;/li&gt;&lt;li&gt;Upload sourcemap → Sentry / Datadog&lt;/li&gt;&lt;li&gt;Invalidate CDN cache (selective)&lt;/li&gt;&lt;li&gt;Helm / GitHub Actions deploy&lt;/li&gt;&lt;li&gt;Canary / blue-green release&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#15803d;strokeWidth=2;fontSize=11;fontColor=#14532d;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1594" y="-760" width="280" height="170" as="geometry"/>
+                <mxCell id="build_1" value="&lt;b&gt;outputHashing: all&lt;/b&gt;&lt;br&gt;hash nội dung vào tên file ⇒ cache vĩnh viễn, đổi file là bust" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="168" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P1C4" value="&lt;b style=&quot;font-size: 13px; color: rgb(3, 105, 161);&quot;&gt;💾 Server-side Cache&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Browser HTTP cache (Cache-Control, ETag)&lt;/li&gt;&lt;li&gt;CDN edge cache (stale-while-revalidate)&lt;/li&gt;&lt;li&gt;Redis / API cache (BFF layer)&lt;/li&gt;&lt;li&gt;Reverse proxy cache (Nginx · Varnish)&lt;/li&gt;&lt;li&gt;HTTP 304 Not Modified (validation)&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0369a1;strokeWidth=2;fontSize=11;fontColor=#0c4a6e;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-2044" y="-446" width="280" height="170" as="geometry"/>
+                <mxCell id="build_2" value="&lt;b&gt;Bundle budgets&lt;/b&gt;&lt;br&gt;initial 1mb/2mb · anyScript 500kb/2mb · componentStyle 50/100kb" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="168" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P1C1" value="&lt;b style=&quot;font-size: 13px; color: rgb(3, 105, 161);&quot;&gt;🌐 CDN &amp;amp; Compression&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;CDN edge (Cloudflare / GCP CDN)&lt;/li&gt;&lt;li&gt;Gzip / Brotli (giảm 60-80% size)&lt;/li&gt;&lt;li&gt;HTTP/2 - HTTP/3 / QUIC&lt;/li&gt;&lt;li&gt;TLS 1.3 (0-RTT handshake)&lt;/li&gt;&lt;li&gt;Edge Functions / Workers (geo route)&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0369a1;strokeWidth=2;fontSize=11;fontColor=#0c4a6e;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1597" y="-446" width="280" height="170" as="geometry"/>
+                <mxCell id="build_3" value="&lt;b&gt;Code splitting&lt;/b&gt;&lt;br&gt;349 chỗ loadComponent ⇒ mỗi route một chunk riêng" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="168" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P1C5" value="&lt;b style=&quot;font-size: 13px; color: rgb(3, 105, 161);&quot;&gt;🔗 Resource Hints + SSR&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;preconnect / dns-prefetch&lt;/li&gt;&lt;li&gt;preload / modulepreload (critical chunks)&lt;/li&gt;&lt;li&gt;SSR / SSG (Angular Universal)&lt;/li&gt;&lt;li&gt;103 Early Hints (server đẩy preload sớm)&lt;/li&gt;&lt;li&gt;Link Prefetching (rel=prefetch)&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0369a1;strokeWidth=2;fontSize=11;fontColor=#0c4a6e;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-2044" y="-256" width="280" height="170" as="geometry"/>
+                <mxCell id="build_4" value="&lt;b&gt;Module Federation&lt;/b&gt;&lt;br&gt;3 remote thành bundle độc lập, host không gánh" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1470" y="168" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P1C3" value="&lt;b style=&quot;font-size: 13px; color: rgb(3, 105, 161);&quot;&gt;🪓 Code Splitting &amp;amp; Lazy&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Lazy Loading Routes (loadComponent)&lt;/li&gt;&lt;li&gt;Preloading Strategy (Quicklink)&lt;/li&gt;&lt;li&gt;Standalone Components&lt;/li&gt;&lt;li&gt;Module Federation (micro-frontends)&lt;/li&gt;&lt;li&gt;Asset Versioning (outputHashing)&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0369a1;strokeWidth=2;fontSize=11;fontColor=#0c4a6e;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1597" y="-256" width="280" height="170" as="geometry"/>
+                <mxCell id="build_5" value="&lt;b&gt;moment-locales-webpack-plugin&lt;/b&gt;&lt;br&gt;cắt locale không dùng khỏi bundle" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="258" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P2C1" value="&lt;b style=&quot;font-size: 13px; color: rgb(180, 83, 9);&quot;&gt;🖌️ Critical CSS &amp;amp; Scripts&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Inline critical CSS above-the-fold&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: Consolas, monospace;&quot;&gt;&amp;lt;script async&amp;gt;&lt;/span&gt; / &lt;span style=&quot;font-family: Consolas, monospace;&quot;&gt;defer&lt;/span&gt; (không block parse)&lt;/li&gt;&lt;li&gt;CSS containment (&lt;span style=&quot;font-family: Consolas, monospace;&quot;&gt;contain: layout&lt;/span&gt;)&lt;/li&gt;&lt;li&gt;Tránh @import CSS lồng nhau&lt;/li&gt;&lt;li&gt;Loại CSS không dùng (PurgeCSS)&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#b45309;strokeWidth=2;fontSize=11;fontColor=#78350f;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1480" y="158" width="280" height="170" as="geometry"/>
+                <mxCell id="build_6" value="&lt;b&gt;gzipper&lt;/b&gt;&lt;br&gt;nén dist trước khi đưa lên nginx" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="258" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P2C2" value="&lt;b style=&quot;font-size: 13px; color: rgb(180, 83, 9);&quot;&gt;🖼️ Image &amp;amp; Media (LCP)&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;NgOptimizedImage (priority, srcset)&lt;/li&gt;&lt;li&gt;AVIF / WebP format · responsive images&lt;/li&gt;&lt;li&gt;Lazy load images dưới fold (loading=lazy)&lt;/li&gt;&lt;li&gt;Image CDN (on-the-fly resize)&lt;/li&gt;&lt;li&gt;Fetch priority hint (fetchpriority=high)&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#b45309;strokeWidth=2;fontSize=11;fontColor=#78350f;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1480" y="348" width="280" height="170" as="geometry"/>
+                <mxCell id="build_7" value="&lt;b&gt;esbuild-visualizer · madge&lt;/b&gt;&lt;br&gt;soi thành phần bundle và đồ thị import (chạy tay)" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="258" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P2C3" value="&lt;b style=&quot;font-size: 13px; color: rgb(180, 83, 9);&quot;&gt;🔤 Font Strategy&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;font-display: swap (tránh invisible text)&lt;/li&gt;&lt;li&gt;Preload font file critical&lt;/li&gt;&lt;li&gt;Subset font (chỉ ký tự cần dùng)&lt;/li&gt;&lt;li&gt;Self-host font (tránh CORS round trip)&lt;/li&gt;&lt;li&gt;Variable font (1 file thay nhiều weight)&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#b45309;strokeWidth=2;fontSize=11;fontColor=#78350f;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1480" y="538" width="280" height="170" as="geometry"/>
+                <mxCell id="build_8" value="&lt;b&gt;inlineCritical đang TẮT&lt;/b&gt;&lt;br&gt;optimization.styles.inlineCritical = false ở cả client và admin, trong khi mặc định của Angular là true. CSS above-the-fold không được inline ⇒ render bị chặn thêm một vòng tải CSS." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="258" width="598" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P2C4" value="&lt;b style=&quot;font-size: 13px; color: rgb(180, 83, 9);&quot;&gt;💧 Hydration &amp;amp; @defer&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Hydration (resume từ SSR DOM)&lt;/li&gt;&lt;li&gt;Incremental Hydration (Angular 19+)&lt;/li&gt;&lt;li&gt;@defer Block (viewport / idle / on interaction)&lt;/li&gt;&lt;li&gt;provideClientHydration()&lt;/li&gt;&lt;li&gt;View Transitions API&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#b45309;strokeWidth=2;fontSize=11;fontColor=#78350f;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1480" y="728" width="280" height="170" as="geometry"/>
+                <mxCell id="build_9" value="&lt;b&gt;Vẫn dùng webpack-browser&lt;/b&gt;&lt;br&gt;Executor là @nx/angular:webpack-browser, chưa chuyển sang application builder (esbuild/Vite). Build và serve chậm hơn đáng kể. Vướng: Module Federation hiện gắn với webpack." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="348" width="906" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P2C5" value="&lt;b style=&quot;font-size: 13px; color: rgb(180, 83, 9);&quot;&gt;📐 Layout Stability (CLS)&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Set width/height cho image, video, iframe&lt;/li&gt;&lt;li&gt;Reserve space cho ad / embed&lt;/li&gt;&lt;li&gt;Tránh inserting content above existing&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: Consolas, monospace;&quot;&gt;contain-intrinsic-size&lt;/span&gt; cho placeholder&lt;/li&gt;&lt;li&gt;Tránh layout thrashing (batch read/write)&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#b45309;strokeWidth=2;fontSize=11;fontColor=#78350f;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1480" y="918" width="280" height="170" as="geometry"/>
+                <mxCell id="hdr_net" value="Mạng &amp; phân phối" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;fontColor=#3a5a86;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="438" width="180" height="198" as="geometry"/>
                 </mxCell>
-                <mxCell id="P3C1" value="&lt;b style=&quot;font-size: 13px; color: rgb(126, 34, 206);&quot;&gt;🔄 Change Detection&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;OnPush Strategy (skip không cần thiết)&lt;/li&gt;&lt;li&gt;Zoneless (provideZonelessChangeDetection)&lt;/li&gt;&lt;li&gt;trackBy / @for track (DOM diff thông minh)&lt;/li&gt;&lt;li&gt;Pure Pipe (tránh re-compute)&lt;/li&gt;&lt;li&gt;runOutsideAngular (skip Zone)&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7e22ce;strokeWidth=2;fontSize=11;fontColor=#3b0764;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-2140" y="158" width="280" height="170" as="geometry"/>
+                <mxCell id="lane_net" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="438" width="1558" height="198" as="geometry"/>
                 </mxCell>
-                <mxCell id="P3C2" value="&lt;b style=&quot;font-size: 13px; color: rgb(126, 34, 206);&quot;&gt;⚡ Signals &amp;amp; Reactivity&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Angular Signals (granular reactivity)&lt;/li&gt;&lt;li&gt;computed() / effect() (auto memoize)&lt;/li&gt;&lt;li&gt;input() / output() Signal&lt;/li&gt;&lt;li&gt;NgRx Memoized Selectors&lt;/li&gt;&lt;li&gt;RxJS shareReplay · distinctUntilChanged&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7e22ce;strokeWidth=2;fontSize=11;fontColor=#3b0764;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-2140" y="348" width="280" height="170" as="geometry"/>
+                <mxCell id="net_0" value="&lt;b&gt;CDN edge&lt;/b&gt;&lt;br&gt;Cloudflare / GCP CDN phục vụ file tĩnh" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="456" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P3C3" value="&lt;b style=&quot;font-size: 13px; color: rgb(126, 34, 206);&quot;&gt;🧵 Compute Offload (INP)&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Web Worker (offload CPU heavy)&lt;/li&gt;&lt;li&gt;OffscreenCanvas (vẽ ngoài main thread)&lt;/li&gt;&lt;li&gt;WebAssembly (CPU-bound logic)&lt;/li&gt;&lt;li&gt;requestIdleCallback / Scheduler.postTask&lt;/li&gt;&lt;li&gt;Break long tasks (&amp;gt; 50ms) bằng yield&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7e22ce;strokeWidth=2;fontSize=11;fontColor=#3b0764;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-2140" y="538" width="280" height="170" as="geometry"/>
+                <mxCell id="net_1" value="&lt;b&gt;Gzip / Brotli&lt;/b&gt;&lt;br&gt;qua gzipper + CDN" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="456" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P3C4" value="&lt;b style=&quot;font-size: 13px; color: rgb(126, 34, 206);&quot;&gt;🗂️ Client-side Cache &amp;amp; DOM&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;HTTP Interceptor cache (in-app memory)&lt;/li&gt;&lt;li&gt;Service Worker / PWA (Cache API)&lt;/li&gt;&lt;li&gt;Virtual Scroll (CDK cdk-virtual-scroll)&lt;/li&gt;&lt;li&gt;Optimistic UI · Immutable Updates&lt;/li&gt;&lt;li&gt;Control Flow @if/@for · inject()&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7e22ce;strokeWidth=2;fontSize=11;fontColor=#3b0764;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-2140" y="728" width="280" height="170" as="geometry"/>
+                <mxCell id="net_2" value="&lt;b&gt;Cache-Control + ETag&lt;/b&gt;&lt;br&gt;file có hash ⇒ immutable, cache 1 năm" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="456" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="P3C5" value="&lt;b style=&quot;font-size: 13px; color: rgb(126, 34, 206);&quot;&gt;🛡️ Memory &amp;amp; Resilience&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;AbortController / takeUntil (huỷ work)&lt;/li&gt;&lt;li&gt;RxJS retry/retryWhen + backoff&lt;/li&gt;&lt;li&gt;RxJS timeout (cap request time)&lt;/li&gt;&lt;li&gt;Circuit Breaker via interceptor state&lt;/li&gt;&lt;li&gt;catchError → fallback / cached data&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7e22ce;strokeWidth=2;fontSize=11;fontColor=#3b0764;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontFamily=Helvetica;shadow=0;" parent="1" vertex="1">
-                    <mxGeometry x="-2140" y="918" width="280" height="170" as="geometry"/>
+                <mxCell id="net_3" value="&lt;b&gt;Redis / API cache (BFF)&lt;/b&gt;&lt;br&gt;tầng dữ liệu phía server — xem angular-api-cache-layers" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="456" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" value="🏗️ &lt;b&gt;CI/CD&lt;/b&gt;" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#bbf7d0;strokeColor=#15803d;strokeWidth=3;fontSize=16;fontStyle=1;fontColor=#14532d;align=center;verticalAlign=middle;fontFamily=Helvetica;shadow=1;gradientColor=#dcfce7;gradientDirection=south;" parent="1" vertex="1">
-                    <mxGeometry x="-1740" y="-720" width="120" height="60" as="geometry"/>
+                <mxCell id="net_4" value="&lt;b&gt;preconnect / dns-prefetch&lt;/b&gt;&lt;br&gt;index.html mới chỉ có 3 rel=preload, chưa có preconnect tới origin API và CDN — thêm là bớt được một vòng DNS+TLS" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="546" width="598" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="📡 &lt;b&gt;Server&lt;/b&gt;" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#bae6fd;strokeColor=#0369a1;strokeWidth=3;fontSize=16;fontStyle=1;fontColor=#0c4a6e;align=center;verticalAlign=middle;fontFamily=Helvetica;shadow=1;gradientColor=#e0f2fe;gradientDirection=south;" parent="1" vertex="1">
-                    <mxGeometry x="-1740" y="-401" width="120" height="60" as="geometry"/>
+                <mxCell id="net_5" value="&lt;b&gt;HTTP/2 · HTTP/3 · TLS 1.3&lt;/b&gt;&lt;br&gt;do nginx/CDN quyết định, không thấy trong repo — nên xác nhận đã bật" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="546" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="🌐 &lt;b&gt;Browser&lt;/b&gt;" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;fillColor=#bfdbfe;strokeColor=#1d4ed8;strokeWidth=3;fontSize=16;fontStyle=1;fontColor=#1e3a8a;align=center;verticalAlign=middle;fontFamily=Helvetica;shadow=1;gradientColor=#eff6ff;gradientDirection=south;" parent="1" vertex="1">
-                    <mxGeometry x="-1740" y="8" width="120" height="60" as="geometry"/>
+                <mxCell id="net_6" value="&lt;b&gt;103 Early Hints&lt;/b&gt;&lt;br&gt;đẩy preload sớm trước khi HTML sẵn sàng" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="546" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#0369a1;endFill=1;curved=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="3" target="4" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                <mxCell id="hdr_first" value="Tải trang lần đầu" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=13;fontColor=#7f6000;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="636" width="180" height="288" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#15803d;endFill=1;curved=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2" target="3" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                <mxCell id="lane_first" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="636" width="1558" height="288" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#b45309;endFill=1;curved=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="4" target="35" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                <mxCell id="first_0" value="&lt;b&gt;Lazy route&lt;/b&gt;&lt;br&gt;349 chỗ loadComponent — chỉ tải route đang vào" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="654" width="290" height="72" as="geometry"/>
                 </mxCell>
-                <mxCell id="20" value="" style="endArrow=classic;html=1;strokeWidth=3;strokeColor=#7e22ce;endFill=1;curved=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" parent="1" source="4" target="38" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+                <mxCell id="first_1" value="&lt;b&gt;rel=preload&lt;/b&gt;&lt;br&gt;3 khai báo trong index.html của gridsz-client" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="654" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="first_2" value="&lt;b&gt;NgOptimizedImage&lt;/b&gt;&lt;br&gt;28 chỗ dùng — srcset, priority, lazy dưới fold" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="654" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="first_3" value="&lt;b&gt;Không có SSR / SSG&lt;/b&gt;&lt;br&gt;@angular/ssr và @angular/platform-server đều KHÔNG được cài. Không prerender, không hydration ⇒ first paint phụ thuộc hoàn toàn vào việc tải và chạy JS." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="654" width="598" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="first_4" value="&lt;b&gt;Service worker chưa chạy&lt;/b&gt;&lt;br&gt;gridsz-admin có ngsw-config.json và bật serviceWorker khi build, nhưng không tìm thấy provideServiceWorker / ServiceWorkerModule.register ở đâu ⇒ SW được sinh ra nhưng không đăng ký. gridsz-client thì không cấu hình gì." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="744" width="906" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="first_5" value="&lt;b&gt;Preloading strategy&lt;/b&gt;&lt;br&gt;PreloadAllModules / quicklink: 0 chỗ dùng — nạp ngầm route kế tiếp lúc rảnh" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="744" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="first_6" value="&lt;b&gt;@defer&lt;/b&gt;&lt;br&gt;mới dùng đúng 1 chỗ — hoãn khối dưới màn hình tới khi viewport/idle" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="1470" y="744" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="first_7" value="&lt;b&gt;Chiến lược font&lt;/b&gt;&lt;br&gt;font-display: swap, subset, self-host, variable font — chưa rà trong repo" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="834" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_rt" value="Angular runtime" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=13;fontColor=#6a4a8a;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="924" width="180" height="288" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_rt" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="924" width="1558" height="288" as="geometry"/>
+                </mxCell>
+                <mxCell id="rt_0" value="&lt;b&gt;OnPush&lt;/b&gt;&lt;br&gt;346 component đặt ChangeDetectionStrategy.OnPush" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="942" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="rt_1" value="&lt;b&gt;Signals&lt;/b&gt;&lt;br&gt;429 signal() · 443 computed() — reactivity hạt nhỏ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="942" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="rt_2" value="&lt;b&gt;takeUntilDestroyed&lt;/b&gt;&lt;br&gt;825 chỗ — dọn subscription, tránh rò rỉ" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="942" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="rt_3" value="&lt;b&gt;trackBy / @for track&lt;/b&gt;&lt;br&gt;112 chỗ — DOM diff thông minh khi đổi danh sách" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="942" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="rt_4" value="&lt;b&gt;runOutsideAngular&lt;/b&gt;&lt;br&gt;12 chỗ — đẩy việc nặng ra ngoài Zone" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1470" y="942" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="rt_5" value="&lt;b&gt;shareReplay&lt;/b&gt;&lt;br&gt;8 chỗ — chia sẻ kết quả stream, tránh gọi lại" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="1032" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="rt_6" value="&lt;b&gt;HTTP Interceptor cache&lt;/b&gt;&lt;br&gt;cache payload API trong bộ nhớ app" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="1032" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="rt_7" value="&lt;b&gt;CDK virtual scroll&lt;/b&gt;&lt;br&gt;mới 2 chỗ — nên soát lại các bảng/danh sách dài còn render hết" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="1032" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="rt_8" value="&lt;b&gt;Web Worker&lt;/b&gt;&lt;br&gt;mới 1 chỗ — đẩy tính toán nặng khỏi main thread (INP)" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="1162" y="1032" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="rt_9" value="&lt;b&gt;Chưa zoneless&lt;/b&gt;&lt;br&gt;zone.js 0.16.3 vẫn nằm trong bundle, 0 chỗ provideZonelessChangeDetection. Angular 21 đã hỗ trợ; signals đã dùng rất nhiều (429/443) nên phần lớn điều kiện đã sẵn sàng." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="1122" width="598" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_meas" value="Đo lường" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontStyle=1;fontSize=13;fontColor=#666666;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1212" width="180" height="198" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_meas" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;" parent="1" vertex="1">
+                    <mxGeometry x="220" y="1212" width="1558" height="198" as="geometry"/>
+                </mxCell>
+                <mxCell id="meas_0" value="&lt;b&gt;SonarQube&lt;/b&gt;&lt;br&gt;đo chất lượng và bug tĩnh — KHÔNG đo hiệu năng" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="1230" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="meas_1" value="&lt;b&gt;esbuild-visualizer · madge&lt;/b&gt;&lt;br&gt;soi bundle, nhưng chỉ chạy tay khi ai đó nhớ ra" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="1230" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="meas_2" value="&lt;b&gt;Không đo hiệu năng thật&lt;/b&gt;&lt;br&gt;Không web-vitals, không Lighthouse CI, không RUM. Không có con số LCP/INP/CLS nào ⇒ mọi tối ưu ở 4 lane trên đều không kiểm chứng được là có tác dụng hay không." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="854" y="1230" width="906" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="meas_3" value="&lt;b&gt;Lighthouse CI + budget gate&lt;/b&gt;&lt;br&gt;chạy trong PR, chặn merge khi điểm hoặc bundle vượt ngưỡng" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="238" y="1320" width="290" height="72" as="geometry"/>
+                </mxCell>
+                <mxCell id="meas_4" value="&lt;b&gt;web-vitals / RUM&lt;/b&gt;&lt;br&gt;đo LCP · INP · CLS trên người dùng thật" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;dashed=1;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="546" y="1320" width="290" height="72" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

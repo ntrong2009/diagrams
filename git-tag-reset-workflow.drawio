@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Git Tag Reset &amp; Version Bump (gitflow)" id="git-tag-reset-workflow">
-        <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1880" pageHeight="920" math="0" shadow="0">
+        <mxGraphModel dx="882" dy="715" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1880" pageHeight="920" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -125,19 +125,38 @@
                     <mxGeometry x="1250" y="660" width="570" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="a1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontSize=10;" parent="1" source="s1" target="t020" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="230" y="400"/>
+                            <mxPoint x="460" y="400"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="a2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontSize=10;" parent="1" source="s2" target="t147" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="600" y="400"/>
+                            <mxPoint x="670" y="400"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="a3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontSize=10;" parent="1" source="s3" target="c5" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="970" y="300"/>
+                            <mxPoint x="1180" y="300"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="a4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontSize=10;" parent="1" source="s4" target="rng_ok" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="a5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontSize=10;" parent="1" source="s5" target="t148" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1600" y="130"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>

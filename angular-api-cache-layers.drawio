@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Angular cache layers — API vs static" id="angular-api-cache-layers">
-        <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1860" pageHeight="1300" math="0" shadow="0">
+        <mxGraphModel dx="882" dy="713" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1860" pageHeight="1300" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -10,50 +10,65 @@
                 <mxCell id="sub" value="Lane = nơi cache thật sự nằm. Trái → phải = miss, đi sâu thêm một tầng. Hai luồng rơi vào các lane rời nhau — đó chính là lý do chúng không dùng chung tầng cache nào ngoài source of truth." style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#555555;" parent="1" vertex="1">
                     <mxGeometry x="40" y="54" width="1780" height="22" as="geometry"/>
                 </mxCell>
-                <mxCell id="lane_browser" value="Browser" style="swimlane;html=1;startSize=30;horizontal=0;fillColor=none;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontColor=#3a5a86;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="150" width="1760" height="140" as="geometry"/>
+                <mxCell id="hdr_browser" value="Browser" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;fontColor=#3a5a86;verticalAlign=middle;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="150" width="160" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="lane_app" value="Angular app (in-app)" style="swimlane;html=1;startSize=30;horizontal=0;fillColor=none;strokeColor=#9673a6;fontStyle=1;fontSize=12;fontColor=#6a4a8a;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="290" width="1760" height="140" as="geometry"/>
+                <mxCell id="lane_browser" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="150" width="1600" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="lane_edge" value="Edge / CDN" style="swimlane;html=1;startSize=30;horizontal=0;fillColor=none;strokeColor=#82b366;fontStyle=1;fontSize=12;fontColor=#4f7a34;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="430" width="1760" height="140" as="geometry"/>
+                <mxCell id="hdr_app" value="Angular app (in-app)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;fontSize=12;fontColor=#6a4a8a;verticalAlign=middle;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="290" width="160" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="lane_server" value="Server" style="swimlane;html=1;startSize=30;horizontal=0;fillColor=none;strokeColor=#d6b656;fontStyle=1;fontSize=12;fontColor=#7f6000;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="570" width="1760" height="140" as="geometry"/>
+                <mxCell id="lane_app" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="290" width="1600" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="lane_src" value="Source of truth" style="swimlane;html=1;startSize=30;horizontal=0;fillColor=none;strokeColor=#b85450;fontStyle=1;fontSize=12;fontColor=#8a3b38;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="710" width="1760" height="240" as="geometry"/>
+                <mxCell id="hdr_edge" value="Edge / CDN" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;fontColor=#4f7a34;verticalAlign=middle;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="430" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_edge" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="430" width="1600" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_server" value="Server" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;fontSize=12;fontColor=#7f6000;verticalAlign=middle;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="570" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_server" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="570" width="1600" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="hdr_src" value="Source of truth" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=12;fontColor=#8a3b38;verticalAlign=middle;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="710" width="160" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="lane_src" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="710" width="1600" height="240" as="geometry"/>
                 </mxCell>
                 <mxCell id="b0" value="B0 · LUỒNG B — static files (JS bundles, CSS, fonts, images)&#xa;browser yêu cầu: GET /main.[hash].js&#xa;trả về JS / CSS / image" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacingLeft=10;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="90" y="168" width="300" height="105" as="geometry"/>
+                    <mxGeometry x="210" y="168" width="290" height="105" as="geometry"/>
                 </mxCell>
                 <mxCell id="b1" value="B1 · Service Worker&#xa;PWA precache · App Shell · @angular/service-worker&#xa;Cache API · cache-first — ~0–2 ms (từ disk)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacingLeft=10;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="430" y="168" width="300" height="105" as="geometry"/>
+                    <mxGeometry x="530" y="168" width="290" height="105" as="geometry"/>
                 </mxCell>
                 <mxCell id="b2" value="B2 · Browser HTTP cache&#xa;Cache-Control + ETag · immutable hash = cache 1 năm&#xa;disk / memory, do browser quản — ~1–5 ms · in-process" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacingLeft=10;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="770" y="168" width="300" height="105" as="geometry"/>
+                    <mxGeometry x="850" y="168" width="290" height="105" as="geometry"/>
                 </mxCell>
                 <mxCell id="b3" value="B3 · CDN edge cache&#xa;Cloudflare / GCP CDN · edge POPs · TLS terminate&#xa;Brotli compression — ~20–50 ms (edge gần user)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacingLeft=10;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="1110" y="448" width="300" height="105" as="geometry"/>
+                    <mxGeometry x="1170" y="448" width="290" height="105" as="geometry"/>
                 </mxCell>
                 <mxCell id="b4" value="B4 · Origin storage (source of truth)&#xa;GCS / S3 bucket · web server · built artifacts từ CI/CD&#xa;~100–300 ms — chỉ chạm khi cache miss" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacingLeft=10;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="1450" y="835" width="300" height="100" as="geometry"/>
+                    <mxGeometry x="1490" y="835" width="290" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="a0" value="A0 · LUỒNG A — API payload (dynamic JSON từ REST/GraphQL)&#xa;component gọi: http.get('/api/users')&#xa;trả về JSON payload" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;spacingLeft=10;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="90" y="308" width="300" height="105" as="geometry"/>
+                <mxCell id="a0" value="A0 · LUỒNG A — API payload (dynamic JSON từ REST/GraphQL)&#xa;component gọi: http.get(&#39;/api/users&#39;)&#xa;trả về JSON payload" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;spacingLeft=10;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="308" width="290" height="105" as="geometry"/>
                 </mxCell>
                 <mxCell id="a1" value="A1 · HTTP Interceptor&#xa;in-app memory cache · Map + shareReplay(1)&#xa;~0 ms · in-memory" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;spacingLeft=10;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="430" y="308" width="300" height="105" as="geometry"/>
+                    <mxGeometry x="530" y="308" width="290" height="105" as="geometry"/>
                 </mxCell>
                 <mxCell id="a2" value="A2 · BFF + Request Dedup&#xa;gateway / aggregation · gộp call · single-flight&#xa;in-process LRU — ~10 ms · gateway layer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;spacingLeft=10;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="770" y="588" width="300" height="105" as="geometry"/>
+                    <mxGeometry x="850" y="588" width="290" height="105" as="geometry"/>
                 </mxCell>
                 <mxCell id="a3" value="A3 · Redis / API cache&#xa;distributed memcache · Redis · Memcached&#xa;TTL · tag-based invalidate — ~5–10 ms · cluster cache" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;spacingLeft=10;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="1110" y="588" width="300" height="105" as="geometry"/>
+                    <mxGeometry x="1170" y="588" width="290" height="105" as="geometry"/>
                 </mxCell>
                 <mxCell id="a4" value="A4 · Database / backend (source of truth)&#xa;PostgreSQL · API gốc · disk I/O · JOIN · index lookup&#xa;~50–500 ms — đắt nhất, cố tránh" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;spacingLeft=10;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
-                    <mxGeometry x="1450" y="728" width="300" height="100" as="geometry"/>
+                    <mxGeometry x="1310" y="728" width="290" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="e_b0_b1" value="miss" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;strokeColor=#333333;" parent="1" source="b0" target="b1" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -77,7 +92,11 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="e_a3_a4" value="miss → DB" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;strokeColor=#b85450;fontColor=#b85450;fontStyle=1;" parent="1" source="a3" target="a4" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1560" y="641"/>
+                        </Array>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="legend" value="Cách đọc&#xa;• Mũi tên liền = MISS, đi sâu thêm một tầng. Tầng càng phải càng đắt.&#xa;• Bất kỳ tầng nào HIT ⇒ trả dữ liệu về ngay, KHÔNG đi tiếp các tầng bên phải.&#xa;• Lane cho biết cache nằm ở đâu — nên không cần ghi &quot;chủ thể&quot; trong từng hộp nữa." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;align=left;spacingLeft=10;verticalAlign=top;fontSize=11;" parent="1" vertex="1">
                     <mxGeometry x="40" y="970" width="870" height="90" as="geometry"/>
