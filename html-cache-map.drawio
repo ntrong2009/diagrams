@@ -1,0 +1,73 @@
+<mxfile host="65bd71144e">
+    <diagram name="Cache busting — HTML là bản đồ" id="html-as-cache-map">
+        <mxGraphModel dx="1380" dy="846" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1060" pageHeight="900" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" parent="1" style="text;html=1;fontSize=17;fontStyle=1;align=left;verticalAlign=middle;" value="HTML là tấm bản đồ, không phải cái kho" vertex="1">
+                    <mxGeometry height="28" width="900" x="40" y="24" as="geometry"/>
+                </mxCell>
+                <mxCell id="sub" parent="1" style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#555555;" value="HTML là tầng DUY NHẤT luôn được hỏi lại server, nên nó đóng vai trò bản đồ chỉ đường tới đúng ngăn trong kho cache." vertex="1">
+                    <mxGeometry height="20" width="1000" x="40" y="56" as="geometry"/>
+                </mxCell>
+                <mxCell id="sub2" parent="1" style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#555555;" value="Muốn browser lấy logo mới: không xoá ngăn cũ, chỉ cần cho bản đồ trỏ sang một ngăn có NHÃN MỚI." vertex="1">
+                    <mxGeometry height="20" width="1000" x="40" y="78" as="geometry"/>
+                </mxCell>
+                <mxCell id="user" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;align=center;verticalAlign=middle;fontSize=12;" value="Người dùng mở trang" vertex="1">
+                    <mxGeometry height="58" width="440" x="60" y="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="html" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;verticalAlign=middle;fontSize=12;" value="&lt;b&gt;index.html&lt;/b&gt;&lt;br&gt;&lt;span style=&#39;font-size:10px;color:#555&#39;&gt;no-cache: luôn hỏi lại server&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="76" width="440" x="60" y="222" as="geometry"/>
+                </mxCell>
+                <mxCell id="server" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;align=center;verticalAlign=middle;fontSize=12;" value="&lt;b&gt;Server / CDN&lt;/b&gt;&lt;br&gt;&lt;span style=&#39;font-size:10px;color:#555&#39;&gt;Trả HTML (200 hoặc 304)&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="76" width="340" x="590" y="222" as="geometry"/>
+                </mxCell>
+                <mxCell id="map" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;verticalAlign=middle;fontSize=12;" value="&lt;b&gt;HTML trỏ tới logo.svg?v=2&lt;/b&gt;&lt;br&gt;&lt;span style=&#39;font-size:10px;color:#555&#39;&gt;Đổi version mỗi khi thay logo&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="76" width="440" x="60" y="342" as="geometry"/>
+                </mxCell>
+                <mxCell id="store" parent="1" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;verticalAlign=top;align=left;spacingLeft=14;spacingTop=8;fontSize=13;fontColor=#333333;" value="Kho cache của browser  (tra theo URL)" vertex="1">
+                    <mxGeometry height="282" width="870" x="60" y="468" as="geometry"/>
+                </mxCell>
+                <mxCell id="s1" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;verticalAlign=middle;fontSize=12;" value="&lt;b&gt;logo.svg?v=1&lt;/b&gt;&lt;br&gt;&lt;span style=&#39;font-size:10px;color:#555&#39;&gt;Bản cũ, không ai dùng&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="92" width="258" x="92" y="545" as="geometry"/>
+                </mxCell>
+                <mxCell id="s2" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;align=center;verticalAlign=middle;fontSize=12;fontColor=#666666;" value="&lt;b&gt;logo.svg?v=2&lt;/b&gt;&lt;br&gt;&lt;span style=&#39;font-size:10px;color:#555&#39;&gt;Trống → tải từ server&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="92" width="258" x="378" y="545" as="geometry"/>
+                </mxCell>
+                <mxCell id="s3" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;verticalAlign=middle;fontSize=12;" value="&lt;b&gt;app.css?v=5&lt;/b&gt;&lt;br&gt;&lt;span style=&#39;font-size:10px;color:#555&#39;&gt;Có sẵn → dùng ngay&lt;/span&gt;" vertex="1">
+                    <mxGeometry height="92" width="258" x="664" y="545" as="geometry"/>
+                </mxCell>
+                <mxCell id="foot" parent="1" style="text;html=1;fontSize=11;align=center;verticalAlign=middle;fontColor=#666666;" value="Asset: max-age=31536000, immutable" vertex="1">
+                    <mxGeometry height="26" width="830" x="92" y="668" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg1" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=center;verticalAlign=middle;fontSize=12;" value="" vertex="1">
+                    <mxGeometry height="22" width="22" x="300" y="800" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg1t" parent="1" style="text;html=1;fontSize=11;align=left;verticalAlign=middle;" value="Không cache lâu, luôn hỏi lại" vertex="1">
+                    <mxGeometry height="22" width="240" x="332" y="800" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg2" parent="1" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=center;verticalAlign=middle;fontSize=12;" value="" vertex="1">
+                    <mxGeometry height="22" width="22" x="600" y="800" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg2t" parent="1" style="text;html=1;fontSize=11;align=left;verticalAlign=middle;" value="Cache lâu, dùng không hỏi" vertex="1">
+                    <mxGeometry height="22" width="240" x="632" y="800" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" edge="1" parent="1" source="user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;strokeColor=#777777;" target="html" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" edge="1" parent="1" source="html" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;strokeColor=#777777;startArrow=block;startFill=1;" target="server" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" edge="1" parent="1" source="html" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;strokeColor=#777777;" target="map" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" edge="1" parent="1" source="map" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;strokeColor=#777777;" target="store" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" edge="1" parent="1" source="server" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;fontSize=11;strokeColor=#777777;" target="s2" value="Tải logo mới">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -1,107 +1,125 @@
 <mxfile host="65bd71144e">
-    <diagram name="Client-Side CSRF Sequence" id="csrf-seq">
-        <mxGraphModel dx="735" dy="797" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="800" math="0" shadow="0">
+    <diagram name="Client-side CSRF — Sequence" id="client-side-csrf-attack-sequence">
+        <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1960" pageHeight="1285" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="title" value="Client-Side CSRF Attack — Sequence Diagram" style="text;html=1;align=center;fontSize=20;fontStyle=1;" parent="1" vertex="1">
-                    <mxGeometry x="220" y="10" width="560" height="30" as="geometry"/>
+                <mxCell id="title" value="Client-side CSRF — JS của chính ứng dụng bị lừa tự gọi API của mình" style="text;html=1;fontSize=17;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="22" width="1400" height="28" as="geometry"/>
                 </mxCell>
-                <mxCell id="sub" value="How fb.com&#39;s cookie lets attacker.com act on the victim&#39;s behalf" style="text;html=1;align=center;fontSize=12;fontColor=#666666;" parent="1" vertex="1">
-                    <mxGeometry x="220" y="40" width="560" height="20" as="geometry"/>
+                <mxCell id="sub" value="Request là SAME-ORIGIN và do trang hợp lệ phát ra. Vì vậy SameSite và CSRF token đều không cứu được — hai lớp phòng thủ quen thuộc nhất đều vô hiệu." style="text;html=1;fontSize=12;align=left;verticalAlign=middle;fontColor=#555555;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="56" width="1880" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="vic" value="Victim" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#a5d8ff;strokeColor=#4a9eed;size=40;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="70" width="110" height="700" as="geometry"/>
+                <mxCell id="vic" value="Victim" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;outlineConnect=0;size=44;fillColor=#a5d8ff;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="130" width="150" height="750" as="geometry"/>
                 </mxCell>
-                <mxCell id="brw" value="Browser&#xa;(cookie jar)" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#d0bfff;strokeColor=#8b5cf6;size=46;" parent="1" vertex="1">
-                    <mxGeometry x="200" y="70" width="140" height="700" as="geometry"/>
+                <mxCell id="atk" value="Kẻ tấn công&#xa;(link, email, trang khác)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;outlineConnect=0;size=44;fillColor=#ffc9c9;strokeColor=#b85450;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="130" width="190" height="750" as="geometry"/>
                 </mxCell>
-                <mxCell id="atk" value="attacker.com&#xa;(malicious server)" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#ffc9c9;strokeColor=#ef4444;size=46;" parent="1" vertex="1">
-                    <mxGeometry x="400" y="70" width="160" height="700" as="geometry"/>
+                <mxCell id="brw" value="Browser" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;outlineConnect=0;size=44;fillColor=#d0bfff;strokeColor=#9673a6;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="130" width="170" height="750" as="geometry"/>
                 </mxCell>
-                <mxCell id="fb" value="fb.com&#xa;(legitimate server)" style="shape=umlLifeline;perimeter=lifelinePerimeter;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;fontSize=13;fontStyle=1;fillColor=#b2f2bb;strokeColor=#22c55e;size=46;" parent="1" vertex="1">
-                    <mxGeometry x="620" y="70" width="160" height="700" as="geometry"/>
+                <mxCell id="page" value="fb.com — trang + JS của app" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;outlineConnect=0;size=44;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="720" y="130" width="230" height="750" as="geometry"/>
                 </mxCell>
-                <mxCell id="p1note" value="Phase 1 — Victim has an active fb.com session" style="text;html=1;align=left;fontSize=11;fontStyle=2;fontColor=#15803d;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="135" width="520" height="20" as="geometry"/>
+                <mxCell id="api" value="fb.com — API" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=0;collapsible=0;outlineConnect=0;size=44;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="1000" y="130" width="180" height="750" as="geometry"/>
                 </mxCell>
-                <mxCell id="m1" value="1. logs in to fb.com" style="html=1;endArrow=block;strokeColor=#22c55e;fontColor=#15803d;fontSize=12;" parent="1" edge="1">
+                <mxCell id="fr1" value="Giai đoạn 1 — nạn nhân đã có phiên hợp lệ" style="shape=umlFrame;whiteSpace=wrap;html=1;width=320;height=28;fillColor=none;strokeColor=#999999;fontSize=11;fontStyle=2;align=left;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="175" width="1180" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="fr2" value="Giai đoạn 2 — kẻ tấn công đưa đầu vào độc vào CHÍNH trang hợp lệ" style="shape=umlFrame;whiteSpace=wrap;html=1;width=320;height=28;fillColor=none;strokeColor=#999999;fontSize=11;fontStyle=2;align=left;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="310" width="1180" height="215" as="geometry"/>
+                </mxCell>
+                <mxCell id="fr3" value="Giai đoạn 3 — JS của app tự phát request" style="shape=umlFrame;whiteSpace=wrap;html=1;width=320;height=28;fillColor=none;strokeColor=#999999;fontSize=11;fontStyle=2;align=left;verticalAlign=top;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="545" width="1180" height="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="exec" value="&lt;b&gt;⑥ JS của app đọc đầu vào rồi DÙNG NÓ để dựng lời gọi API&lt;/b&gt;&lt;br&gt;Đọc location.hash / event.data / query param rồi lấy thẳng ra tên hành động, endpoint, tham số — không kiểm nguồn." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=6;spacingTop=2;" parent="1" vertex="1">
+                    <mxGeometry x="728" y="585" width="175" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="tok" value="&lt;b&gt;Request này hoàn toàn &quot;hợp lệ&quot;&lt;/b&gt;&lt;br&gt;Same-origin ⇒ cookie đi kèm bình thường. JS của app tự đính kèm CSRF token ĐÚNG. Server không có cách nào phân biệt." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=6;spacingTop=2;" parent="1" vertex="1">
+                    <mxGeometry x="1008" y="700" width="164" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="m1" value="① đã đăng nhập fb.com trước đó — cookie phiên nằm sẵn trong jar" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;strokeColor=#333333;fontSize=11;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="95" y="170" as="sourcePoint"/>
-                        <mxPoint x="270" y="170" as="targetPoint"/>
+                        <mxPoint x="135" y="225" as="sourcePoint"/>
+                        <mxPoint x="585" y="225" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m2" value="POST /login (credentials)" style="html=1;endArrow=block;strokeColor=#22c55e;fontColor=#15803d;fontSize=12;" parent="1" edge="1">
+                <mxCell id="m2" value="② gửi link: https://fb.com/#action=transfer&amp;to=evil&amp;amount=1000" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;strokeColor=#333333;fontSize=11;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="270" y="210" as="sourcePoint"/>
-                        <mxPoint x="700" y="210" as="targetPoint"/>
+                        <mxPoint x="345" y="350" as="sourcePoint"/>
+                        <mxPoint x="135" y="350" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m3" value="200 OK + Set-Cookie: session=XYZ789" style="html=1;endArrow=open;dashed=1;strokeColor=#22c55e;fontColor=#15803d;fontSize=12;" parent="1" edge="1">
+                <mxCell id="m3" value="③ mở link — đây là TRANG fb.com THẬT, origin thật" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;strokeColor=#333333;fontSize=11;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="700" y="250" as="sourcePoint"/>
-                        <mxPoint x="270" y="250" as="targetPoint"/>
+                        <mxPoint x="135" y="400" as="sourcePoint"/>
+                        <mxPoint x="585" y="400" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="cookie" value="cookie jar&#xa;fb.com → session=XYZ789" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3bf;strokeColor=#f59e0b;fontColor=#92400e;fontSize=10;fontStyle=2;" parent="1" vertex="1">
-                    <mxGeometry x="205" y="278" width="130" height="34" as="geometry"/>
-                </mxCell>
-                <mxCell id="p2note" value="Phase 2 — Victim opens a malicious page (e.g. clicks an email link)" style="text;html=1;align=left;fontSize=11;fontStyle=2;fontColor=#b91c1c;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="335" width="342" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="m4" value="2. opens attacker.com/free-iphone" style="html=1;endArrow=block;strokeColor=#4a9eed;fontColor=#2563eb;fontSize=12;" parent="1" edge="1">
+                <mxCell id="m4" value="④ GET / — tải trang bình thường" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;strokeColor=#333333;fontSize=11;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="95" y="370" as="sourcePoint"/>
-                        <mxPoint x="270" y="370" as="targetPoint"/>
+                        <mxPoint x="585" y="450" as="sourcePoint"/>
+                        <mxPoint x="835" y="450" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m5" value="GET /free-iphone" style="html=1;endArrow=block;strokeColor=#4a9eed;fontColor=#2563eb;fontSize=12;" parent="1" edge="1">
+                <mxCell id="m5" value="⑤ HTML + JS của app" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontSize=11;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="270" y="410" as="sourcePoint"/>
-                        <mxPoint x="480" y="410" as="targetPoint"/>
+                        <mxPoint x="835" y="495" as="sourcePoint"/>
+                        <mxPoint x="585" y="495" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="m6" value="HTML page + hidden auto-submit form" style="html=1;endArrow=open;dashed=1;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;" parent="1" edge="1">
+                <mxCell id="m6" value="⑦ POST /transfer — SAME-ORIGIN" style="html=1;verticalAlign=bottom;endArrow=block;endFill=1;strokeColor=#333333;fontSize=11;strokeColor=#b85450;fontColor=#b85450;fontStyle=1;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="480" y="450" as="sourcePoint"/>
-                        <mxPoint x="270" y="450" as="targetPoint"/>
+                        <mxPoint x="835" y="735" as="sourcePoint"/>
+                        <mxPoint x="1090" y="735" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="execnote" value="3. &lt;script&gt;form.submit()&lt;/script&gt;&#xa;runs the moment the page loads" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0e6;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=10;fontStyle=2;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="195" y="478" width="160" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="p3note" value="Phase 3 — Browser silently sends a forged request to fb.com" style="text;html=1;align=left;fontSize=11;fontStyle=2;fontColor=#b91c1c;" parent="1" vertex="1">
-                    <mxGeometry x="40" y="540" width="520" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="m7" value="4. POST /change-password (new_pw=hacked)" style="html=1;endArrow=block;strokeColor=#ef4444;strokeWidth=2;fontColor=#b91c1c;fontSize=12;fontStyle=1;" parent="1" edge="1">
+                <mxCell id="m7" value="⑧ 200 OK — giao dịch đã thực hiện" style="html=1;verticalAlign=bottom;endArrow=open;endFill=0;dashed=1;strokeColor=#666666;fontSize=11;" parent="1" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="270" y="580" as="sourcePoint"/>
-                        <mxPoint x="700" y="580" as="targetPoint"/>
+                        <mxPoint x="1090" y="785" as="sourcePoint"/>
+                        <mxPoint x="835" y="785" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="cookienote" value="Browser auto-attaches fb.com cookie&#xa;(destination = fb.com, regardless of initiator)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3bf;strokeColor=#f59e0b;fontColor=#92400e;fontSize=10;fontStyle=2;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="380" y="600" width="240" height="36" as="geometry"/>
+                <mxCell id="n1" value="&lt;b&gt;SameSite VÔ DỤNG ở đây&lt;/b&gt;&lt;br&gt;Request đi từ fb.com tới fb.com — same-site, same-origin. SameSite chỉ phân biệt được cross-site, nên nó không có gì để chặn." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="175" width="720" height="115" as="geometry"/>
                 </mxCell>
-                <mxCell id="srvcheck" value="Auth: cookie OK ✓&#xa;CSRF token: missing ✗&#xa;(trusts the request)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0e6;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=10;fontStyle=2;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="630" y="645" width="160" height="50" as="geometry"/>
+                <mxCell id="n2" value="&lt;b&gt;CSRF token VÔ DỤNG ở đây&lt;/b&gt;&lt;br&gt;Chính trang hợp lệ đính kèm token, và token đó hoàn toàn đúng. Kiểm Origin / Sec-Fetch-Site cũng vậy: Sec-Fetch-Site: same-origin." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="305" width="720" height="115" as="geometry"/>
                 </mxCell>
-                <mxCell id="m8" value="5. 200 OK — password changed" style="html=1;endArrow=open;dashed=1;strokeColor=#ef4444;fontColor=#b91c1c;fontSize=12;fontStyle=1;" parent="1" edge="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="700" y="715" as="sourcePoint"/>
-                        <mxPoint x="270" y="715" as="targetPoint"/>
-                    </mxGeometry>
+                <mxCell id="n3" value="&lt;b&gt;Cắt ở ⑥ — coi mọi đầu vào ngoài là KHÔNG tin cậy  ★ fix chính&lt;/b&gt;&lt;br&gt;URL fragment, query param, postMessage, localStorage, window.name, giá trị từ subdomain khác — tất cả đều do người ngoài ảnh hưởng được.&lt;br&gt;• Đừng lấy chúng để chọn endpoint, method hay tham số nhạy cảm. Dùng ALLOWLIST hành động: map một chuỗi cố định sang một hàm cố định, không ghép chuỗi thành URL.&lt;br&gt;• Riêng postMessage còn phải kiểm event.origin theo allowlist — không kiểm thì bất kỳ trang nào nhúng bạn trong iframe cũng điều khiển được. Kiểm cả cấu trúc message, đừng tin kiểu dữ liệu." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="435" width="720" height="175" as="geometry"/>
                 </mxCell>
-                <mxCell id="outcome" value="Attacker lợi dụng cơ chế tự động gửi của Brower để thực hiện hành vi" style="text;html=1;align=center;fontSize=11;fontStyle=2;fontColor=#1e1e1e;fillColor=#fff3bf;strokeColor=#f59e0b;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="220" y="817" width="365" height="28" as="geometry"/>
+                <mxCell id="n5" value="&lt;b&gt;Cắt ở ⑦ — server phải tự kiểm, không tin frontend&lt;/b&gt;&lt;br&gt;Request đến đây HOÀN HẢO về mặt kỹ thuật: đúng cookie, đúng CSRF token, đúng origin. Server không còn tín hiệu kỹ thuật nào để nghi ngờ — nên phải chặn bằng logic nghiệp vụ:&lt;br&gt;• Người dùng này có QUYỀN thực hiện hành động này không ?&lt;br&gt;• Tài nguyên đang bị tác động có THUỘC VỀ họ không ?&lt;br&gt;• Thao tác nhạy cảm đã XÁC NHẬN LẠI chưa — mật khẩu cũ, OTP, step-up auth ?&lt;br&gt;Frontend kỷ luật thì giảm khả năng bị lừa. Server kiểm quyền thì giới hạn thiệt hại khi frontend lỡ sai. Cần cả hai." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="625" width="720" height="190" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="Server Defence" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="830" y="310" width="140" height="90" as="geometry"/>
+                <mxCell id="n6" value="&lt;b&gt;Đừng nhầm với XSS&lt;/b&gt;&lt;br&gt;XSS = mã của KẺ TẤN CÔNG chạy trong trang của bạn.&lt;br&gt;Client-side CSRF = mã CỦA BẠN bị lừa dùng dữ liệu của kẻ tấn công. Không có script lạ nào chạy cả — nên CSP cũng không chặn được." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="830" width="720" height="125" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-align: center;&quot;&gt;Antiforgery Tokens&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="4">
-                    <mxGeometry y="30" width="140" height="30" as="geometry"/>
+                <mxCell id="vec_h" value="Các cửa đầu vào — nơi kẻ tấn công đặt được giá trị mà JS đọc ở bước ⑥" style="text;html=1;fontSize=13;fontStyle=1;align=left;verticalAlign=middle;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="985" width="1140" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="16" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-align: center;&quot;&gt;Config Cookie safety&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="4">
-                    <mxGeometry y="60" width="140" height="30" as="geometry"/>
+                <mxCell id="v1" value="&lt;b&gt;location.hash  (URL fragment)&lt;/b&gt;&lt;br&gt;Gửi link https://fb.com/#action=…&lt;br&gt;Fragment KHÔNG BAO GIỜ được gửi lên server ⇒ WAF, log, rate-limit đều không thấy gì." style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1020" width="360" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="v2" value="&lt;b&gt;location.search  (query param)&lt;/b&gt;&lt;br&gt;Link https://fb.com/?endpoint=…&lt;br&gt;Server có thấy, nhưng thường không ai kiểm vì tưởng chỉ là tham số giao diện." style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="1020" width="360" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="v3" value="&lt;b&gt;postMessage&lt;/b&gt;&lt;br&gt;Nhúng site bạn vào iframe rồi bắn message.&lt;br&gt;Chỉ cần bạn quên kiểm event.origin là mở." style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="820" y="1020" width="360" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="v4" value="&lt;b&gt;window.name&lt;/b&gt;&lt;br&gt;Đặt window.name rồi điều hướng tab sang site bạn.&lt;br&gt;Giá trị SỐNG SÓT qua điều hướng cross-origin." style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="1140" width="360" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="v5" value="&lt;b&gt;localStorage / sessionStorage&lt;/b&gt;&lt;br&gt;Một trang khác CÙNG ORIGIN ghi vào — ví dụ XSS ở một trang phụ ít quan trọng, hoặc subdomain bị chiếm." style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="1140" width="360" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="v6" value="&lt;b&gt;document.referrer&lt;/b&gt;&lt;br&gt;Điều hướng tới site bạn từ một URL do kẻ tấn công kiểm soát, rồi app dùng referrer để dựng URL." style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="820" y="1140" width="360" height="105" as="geometry"/>
+                </mxCell>
+                <mxCell id="vrule" value="&lt;b&gt;Câu hỏi để rà code&lt;/b&gt;&lt;br&gt;Với mỗi chỗ JS đọc một trong sáu cửa trên, hỏi: đầu vào này quyết định LÀM GÌ, hay chỉ quyết định LÀM VỚI CÁI GÌ ?&lt;br&gt;&lt;br&gt;Chỉ điền giá trị vào một hành động cố định → thiệt hại có giới hạn:&lt;br&gt;    fetch(&quot;/api/view-profile&quot;, { body: { id: p.get(&quot;id&quot;) } })&lt;br&gt;&lt;br&gt;Chọn luôn hành động → thiệt hại bằng đúng quyền của tài khoản:&lt;br&gt;    fetch(&quot;/api/&quot; + p.get(&quot;action&quot;), …)   ← đây mới là client-side CSRF&lt;br&gt;&lt;br&gt;Cách sửa: tra bảng allowlist, đừng ghép chuỗi thành URL." style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=8;spacingTop=2;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1200" y="985" width="720" height="260" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
